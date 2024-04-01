@@ -14,7 +14,7 @@ const ResultsViewer = (props) => {
             return (
                 <div id="results-viewer">
                     <div id="results-top-three">
-                        <div>
+                        <div className="top-three">
                             <h4>1st</h4>
                             <a className="clickable" onClick={
                                 () => props.showDriver(props.resultsData[0].driver.driverId)
@@ -23,7 +23,7 @@ const ResultsViewer = (props) => {
 
                             </a>
                         </div>
-                        <div>
+                        <div className="top-three">
                             <h4>2nd</h4>
                             <a className="clickable" onClick={
                                 () => props.showDriver(props.resultsData[1].driver.driverId)
@@ -31,7 +31,7 @@ const ResultsViewer = (props) => {
                                 {props.resultsData[1].driver.forename + " " + props.resultsData[0].driver.surname}
                             </a>
                         </div>
-                        <div>
+                        <div className="top-three">
                             <h4>3rd</h4>
                             <a className="clickable" onClick={
                                 () => props.showDriver(props.resultsData[2].driver.driverId)

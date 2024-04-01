@@ -16,7 +16,9 @@ const ConstructorStandings = (props) => {
                     {props.constructorStandingsData.map((d, indx) =>
                         <tr key={indx}>
                             <th>{d.position}</th>
-                            <th>{d.constructor.name}</th>
+                            <th>
+                                <a className="clickable">{d.constructor.name}</a>
+                            </th>
                             <th>{d.points}</th>
                             <th>{d.wins}</th>
                         </tr>
