@@ -1,5 +1,5 @@
 const ConstructorStandings = (props) => {
-    //props = constructorStandingsData
+    //props = constructorStandingsData, showConstructor(id)
     return (
         <div>
             <h4>Constructors</h4>
@@ -17,7 +17,7 @@ const ConstructorStandings = (props) => {
                         <tr key={indx}>
                             <th>{d.position}</th>
                             <th>
-                                <a className="clickable">{d.constructor.name}</a>
+                                <a className="clickable"onClick={() => props.showConstructor(d.constructor.constructorId)}>{d.constructor.name}</a>
                             </th>
                             <th>{d.points}</th>
                             <th>{d.wins}</th>

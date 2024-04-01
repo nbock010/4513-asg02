@@ -24,7 +24,7 @@ const StandingsViewer = (props) => {
                 {props.constructorStandingsData.length > 0 ?
                     //IF DATA EXISTS, RETURN:
                     <div>
-                        <ConstructorStandings constructorStandingsData={props.constructorStandingsData} />
+                        <ConstructorStandings constructorStandingsData={props.constructorStandingsData} showConstructor = {props.showConstructor}/>
                     </div>
                     : //IF NO DATA, RETURN:
                     <div>

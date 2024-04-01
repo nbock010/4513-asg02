@@ -3,6 +3,8 @@ import QualifyingViewer from './QualifyingViewer';
 import ResultsViewer from './ResultsViewer';
 import StandingsViewer from './standings-views/StandingsViewer';
 import DriverModal from '../dialogs/DriverModal';
+import ConstructorModal from '../dialogs/ConstructorModal';
+
 
 //Resutls and Standings view
 const ResStnView = (props) => {
@@ -42,10 +44,16 @@ const ResStnView = (props) => {
 
     //uses the truthyness state of a passed id to set isOpen to true or false
     const [idForDriverModal, openDriverModal] = useState(false)
+    const [idForConstructorModal, openConstructorModal] = useState(false)
+    //const [idForCircuitModal, openCircuitModal] = useState(false)
 
     function showDriver(driverId) {
         openDriverModal(driverId)
         // console.log("attempting to show driver for " + idForDriverModal)
+    }
+
+    function showConstructor(constructorId){
+        openConstructorModal(constructorId)
     }
 
     //SELECTIVE RETURN
@@ -63,6 +71,8 @@ const ResStnView = (props) => {
                 <div id="modals">
                     <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver}
                         driverData={props.qualifyingData.find((d) => d.driver.driverId == idForDriverModal)} />
+                    <ConstructorModal idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}
+                        constructorData={props.resultsData.find((c) => c.constructor.constructorId == idForConstructorModal)}></ConstructorModal>
                 </div>
 
                 <div id="qualify-results-container">
@@ -75,7 +85,9 @@ const ResStnView = (props) => {
                     </div>
                     <div>
                         <h4>Results</h4>
-                        <ResultsViewer resultsData={props.resultsData} showDriver={showDriver} idForDriverModal={idForDriverModal} />
+                        <ResultsViewer resultsData={props.resultsData} 
+                        showDriver={showDriver} idForDriverModal={idForDriverModal} 
+                        idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}/>
                     </div>
                 </div>
             </div>
@@ -86,12 +98,14 @@ const ResStnView = (props) => {
             <div>
                 <StandingsViewer driverStandingsData={props.driverStandingsData}
                     showDriver={showDriver} idForDriverModal={idForDriverModal}
-                    constructorStandingsData={props.constructorStandingsData}
+                    constructorStandingsData={props.constructorStandingsData} showConstructor={showConstructor} idForConstructorModal={idForConstructorModal}
                 />
 
                 <div id="modals">
                     <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver}
                         driverData={props.qualifyingData.find((d) => d.driver.driverId == idForDriverModal)} />
+                    <ConstructorModal idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}
+                        constructorData={props.resultsData.find((c) => c.constructor.constructorId == idForConstructorModal)}></ConstructorModal>
                 </div>
             </div>
         )

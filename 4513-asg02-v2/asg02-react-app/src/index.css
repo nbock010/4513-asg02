@@ -60,6 +60,53 @@ button:focus-visible {
 
 
 /* -------------------------ADDED CUSTOM HERE------------------------------- */
+
+
+
+#content {
+  display: flex;
+  max-height: 700px; 
+  /* ^^ Allows for better overflow in relevant sections (see below) */
+}
+
+/* .season-viewer > table{
+  overflow:scroll;
+} */
+
+table{
+  overflow-y: scroll;
+  height: 300px;
+  display: block;
+}
+
+#qualify-results-container{
+  display:flex;
+}
+
+#results-top-three {
+  display: flex;
+  justify-content: space-evenly;
+  /* allows for horizontal top 3 */
+}
+
+#standings-tables {
+  display: flex;
+  /* should make things side by side? */
+}
+
+.clickable:hover {
+  cursor: pointer;
+}
+
+
+
+#driver-dialog-header, #constructor-dialog-header {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+/* ---------LIGHT MODE COLOURS-------- */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -70,12 +117,14 @@ button:focus-visible {
     color: #747bff;
   }
 
-  button {
-    background-color: #d4d4d4;
+  .my-modal {
+    width: 40%;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
   }
 }
 
-
+/* ---------DARK MODE COLOURS-------- */
 @media (prefers-color-scheme: dark) {
   :root {
     /* color: #213547; */
@@ -95,7 +144,7 @@ button:focus-visible {
   }
 
   button {
-    background-color: #424242;
+    /* background-color: #424242; */
   }
 
   .my-modal {
@@ -107,70 +156,3 @@ button:focus-visible {
   }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547; 
-     background-color: #f5f5f5;
-  }
-
-  div {
-    border: 1px rgb(37, 31, 31) solid;
-  }
-
-  th {
-    border: 1px rgb(26, 26, 26) dotted;
-  }
-
-
-  a:hover {
-    color: #151850;
-  }
-
-  button {
-    background-color: #cac9c9;
-  }
-
-  .my-modal {
-    width: 40%;
-    border-radius: 20px;
-
-    background-color: rgb(255, 255, 255);
-  
-
-  }
-}
-
-
-
-#content {
-  display: flex;
-}
-
-#qualify-results-container{
-  display:flex;
-}
-
-#results-top-three {
-  display: flex;
-  justify-content: space-evenly;
-  /* allows for horizontal top 3 */
-}
-
-
-
-#standings-tables {
-  display: flex;
-  /* should make things side by side? */
-}
-
-.clickable:hover {
-  cursor: pointer;
-}
-
-
-
-#driver-dialog-header {
-  display: flex;
-  align-items: center;
-  padding: 5px;
-}

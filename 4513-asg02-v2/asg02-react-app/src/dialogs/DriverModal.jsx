@@ -27,7 +27,7 @@ const DriverModal = (props) => {
         let dob = new Date(driver.dob).toDateString() //for easier calculation
 
         const flagUrl = findFlagUrlByNationality(driver.nationality);
-        console.log(flagUrl)
+        // console.log(flagUrl)
 
         return (
             //the truthiness of a passed value makes this open

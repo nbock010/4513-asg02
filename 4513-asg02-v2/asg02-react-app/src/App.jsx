@@ -78,7 +78,7 @@ function App() {
         .from('qualifying')
         .select(`race!inner(raceId, name, round, year, date),
           driver!inner(driverId, forename, surname, dob, nationality, url), 
-          constructor!inner(name, nationality, url), 
+          constructor!inner(constructorId, name, nationality, url), 
           position, q1, q2, q3`)
         .eq('race.raceId', raceId)
         .order('position', { ascending: true })
@@ -121,7 +121,7 @@ function App() {
         .from('result')
         .select(`driver!inner(driverId, forename, surname, dob, nationality, url), 
         race!inner(name, round, year, date), 
-        constructor!inner(name, nationality), 
+        constructor!inner(constructorId, name, nationality, url), 
         position, points, laps, time`)
         .eq('race.raceId', raceId);
       //.order('position', { ascending: true }); //WE'LL SORT THEM AFTER THE POSITIONS ARE CAST TO INTS
@@ -141,7 +141,7 @@ function App() {
   //FETCH DRIVER STANDINGS DATA
   async function fetchDriverStandingsData(raceId) {
     if (raceId) {
-      console.log("getting results data from supabase ...here to check if I've gone infinite: " + raceId);
+      console.log("getting driver standings data from supabase ...here to check if I've gone infinite: " + raceId);
       const { data, error } = await supabase
         .from('driverStanding')
         .select(`driverStandingsId, 
@@ -162,11 +162,11 @@ function App() {
   //FETCH CONSTRUCTOR STANDINGS DATA
   async function fetchConstructorStandingsData(raceId) {
     if (raceId) {
-      console.log("getting results data from supabase ...here to check if I've gone infinite: " + raceId);
+      console.log("getting constructor standings data from supabase ...here to check if I've gone infinite: " + raceId);
       const { data, error } = await supabase
         .from('constructorStanding')
         .select(`constructorStandingsId, 
-        constructor!inner(name, nationality, url), 
+        constructor!inner(constructorId, name, nationality, url), 
         race!inner(name, round, year, date), 
         points, position, wins`)
         .eq('raceId', raceId)

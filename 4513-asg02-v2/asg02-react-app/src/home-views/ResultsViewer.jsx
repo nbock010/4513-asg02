@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 
 const ResultsViewer = (props) => {
-    //props: resultsData={props.resultsData} showDriver={showDriver} idForDriverModal={idForDriverModal}
+    //props: resultsData={props.resultsData} showDriver={showDriver} idForDriverModal={idForDriverModal}, 
+    //.. idForConstructorModal, showConstructor()
     if (props.resultsData.length > 0) {
         //^ protects against a bug where, when null (i.e. on login/startup), props.resultsData[0].driver prevents the whole page from loading 
 
@@ -57,11 +58,13 @@ const ResultsViewer = (props) => {
                                         <th>{d.position}</th>
                                         <th>
                                             <a className="clickable" onClick={
-                                                () => props.showDriver(props.resultsData[0].driver.driverId)
+                                                () => props.showDriver(d.driver.driverId)
                                             }>{d.driver.forename + " " + d.driver.surname}</a>
                                         </th>
                                         <th>
-                                            <a className="clickable">{d.constructor.name}</a>
+                                            <a className="clickable" onClick={
+                                                () => props.showConstructor(d.constructor.constructorId)
+                                            }>{d.constructor.name}</a>
                                         </th>
                                         <th>{d.laps}</th>
                                         <th>{d.points}</th>

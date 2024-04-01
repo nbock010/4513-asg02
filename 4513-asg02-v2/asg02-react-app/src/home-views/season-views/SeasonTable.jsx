@@ -22,7 +22,7 @@ const SeasonTable = (props) => {
                         <th>{d.round}</th>
                         <th>{d.name}</th>
                         <th>
-                            <button onClick={props.resultsHandler} value={d.raceId}>Results {d.raceId}</button>
+                            <button onClick={props.resultsHandler} value={d.raceId}>Results</button>
                         </th>
                         <th>
                             <button onClick={props.standingsHandler} value={d.raceId}>Standings</button>

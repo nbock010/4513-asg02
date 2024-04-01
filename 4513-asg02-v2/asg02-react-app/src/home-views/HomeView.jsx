@@ -122,7 +122,9 @@ const HomeView = (props) => {
                     resultsData={props.resultsData} fetchResultsData={props.fetchResultsData}
                     //standings data
                     driverStandingsData={props.driverStandingsData} fetchDriverStandingsData={props.fetchDriverStandingsData}
-                    constructorStandingsData={props.constructorStandingsData} fetchConstructorStandingsData={props.fetchConstructorStandingsData} />
+                    constructorStandingsData={props.constructorStandingsData} fetchConstructorStandingsData={props.fetchConstructorStandingsData}
+                    //circuit data
+                     />
             </div>
         </div>
     )
