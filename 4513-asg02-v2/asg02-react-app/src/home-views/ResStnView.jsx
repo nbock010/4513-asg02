@@ -48,6 +48,7 @@ const ResStnView = (props) => {
         // console.log("attempting to show driver for " + idForDriverModal)
     }
 
+    //SELECTIVE RETURN
     if (props.displayResultsAndNotStandings) { //i.e., if results was clicked, not standings
         return (
             <div id="results-container">
@@ -60,7 +61,8 @@ const ResStnView = (props) => {
                 </div>
 
                 <div id="modals">
-                    <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver} />
+                    <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver}
+                        driverData={props.qualifyingData.find((d) => d.driver.driverId == idForDriverModal)} />
                 </div>
 
                 <div id="qualify-results-container">
@@ -82,7 +84,15 @@ const ResStnView = (props) => {
     else { //i.e., if standings was clicked, not results
         return (
             <div>
-                <StandingsViewer driverStandingsData={props.driverStandingsData} constructorStandingsData={props.constructorStandingsData} />
+                <StandingsViewer driverStandingsData={props.driverStandingsData}
+                    showDriver={showDriver} idForDriverModal={idForDriverModal}
+                    constructorStandingsData={props.constructorStandingsData}
+                />
+
+                <div id="modals">
+                    <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver}
+                        driverData={props.qualifyingData.find((d) => d.driver.driverId == idForDriverModal)} />
+                </div>
             </div>
         )
     }

@@ -20,6 +20,7 @@ const ResultsViewer = (props) => {
                                 () => props.showDriver(props.resultsData[0].driver.driverId)
                             } data={props.resultsData[0].driver.driverId}>
                                 {props.resultsData[0].driver.forename + " " + props.resultsData[0].driver.surname}
+
                             </a>
                         </div>
                         <div>
@@ -55,7 +56,9 @@ const ResultsViewer = (props) => {
                                     <tr key={indx}>
                                         <th>{d.position}</th>
                                         <th>
-                                            <a className="clickable">{d.driver.forename + " " + d.driver.surname}</a>
+                                            <a className="clickable" onClick={
+                                                () => props.showDriver(props.resultsData[0].driver.driverId)
+                                            }>{d.driver.forename + " " + d.driver.surname}</a>
                                         </th>
                                         <th>
                                             <a className="clickable">{d.constructor.name}</a>
@@ -68,8 +71,6 @@ const ResultsViewer = (props) => {
                             </tbody>
                         </table>
                     </div>
-
-
                 </div>
             )
         }

@@ -4,7 +4,7 @@ import DriverStandings from './DriverStandings'
 import ConstructorStandings from './ConstructorStandings'
 
 const StandingsViewer = (props) => {
-    //props: driverStandingsData={driverStandingsData}  
+    //props: driverStandingsData={driverStandingsData}, props.showDriver(id), props.idForDriverModal
     return (
         <div id="standings-viewer">
             <h3>Standings</h3>
@@ -13,7 +13,8 @@ const StandingsViewer = (props) => {
                 {props.driverStandingsData.length > 0 ?
                     //IF DATA EXISTS, RETURN:
                     <div>
-                        <DriverStandings driverStandingsData={props.driverStandingsData} />
+                        <DriverStandings driverStandingsData={props.driverStandingsData}
+                            showDriver={props.showDriver} idForDriverModal={props.idForDriverModal} />
                     </div>
                     : //IF NO DATA, RETURN:
                     <div>

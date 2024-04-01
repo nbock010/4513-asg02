@@ -1,5 +1,5 @@
 const DriverStandings = (props) => {
-    //props = props.driverStandingsData,
+    //props = props.driverStandingsData, props.showDriver(id), props.idForDriverModal
     return (
         <div>
             <h4>Drivers</h4>
@@ -16,7 +16,12 @@ const DriverStandings = (props) => {
                     {props.driverStandingsData.map((d, indx) =>
                         <tr key={indx}>
                             <th>{d.position}</th>
-                            <th>{d.driver.forename} {d.driver.surname}</th>
+                            <th>
+                                <a className="clickable" onClick={() => props.showDriver(d.driver.driverId)}
+                                    data={d.driver.driverId}>
+                                    {d.driver.forename + " " + d.driver.surname}
+                                </a>
+                            </th>
                             <th>{d.points}</th>
                             <th>{d.wins}</th>
                         </tr>
