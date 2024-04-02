@@ -17,7 +17,7 @@ const supabase = createClient(supaUrl, supaAnonKey);
 
 
 function App() {
-  console.clear(); // just to remove previous messages of past renders. no need to clog up the console.
+  //console.clear(); // just to remove previous messages of past renders. no need to clog up the console.
   console.log("---------------------")
 
   //LOGIN FUNCTIONS
@@ -39,13 +39,12 @@ function App() {
   const [driverStandingsData, setDriverStandingsData] = useState([]);
   const [constructorStandingsData, setConstructorStandingsData] = useState([]);
 
+  const [circuitData, setCircuitData] = useState([]);
+
+
 
   //FETCH SEASON DATA
   async function fetchSeasonData(year) {
-    // if (!year) {
-    //   console.log("possible error: fetchSeasonYear was called but there's no year")
-    // }
-    //else
     if (year) {
       console.log("getting Season data from supabase ...here to check if I've gone infinite");
 
@@ -136,6 +135,9 @@ function App() {
         document.querySelector("#no-results-p").textContent = "No results data found for this race. Please select another"
       }
     }
+    else{
+      console.log("we were called, but no raceId...")
+    }
   }
 
   //FETCH DRIVER STANDINGS DATA
@@ -180,6 +182,22 @@ function App() {
     }
   }
 
+  //FETCH CIRCUIT DATA
+  async function fetchCircuitData(raceId){
+    if (raceId){
+      console.log("getting circuit data from supabase ...here to check if I've gone infinite: " + raceId);
+      const {data, error} = await supabase
+        .from('race')
+        .select(`circuits!inner(name, location, country, lat, lng, url)`)
+        .eq('raceId', raceId);
+      setCircuitData(data)
+      if (data.length == 0) {
+        console.log("Query appears successful, but may have returned zero results for results")
+        //set somethings text content?
+      }
+    }
+  }
+
 
   // DISPLAY LOGIN OR HOMEVIEW
   if (!loggedIn) {
@@ -189,6 +207,7 @@ function App() {
     return <HomeView seasonData={seasonData} fetchSeasonData={fetchSeasonData}
       selectedSeason={selectedSeason} setSeason={setSeason}
       selectedRaceId={selectedRaceId} setRaceId={setRaceId}
+      circuitData={circuitData} fetchCircuitData={fetchCircuitData}
       qualifyingData={qualifyingData} fetchQualifyingData={fetchQualifyingData}
       resultsData={resultsData} fetchResultsData={fetchResultsData}
       driverStandingsData={driverStandingsData} fetchDriverStandingsData={fetchDriverStandingsData}

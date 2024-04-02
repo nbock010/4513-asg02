@@ -1,5 +1,7 @@
 const DriverStandings = (props) => {
     //props = props.driverStandingsData, props.showDriver(id), props.idForDriverModal
+    console.log("driver standings:")
+    console.log(props.driverStandingsData)
     return (
         <div>
             <h4>Drivers</h4>
@@ -17,8 +19,7 @@ const DriverStandings = (props) => {
                         <tr key={indx}>
                             <th>{d.position}</th>
                             <th>
-                                <a className="clickable" onClick={() => props.showDriver(d.driver.driverId)}
-                                    data={d.driver.driverId}>
+                                <a className="clickable" onClick={() => props.showDriver(d.driver.driverId)}>
                                     {d.driver.forename + " " + d.driver.surname}
                                 </a>
                             </th>

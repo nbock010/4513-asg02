@@ -6,8 +6,10 @@ import ResStnView from './ResStnView.jsx'
 const HomeView = (props) => {
     /*props = props.seasonData, props.fetchSeasonData (function), 
     props.selectedSeason, props.setSeason (function),
-
     props.selectedRaceId, props.setRaceId,
+
+    props.circuitData, props.fetchCircuitData(raceId),
+
     props.qualifyingData, props.fetchQualifying(),
     props.resultsData, props.fetchResultsData(raceId),
 
@@ -20,6 +22,7 @@ const HomeView = (props) => {
         props.fetchSeasonData(props.selectedSeason)
     }, []);
 
+if (props.selectedRaceId){
     console.log("qualifying data for " + props.selectedRaceId)
     console.log(props.qualifyingData)
 
@@ -31,6 +34,8 @@ const HomeView = (props) => {
 
     console.log('constructor standings data for :' + props.selectedRaceId)
     console.log(props.constructorStandingsData)
+}
+
 
 
     //HANDLER FOR SEASON DROPDOWN
@@ -48,18 +53,30 @@ const HomeView = (props) => {
 
     //handles query for qualifying AND results queries
     const resultsHandler = (e) => {
-        // console.log("results clicked: " + e.target.value)
-        props.fetchQualifyingData(e.target.value)
-        props.fetchResultsData(e.target.value)
+        if (e.target.value != props.selectedRaceId){
+            //this helps prevent an unnecessary fetch if the results of the race id are already displayed
+            props.fetchQualifyingData(e.target.value)
+            props.fetchResultsData(e.target.value)
+            props.fetchCircuitData(e.target.value) //a new circuit name only seems required (per the assignment) if "results" is clicked
+            props.setRaceId(e.target.value)
+        }
+        else{
+            console.log("results for id= " + props.selectedRaceId + " are already displayed")
+        }
         amDisplayingResults(true);
     }
 
+    //handles query for standings button
     const standingsHandler = (e) => {
-        console.log("standings clicked: " + e.target.value)
-        props.fetchDriverStandingsData(e.target.value)
-        props.fetchConstructorStandingsData(e.target.value)
+        if (e.target.value != props.selectedRaceId){
+            props.fetchDriverStandingsData(e.target.value)
+            props.fetchConstructorStandingsData(e.target.value)
+            props.setRaceId(e.target.value)
+        }
+        else{
+            console.log("standings for id= " + props.selectedRaceId + " are already displayed")
+        }
         amDisplayingResults(false);
-        //fetch driver standings, fetch constructor standings
     }
 
     const tempBtnAlert = () => {
@@ -115,6 +132,7 @@ const HomeView = (props) => {
                 {/* Views for results+qualifying and standings */}
                 <ResStnView resultsHandler={resultsHandler}
                     selectedRaceId={props.selectedRaceId} setRaceId={props.setRaceId}
+                    circuitData={props.circuitData} setCircuitData={props.setCurcuitData}
                     displayResultsAndNotStandings={displayResultsAndNotStandings}
                     // qualifying data
                     qualifyingData={props.qualifyingData} fetchQualifyingData={props.fetchQualifyingData}

@@ -4,9 +4,10 @@ import { findFlagUrlByNationality } from "country-flags-svg";
 //^^Huge find; can import images of country flags as icons using the driver's nationality string
 
 const ConstructorModal = (props) =>{
-
-
+//idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}
+//constructorData={props.constructorStandingssData.find((c) => c.constructor.constructorId == idForConstructorModal)}
     if (props.idForConstructorModal){
+        console.log(props.constructorData)
         const constructor = props.constructorData.constructor
         const flagUrl = findFlagUrlByNationality(constructor.nationality);
 
@@ -18,17 +19,20 @@ const ConstructorModal = (props) =>{
                     <h3>{constructor.name}</h3>
                 </div>
                 <div>
-                    <img src="https://placehold.co/150x100" alt={constructor.name + " logo PLACEHOLDER"}/>
+                    <figure>
+                        <img src="https://placehold.co/150x100" alt={constructor.name + " logo PLACEHOLDER"}/>
+                    </figure>
                     <a href={constructor.url}>Wikipedia</a>
                 </div>
                 <div>
-                        <button onClick={() => props.showConstructor(null)}>Close</button>
-                        <button>Favourite</button>
-                    </div>
+                    <button onClick={() => props.showConstructor(null)}>Close</button>
+                    <button>Favourite</button>
+                </div>
 
             </ReactModal>
             )
     }
+    
     
 }
 

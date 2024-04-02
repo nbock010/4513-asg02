@@ -20,7 +20,6 @@ const DriverModal = (props) => {
         return age;
     }
 
-    console.log("driver modal: printing to console! " + props.idForDriverModal)
     if (props.idForDriverModal) {
 
         const driver = props.driverData.driver

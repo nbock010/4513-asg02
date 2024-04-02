@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react'
 
 const QualifyingViewer = (props) => {
     /*props (from ResStnView): qualifyingData={props.qualifyingData} 
-    showDriver={showDriver} idForDriverModal={idForDriverModal}*/
+    showDriver={showDriver} idForDriverModal={idForDriverModal}
+    showConstructor=props.showConstructor(id)
+    
+    */
 
     // function passDriverId(data) {
     //     props.showDriver(data)
@@ -39,7 +42,7 @@ const QualifyingViewer = (props) => {
                                 </a>
                             </th>
                             <th>
-                                <a className="clickable">
+                                <a className="clickable" onClick={() => props.showConstructor(d.constructor.constructorId)}>
                                     {d.constructor.name}
                                 </a>
                             </th>
