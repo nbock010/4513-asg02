@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import ReactModal from 'react-modal'
 import { findFlagUrlByNationality } from "country-flags-svg";
+import WikiImage from './WikiImage.jsx'
 //^^Huge find; can import images of country flags as icons using the driver's nationality string
 
 const DriverModal = (props) => {
@@ -39,7 +40,7 @@ const DriverModal = (props) => {
                 <div>
                     <p>{"Born " + dob + " (" + getAge(dob) + " years old)"} </p>
                     <figure>
-                        <img src="https://placehold.co/150x100" alt="tbd"></img>
+                        <WikiImage url={driver.url} altText={driver.forename + " " + driver.surname}/>
                     </figure>
                     <a href={driver.url} target="_blank">Wikipedia</a>
                 </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import ReactModal from 'react-modal'
+import WikiImage from './WikiImage';
 import { findFlagUrlByNationality } from "country-flags-svg";
 //^^Huge find; can import images of country flags as icons using the driver's nationality string
 
@@ -22,7 +23,7 @@ const ConstructorModal = (props) =>{
                 </div>
                 <div>
                     <figure>
-                        <img src="https://placehold.co/150x100" alt={constructor.name + " logo PLACEHOLDER"}/>
+                        <WikiImage url={constructor.url} altText={constructor.name + " logo PLACEHOLDER"}/>
                     </figure>
                     <a href={constructor.url} target="_blank">Wikipedia</a>
                 </div>
