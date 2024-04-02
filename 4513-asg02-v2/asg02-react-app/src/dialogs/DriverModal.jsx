@@ -41,7 +41,7 @@ const DriverModal = (props) => {
                     <figure>
                         <img src="https://placehold.co/150x100" alt="tbd"></img>
                     </figure>
-                    <a href={driver.url}>Wikipedia</a>
+                    <a href={driver.url} target="_blank">Wikipedia</a>
                 </div>
                 <div>
                     <button onClick={() => props.showDriver(null)}>Close</button>

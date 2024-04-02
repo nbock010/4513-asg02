@@ -11,6 +11,8 @@ const ConstructorModal = (props) =>{
         const constructor = props.constructorData.constructor
         const flagUrl = findFlagUrlByNationality(constructor.nationality);
 
+        
+
         return(
             <ReactModal className="my-modal" isOpen={props.idForConstructorModal ? true : false}
                 shouldCloseOnEsc={true}>
@@ -22,7 +24,7 @@ const ConstructorModal = (props) =>{
                     <figure>
                         <img src="https://placehold.co/150x100" alt={constructor.name + " logo PLACEHOLDER"}/>
                     </figure>
-                    <a href={constructor.url}>Wikipedia</a>
+                    <a href={constructor.url} target="_blank">Wikipedia</a>
                 </div>
                 <div>
                     <button onClick={() => props.showConstructor(null)}>Close</button>

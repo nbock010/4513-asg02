@@ -27,7 +27,7 @@ const CircuitModal = (props) =>{
                         <img src="https://placehold.co/150x100" alt={circuitData.name + " image PLACEHOLDER"}/>
                         <img src="https://placehold.co/150x100" alt={circuitData.name + " map PLACEHOLDER"}/>
                     </figure>
-                <a href={circuitData.url}>Wikipedia</a>
+                <a href={circuitData.url} target="_blank">Wikipedia</a>
                 </div>
                 <div>
                     <button onClick={() => props.showCircuit(null)}>Close</button>
