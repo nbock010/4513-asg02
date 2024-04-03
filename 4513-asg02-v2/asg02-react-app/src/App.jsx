@@ -20,15 +20,12 @@ function App() {
   //console.clear(); // just to remove previous messages of past renders. no need to clog up the console.
   console.log("---------------------")
 
-  //LOGIN FUNCTIONS
+  //LOGIN FUNCTION
   const [loggedIn, changeLoginStatus] = useState(0);
-  //console.log("Logged in: " + loggedIn);
-
   const loginHandler = () => {
     changeLoginStatus(true);
   }
 
-  //API CODE?
   const [selectedSeason, setSeason] = useState(); //default per the select element. 
   const [seasonData, setSeasonData] = useState([]);
 
@@ -41,7 +38,7 @@ function App() {
 
   const [circuitData, setCircuitData] = useState([]);
 
-
+  const [isLoading, changeLoadingStatus] = useState(false); //true or false to determine whether to display loading modal
 
   //FETCH SEASON DATA
   async function fetchSeasonData(year) {
@@ -58,18 +55,14 @@ function App() {
         console.error('Error fetching seasons:', error);
         return;
       }
-      setSeasonData(data);
+      setSeasonData(data)
     }
 
   }
 
   //FETCH QUALIFYING DATA
   async function fetchQualifyingData(raceId) {
-    // if (!raceId && loggedIn) {
-    //   console.log("possible error: fetchQualifyingData was called but there's no raceId")
-    // }
-    // //blocks attempt at fetch if there's no raceId yet; no point making a knowingly null request
-    // else
+
     if (raceId) {
       console.log("getting qualifying data from supabase ...here to check if I've gone infinite");
 
@@ -85,10 +78,14 @@ function App() {
         console.error('Error fetching qualifying:', error);
         return;
       }
-      setQualifyingData(data);
-      if (data.length == 0) {
+      
+      if (data.length > 0) {
+        setQualifyingData(data);
+      }
+      else{
         console.log("Query appears successful, but may have returned zero results for qualifying")
-        //document.querySelector("#no-qualifying-p").innerHTML = "No qualifying data found for this race. Please select another"
+        setQualifyingData("0")
+        //document.querySelector("#no-qualifying-p").innerHTML = "No qualifying data found for this race. Please select another
       }
     }
   }
@@ -211,7 +208,8 @@ function App() {
       qualifyingData={qualifyingData} fetchQualifyingData={fetchQualifyingData}
       resultsData={resultsData} fetchResultsData={fetchResultsData}
       driverStandingsData={driverStandingsData} fetchDriverStandingsData={fetchDriverStandingsData}
-      constructorStandingsData={constructorStandingsData} fetchConstructorStandingsData={fetchConstructorStandingsData} />
+      constructorStandingsData={constructorStandingsData} fetchConstructorStandingsData={fetchConstructorStandingsData} 
+      isLoading={isLoading} changeLoadingStatus={changeLoadingStatus}/>
   }
 }
 

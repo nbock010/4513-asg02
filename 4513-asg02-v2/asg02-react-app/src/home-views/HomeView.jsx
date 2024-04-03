@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import SeasonViewer from './season-views/SeasonViewer.jsx';
 import ResStnView from './ResStnView.jsx'
-//import Modal from 'react-modal'
+import LoadingModal from '../dialogs/LoadingModal.jsx';
 
 const HomeView = (props) => {
     /*props = props.seasonData, props.fetchSeasonData (function), 
@@ -15,6 +15,7 @@ const HomeView = (props) => {
 
     driverStandingsData = =props.driverStandingsData, fetchDriverStandingsData= props.fetchDriverStandingsData(raceId)
     constructorStandingsData = props.constructorStandingsData fetchConstructorStandingsData = props.fetchConstructorStandingsData(raceId)
+    isLoading={isLoading} changeLoadingStatus={changeLoadingStatus}
 */
     //console.log("homeview loaded")
     useEffect(() => {
@@ -36,16 +37,19 @@ if (props.selectedRaceId){
     console.log(props.constructorStandingsData)
 }
 
+// const [isLoading, changeLoadingStatus] = useState(false); //true or false to determine whether to display loading modal
 
 
     //HANDLER FOR SEASON DROPDOWN
     const seasonHeaderHandler = (e) => {
-        // console.log("Season value from dropdown: " + e.target.value);
+        //props.changeLoadingStatus(true)
         props.setSeason(e.target.value);
         props.fetchSeasonData(e.target.value); //using value rather than props.selectedSeason because the delay causes a fetch of the *previously* selected year.
-        //CHANGE HEADER
-        document.querySelector("#seasonH3").textContent = (e.target.value + " Races");
-        //NOTE: when you set up the circuit name, a function here might be good for another api call
+        //CHANGE HEADER (if one is loaded yet; this 'if' prevents a null error)
+        if (document.querySelector("#seasonH3")){
+            document.querySelector("#seasonH3").textContent = (e.target.value + " Races");
+        }
+        //props.changeLoadingStatus(false)
     }
 
     //alternates between if results or standings is clicked
@@ -87,6 +91,7 @@ if (props.selectedRaceId){
     return (
         <div className="container">
             <header>
+            <h1>F1 Data Dashboard</h1>
                 <div className="season-selector">
                     <h3>Season</h3>
                     <select name="season" onChange={seasonHeaderHandler}>
@@ -117,32 +122,41 @@ if (props.selectedRaceId){
                         <option value="2023">2023</option>
                     </select>
                 </div>
-                <h2>F1 Data Dashboard</h2>
                 <div>
                     <button onClick={tempBtnAlert}>Favourites</button>
                     <button onClick={tempBtnAlert}>About</button>
                 </div>
             </header>
 
+            {/* <LoadingModal isLoading={props.isLoading} changeLoadingStatus={props.changeLoadingStatus}/> */}
+
             <div id="content">
                 <SeasonViewer selectedSeason={props.selectedSeason} seasonData={props.seasonData}
                     fetchQualifyingData={props.fetchQualifyingData}
                     resultsHandler={resultsHandler} standingsHandler={standingsHandler} />
 
-                {/* Views for results+qualifying and standings */}
+                {/* IF A SESAON IS CURRENTLY SELECTED: */}
+                {props.selectedSeason ? 
                 <ResStnView resultsHandler={resultsHandler}
-                    selectedRaceId={props.selectedRaceId} setRaceId={props.setRaceId}
-                    circuitData={props.circuitData} setCircuitData={props.setCurcuitData}
-                    displayResultsAndNotStandings={displayResultsAndNotStandings}
-                    // qualifying data
-                    qualifyingData={props.qualifyingData} fetchQualifyingData={props.fetchQualifyingData}
-                    //results data
-                    resultsData={props.resultsData} fetchResultsData={props.fetchResultsData}
-                    //standings data
-                    driverStandingsData={props.driverStandingsData} fetchDriverStandingsData={props.fetchDriverStandingsData}
-                    constructorStandingsData={props.constructorStandingsData} fetchConstructorStandingsData={props.fetchConstructorStandingsData}
-                    //circuit data
-                     />
+                selectedRaceId={props.selectedRaceId} setRaceId={props.setRaceId}
+                circuitData={props.circuitData} setCircuitData={props.setCurcuitData}
+                displayResultsAndNotStandings={displayResultsAndNotStandings}
+                // qualifying data
+                qualifyingData={props.qualifyingData} fetchQualifyingData={props.fetchQualifyingData}
+                //results data
+                resultsData={props.resultsData} fetchResultsData={props.fetchResultsData}
+                //standings data
+                driverStandingsData={props.driverStandingsData} fetchDriverStandingsData={props.fetchDriverStandingsData}
+                constructorStandingsData={props.constructorStandingsData} fetchConstructorStandingsData={props.fetchConstructorStandingsData}
+                //circuit data
+                 /> 
+                //  ELSE IF SEASON IS NOT SELECTED:
+                :
+                <div>
+                    <h3>Select a year to view race data</h3>
+                </div>
+                }
+                
             </div>
         </div>
     )

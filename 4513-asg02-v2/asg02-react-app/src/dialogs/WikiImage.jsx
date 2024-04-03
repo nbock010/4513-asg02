@@ -35,7 +35,6 @@ const WikiImage = (props) =>{
         }
     }
 
-
     const [wikiData, setWikiData] = useState(); 
     let loading = ("") //empty for now
 
@@ -50,9 +49,9 @@ const WikiImage = (props) =>{
             let imgUrl = extractImgUrl(data)
             if (imgUrl){
                 setWikiData(imgUrl);
-                console.log(imgUrl)
             }
             else{
+                setWikiData(tempImgSrc)
                 console.log("no image found")
             }
         }

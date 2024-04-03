@@ -38,11 +38,14 @@ const DriverModal = (props) => {
                     <h3>{driver.forename + " " + driver.surname}</h3>
                 </div>
                 <div>
-                    <p>{"Born " + dob + " (" + getAge(dob) + " years old)"} </p>
                     <figure>
                         <WikiImage url={driver.url} altText={driver.forename + " " + driver.surname}/>
                     </figure>
-                    <a href={driver.url} target="_blank">Wikipedia</a>
+                    <p>{"Born " + dob + " (" + getAge(dob) + " years old)"} 
+                    <br/>
+                    <a href={driver.url} target="_blank">Wikipedia</a></p>
+                    
+                    
                 </div>
                 <div>
                     <button onClick={() => props.showDriver(null)}>Close</button>

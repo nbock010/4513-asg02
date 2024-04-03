@@ -79,7 +79,7 @@ const ResStnView = (props) => {
 
                 <div id="modals">
                     <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver}
-                        driverData={props.qualifyingData.find((d) => d.driver.driverId == idForDriverModal)} />
+                        driverData={props.resultsData.find((d) => d.driver.driverId == idForDriverModal)} />
                     <ConstructorModal idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}
                         constructorData={props.resultsData.find((c) => c.constructor.constructorId == idForConstructorModal)}/>
                     <CircuitModal idForCircuitModal={idForCircuitModal} showCircuit={showCircuit}

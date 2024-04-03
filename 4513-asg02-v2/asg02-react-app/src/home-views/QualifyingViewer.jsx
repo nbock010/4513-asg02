@@ -11,7 +11,8 @@ const QualifyingViewer = (props) => {
     //     props.showDriver(data)
     // }
 
-    if (props.qualifyingData.length == 0) {
+    if (props.qualifyingData.length <= 1) {
+        //in app, an empty query will instead return the data to just be a string, "0" which has a length of 1
         return (
             <div>
                 <p id="no-qualifying-p">No qualifying data found for this race.</p>
