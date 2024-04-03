@@ -9,12 +9,13 @@ const SeasonViewer = (props) => {
     props.fetchQualifyingData(fn, req's raceId),
     props.resultsHandler(), props.standingsHandler()
     */
+   
 
     if (props.selectedSeason){
         return (
             < div className="season-viewer" >
                 <div>
-                    <h3 id="seasonH3">Races</h3>
+                    <h3 id="seasonH3">{props.selectedSeason} Races</h3>
                 </div>
                 <div>
                     <SeasonTable seasonData={props.seasonData} fetchQualifyingData={props.fetchQualifyingData}

@@ -40,6 +40,18 @@ function App() {
 
   const [isLoading, changeLoadingStatus] = useState(false); //true or false to determine whether to display loading modal
 
+  function clearResultsData(){
+    //ONLY TO BE USED ON REFRESH OF A NEW SELECTED SEASON
+    setRaceId()
+    setQualifyingData()
+    setResultsData()
+    setQualifyingData()
+    setDriverStandingsData()
+    setConstructorStandingsData()
+    setCircuitData()
+}
+
+
   //FETCH SEASON DATA
   async function fetchSeasonData(year) {
     if (year) {
@@ -209,7 +221,8 @@ function App() {
       resultsData={resultsData} fetchResultsData={fetchResultsData}
       driverStandingsData={driverStandingsData} fetchDriverStandingsData={fetchDriverStandingsData}
       constructorStandingsData={constructorStandingsData} fetchConstructorStandingsData={fetchConstructorStandingsData} 
-      isLoading={isLoading} changeLoadingStatus={changeLoadingStatus}/>
+      isLoading={isLoading} changeLoadingStatus={changeLoadingStatus}
+      clearResultsData={clearResultsData}/>
   }
 }
 

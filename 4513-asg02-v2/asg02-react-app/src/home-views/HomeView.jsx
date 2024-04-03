@@ -16,6 +16,7 @@ const HomeView = (props) => {
     driverStandingsData = =props.driverStandingsData, fetchDriverStandingsData= props.fetchDriverStandingsData(raceId)
     constructorStandingsData = props.constructorStandingsData fetchConstructorStandingsData = props.fetchConstructorStandingsData(raceId)
     isLoading={isLoading} changeLoadingStatus={changeLoadingStatus}
+    props.clearResultsData()
 */
     //console.log("homeview loaded")
     useEffect(() => {
@@ -49,11 +50,27 @@ if (props.selectedRaceId){
         if (document.querySelector("#seasonH3")){
             document.querySelector("#seasonH3").textContent = (e.target.value + " Races");
         }
+        clearSeasonHighlights()
+        props.clearResultsData()
         //props.changeLoadingStatus(false)
     }
 
     //alternates between if results or standings is clicked
     let [displayResultsAndNotStandings, amDisplayingResults] = useState(true);
+
+    function highlightSelectedRace(raceId){
+        //sometimes at the start, the race id is null. setting the raceId is also called in the appropriate handler functions where this function is also called (see below)
+        document.querySelector(`tr[value='${raceId}']`).classList.add("selected-race");
+    }
+
+    function clearSeasonHighlights(){
+        //loops through the season table rows and clears the "selected-race" class. might not be the *most* efficient way of doing this, but I might come back to it if there's time.
+        document.querySelectorAll("tr[value]").forEach((tr) => {
+            tr.classList.remove("selected-race")
+        })
+    }
+
+  
 
     //handles query for qualifying AND results queries
     const resultsHandler = (e) => {
@@ -63,6 +80,8 @@ if (props.selectedRaceId){
             props.fetchResultsData(e.target.value)
             props.fetchCircuitData(e.target.value) //a new circuit name only seems required (per the assignment) if "results" is clicked
             props.setRaceId(e.target.value)
+            clearSeasonHighlights()
+            highlightSelectedRace(e.target.value)
         }
         else{
             console.log("results for id= " + props.selectedRaceId + " are already displayed")
@@ -73,9 +92,12 @@ if (props.selectedRaceId){
     //handles query for standings button
     const standingsHandler = (e) => {
         if (e.target.value != props.selectedRaceId){
+            //this helps prevent an unnecessary fetch if the results of the race id are already displayed
             props.fetchDriverStandingsData(e.target.value)
             props.fetchConstructorStandingsData(e.target.value)
             props.setRaceId(e.target.value)
+            clearSeasonHighlights()
+            highlightSelectedRace(e.target.value)
         }
         else{
             console.log("standings for id= " + props.selectedRaceId + " are already displayed")

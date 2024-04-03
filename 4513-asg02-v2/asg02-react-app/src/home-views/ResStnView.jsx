@@ -93,7 +93,7 @@ const ResStnView = (props) => {
                         {props.qualifyingData.length > 0 ?
                             <QualifyingViewer qualifyingData={props.qualifyingData}
                                 showDriver={showDriver} showConstructor={showConstructor} idForDriverModal={idForDriverModal} />
-                            : <p>[Select a year and a race]</p>}
+                            : <p></p>}
                     </div>
                     <div>
                         <h4>Results</h4>

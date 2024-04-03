@@ -16,9 +16,9 @@ const SeasonTable = (props) => {
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="season-race-table">
                 {props.seasonData.map((d, indx) =>
-                    <tr key={indx}>
+                    <tr key={indx} value={d.raceId}>
                         <th>{d.round}</th>
                         <th>{d.name}</th>
                         <th>
