@@ -1,4 +1,8 @@
 import { useState, useEffect } from 'react'
+import loadingGif from '../assets/wheel.gif'
+//^^ from https://giphy.com/stickers/SKODAPL-tire-skoda-tyre-VbiSHWCqHmNVhipjkh
+
+
 
 /*This file is my attempt to get driver, circuit, and constructor images from wikipedia. 
 It will require a fetch using MediaWiki's API to get the main image from the article. 
@@ -13,7 +17,7 @@ const WikiImage = (props) =>{
     //^^this is the link prefix for getting the article data (usually including an img url to the articles main image)
     const title = props.url.replace("http://en.wikipedia.org/wiki/", ""); //essentially parses the title
     const wikiUrl = (wikiPrefix + title)
-
+    let tempImgSrc = loadingGif;
     //assuming there IS an image url, this function returns that (otherwise returns null)
     function extractImgUrl(data){
         console.log("EXTRACTING FROM " + data)
@@ -26,6 +30,7 @@ const WikiImage = (props) =>{
             return dataStr.substring(start, end)
         }
         else{
+            tempImgSrc = "https://placehold.co/150x100"
             return null
         }
     }
@@ -65,7 +70,7 @@ const WikiImage = (props) =>{
     
     
     return (
-        <img src={wikiData ? wikiData : "https://placehold.co/150x100"} width="150px" alt={props.title}></img> 
+        <img src={wikiData ? wikiData : tempImgSrc} width="150px" alt={props.title}></img> 
     )
 }
 
