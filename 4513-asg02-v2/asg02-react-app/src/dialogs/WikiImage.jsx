@@ -11,21 +11,45 @@ const WikiImage = (props) =>{
 
     const wikiPrefix = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages|pageterms&piprop=thumbnail&pithumbsize=500&titles="
     //^^this is the link prefix for getting the article data (usually including an img url to the articles main image)
-    //const title= props.url.replace("http://", ""); //in case this is hiding somewhere
     const title = props.url.replace("http://en.wikipedia.org/wiki/", ""); //essentially parses the title
-    //tempAlt = "Williams Grand Prix Engineering placeholder"
     const wikiUrl = (wikiPrefix + title)
 
+    //assuming there IS an image url, this function returns that (otherwise returns null)
+    function extractImgUrl(data){
+        console.log("EXTRACTING FROM " + data)
+        let dataStr = JSON.stringify(data)
+        let start = dataStr.indexOf("http") //start of img url
+        if (start != -1) {
+            //some strings don't return an image url for some reason. 
+            let end = dataStr.indexOf(`","width`) //appears at end of url str (after the jpg)
+            //console.log("URL: " + dataStr.substring(start, end))
+            return dataStr.substring(start, end)
+        }
+        else{
+            return null
+        }
+    }
+
+
     const [wikiData, setWikiData] = useState(); 
+    let loading = ("") //empty for now
 
     async function fetchImgFromWiki(){
         //eventually, display some loading gif here (if needed)?
         console.log("getting wikipedia data ...here to check if I've gone infinite: ");
         console.log("retrieving from " + wikiUrl)
         try{
+            loading = (<p>LOADING...</p>)
             const response = await fetch(wikiUrl)
             const data = await response.json()
-            setWikiData(data);
+            let imgUrl = extractImgUrl(data)
+            if (imgUrl){
+                setWikiData(imgUrl);
+                console.log(imgUrl)
+            }
+            else{
+                console.log("no image found")
+            }
         }
         catch(error){
             console.log("error fetching wiki data: " + error)
@@ -34,17 +58,14 @@ const WikiImage = (props) =>{
 
     useEffect(() =>{
         fetchImgFromWiki()
-        .then(() =>{
-            console.log(wikiData)
-        })
+        // .then(() =>{
+        //     console.log(wikiData)
+        // })
     }, [])
     
     
-
-
     return (
-        // may consider returning this in a figure container, but circuitModal uses 2 images anyway (map pending)
-        <img src="https://placehold.co/150x100" alt="tbd"></img>    
+        <img src={wikiData ? wikiData : "https://placehold.co/150x100"} width="150px" alt={props.title}></img> 
     )
 }
 
