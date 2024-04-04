@@ -70,7 +70,7 @@ const ResStnView = (props) => {
         // IF RESULTS WAS CLICKED (and also default)
         return(
             <div id="res-stn-container">
-                <Breadcrumbs isDisabled variant='bordered' color="primary">
+                <Breadcrumbs isDisabled variant='solid' color="primary">
                     <BreadcrumbItem>
                         {props.selectedSeason}
                     </BreadcrumbItem>
@@ -123,7 +123,7 @@ const ResStnView = (props) => {
         //STANDINGS WAS CLICKED
         return(
             <div id="res-stn-container">
-                <Breadcrumbs isDisabled variant='bordered' color="primary">
+                <Breadcrumbs isDisabled variant='solid' color="primary">
                     <BreadcrumbItem>
                         {props.selectedSeason}
                     </BreadcrumbItem>

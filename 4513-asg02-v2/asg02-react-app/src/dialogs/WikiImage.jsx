@@ -17,6 +17,8 @@ const WikiImage = (props) =>{
     const title = props.url.replace("http://en.wikipedia.org/wiki/", ""); //essentially parses the title
     const wikiUrl = (wikiPrefix + title)
     let tempImgSrc = loadingGif;
+
+
     //assuming there IS an image url, this function returns that (otherwise returns null)
     function extractImgUrl(data){
         console.log("EXTRACTING FROM " + data)
@@ -61,14 +63,12 @@ const WikiImage = (props) =>{
 
     useEffect(() =>{
         fetchImgFromWiki()
-        // .then(() =>{
-        //     console.log(wikiData)
-        // })
     }, [])
     
-    
+
     return (
         <img src={wikiData ? wikiData : tempImgSrc} width="150px" alt={props.title}></img> 
+        // title="Not all images from Wikimedia's API will return (especially the constructors for some reason)"
     )
 }
 

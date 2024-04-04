@@ -25,7 +25,7 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #5259e9;
   text-decoration: inherit;
 }
 
@@ -97,6 +97,11 @@ button:focus-visible {
   display: flex;
   max-height: 700px; 
   /* ^^ Allows for better overflow in relevant sections (see below) */
+}
+
+/* these appear in modals, anywhere else though? should be fine */
+figure{
+  display: flex;
 }
 
 /* .season-viewer > table{

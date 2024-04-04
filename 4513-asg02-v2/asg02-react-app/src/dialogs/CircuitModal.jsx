@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react'
-import ReactModal from 'react-modal'
+
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button} from "@nextui-org/react";
 import { findFlagUrlByCountryName } from "country-flags-svg";
 import WikiImage from './WikiImage';
 //^^Huge find; can import images of country flags as icons using the driver's nationality string
@@ -40,27 +40,44 @@ const CircuitModal = (props) =>{
         console.log(props.circuitData.circuits)
     //console.log(props.idForCircuitModal)
         return(
-              <ReactModal className="my-modal" isOpen={props.idForCircuitModal ? true : false}
-              shouldCloseOnEsc={true}>
-                <div id="circuit-dialog-header">
-                    <img src={findFlagUrlByCountryName(circuitData.country)} width="60" height="40" alt={circuitData.country + " flag"}/>
-                    <h3>{circuitData.name}</h3>
-                </div>
-                <div>
-                    <p>{circuitData.location}, {circuitData.country}</p>
-                    <p>({convertToDms(circuitData.lat, false)}, {convertToDms(circuitData.lng, true)})</p>
-                    <figure>
-                        <WikiImage url={circuitData.url} altText={circuitData.name + " image PLACEHOLDER"}/>
-                        <img src="https://placehold.co/150x100" alt={circuitData.name + " map PLACEHOLDER"}/>
-                    </figure>
-                <a href={circuitData.url} target="_blank">Wikipedia</a>
-                </div>
-                <div>
-                    <button onClick={() => props.showCircuit(null)}>Close</button>
-                    <button>Favourite</button>
-                </div>
+            <Modal onClose={()=> props.showCircuit(null)}isOpen={props.idForCircuitModal ? true : false}>
+                <ModalContent>
+                    <ModalHeader id="circuit-dialog-header">
+                        <img src={findFlagUrlByCountryName(circuitData.country)} width="60" height="40" alt={circuitData.country + " flag"}/>
+                        <h3>{circuitData.name}</h3>
+                    </ModalHeader>
+                    <ModalBody className="">
+                        <p>{circuitData.location}, {circuitData.country}</p>
+                        <p>({convertToDms(circuitData.lat, false)}, {convertToDms(circuitData.lng, true)})</p>
+                        <figure>
+                            <WikiImage url={circuitData.url} altText={circuitData.name + " image PLACEHOLDER"}/>
+                            <img src="https://placehold.co/150x100" alt={circuitData.name + " map PLACEHOLDER"}/>
+                        </figure>
+                        <a href={circuitData.url} target="_blank">Wikipedia</a>
+                    </ModalBody>
+                    <ModalFooter>
+                        <button onClick={() => props.showCircuit(null)}>Close</button>
+                        <button>Favourite</button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
 
-              </ReactModal>
+
+
+            //   <ReactModal className="my-modal" isOpen={props.idForCircuitModal ? true : false}
+            //   shouldCloseOnEsc={true}>
+            //     <div >
+            //         <img src={findFlagUrlByCountryName(circuitData.country)} width="60" height="40" alt={circuitData.country + " flag"}/>
+            //         <h3>{circuitData.name}</h3>
+            //     </div>
+            //     <div>
+            //         
+            //     </div>
+            //     <div>
+
+            //     </div>
+
+            //   </ReactModal>
         )
     }
     

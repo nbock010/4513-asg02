@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+// import { useState, useEffect } from 'react'
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button} from "@nextui-org/react";
 import { findFlagUrlByNationality } from "country-flags-svg";
 import WikiImage from './WikiImage.jsx'
@@ -22,7 +22,6 @@ const DriverModal = (props) => {
     }
 
     if (props.idForDriverModal) {
-
         const driver = props.driverData.driver
         let dob = new Date(driver.dob).toDateString() //for easier calculation
         const flagUrl = findFlagUrlByNationality(driver.nationality);
@@ -49,31 +48,6 @@ const DriverModal = (props) => {
                     </ModalFooter>
                 </ModalContent>
             </Modal>
-
-
-
-            // <ReactModal className="my-modal" isOpen={props.idForDriverModal ? true : false}
-            //     shouldCloseOnEsc={true}>
-            //     <div id="driver-dialog-header">
-            //         <img src={flagUrl} width="60" height="40" alt={driver.nationality + " flag"}></img>
-            //         <h3>{driver.forename + " " + driver.surname}</h3>
-            //     </div>
-            //     <div>
-            //         <figure>
-            //             <WikiImage url={driver.url} altText={driver.forename + " " + driver.surname}/>
-            //         </figure>
-            //         <p>{"Born " + dob + " (" + getAge(dob) + " years old)"} 
-            //         <br/>
-            //         <a href={driver.url} target="_blank">Wikipedia</a></p>
-                    
-                    
-            //     </div>
-            //     <div>
-            //         <Button onClick={() => props.showDriver(null)}>Close</Button>
-            //         <Button>Favourite</Button>
-            //     </div>
-
-            // </ReactModal>
         )
     }
 }
