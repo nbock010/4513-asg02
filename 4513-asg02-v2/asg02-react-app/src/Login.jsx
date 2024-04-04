@@ -21,8 +21,8 @@ const Login = (props) => {
                     <input type="password"></input>
                 </div>
                 <div>
-                    <Button onClick={props.loginHandler}>Login</Button>
-                    <Button onClick={props.loginHandler}>Register</Button>
+                    <Button color={"primary"} onClick={props.loginHandler}>Login</Button>
+                    <Button color={"primary"} onClick={props.loginHandler}>Register</Button>
                 </div>
             </form>
         </div>

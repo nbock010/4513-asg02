@@ -4,7 +4,15 @@ import DriverStandings from './DriverStandings'
 import ConstructorStandings from './ConstructorStandings'
 
 const StandingsViewer = (props) => {
-    //props: driverStandingsData={driverStandingsData}, props.showDriver(id), props.idForDriverModal
+    /*props: driverStandingsData={props.driverStandingsData}
+    showDriver={showDriver} idForDriverModal={idForDriverModal}
+    constructorStandingsData={props.constructorStandingsData} 
+    showConstructor={showConstructor} idForConstructorModal={idForConstructorModal}
+    */
+    console.log(props.driverStandingsData)
+    if (props.driverStandingsData.length == 0){
+        return(<p>Loading...</p>)
+    }
     return (
         <div id="standings-viewer">
             <h3>{props.driverStandingsData[0].race.name} Standings</h3>

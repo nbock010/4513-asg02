@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import SeasonViewer from './season-views/SeasonViewer.jsx';
 import ResStnView from './ResStnView.jsx'
-//import LoadingModal from '../dialogs/LoadingModal.jsx';
+import { Button } from '@nextui-org/react'
+
 
 const HomeView = (props) => {
     /*props = props.seasonData, props.fetchSeasonData (function), 
@@ -34,7 +35,7 @@ if (props.selectedRaceId){
     console.log('driver standings data for ' + props.selectedRaceId)
     console.log(props.driverStandingsData)
 
-    console.log('constructor standings data for :' + props.selectedRaceId)
+    console.log('constructor standings data for : ' + props.selectedRaceId)
     console.log(props.constructorStandingsData)
 }
 
@@ -52,6 +53,7 @@ if (props.selectedRaceId){
         }
         clearSeasonHighlights()
         props.clearResultsData()
+        amDisplayingResults(true)
         //props.changeLoadingStatus(false)
     }
 
@@ -91,6 +93,7 @@ if (props.selectedRaceId){
 
     //handles query for standings button
     const standingsHandler = (e) => {
+        console.log("E: " + e.target.value + "; Rid: " + props.selectedRaceId)
         if (e.target.value != props.selectedRaceId){
             //this helps prevent an unnecessary fetch if the results of the race id are already displayed
             props.fetchDriverStandingsData(e.target.value)
@@ -145,12 +148,11 @@ if (props.selectedRaceId){
                     </select>
                 </div>
                 <div>
-                    <button onClick={tempBtnAlert}>Favourites</button>
-                    <button onClick={tempBtnAlert}>About</button>
+                    <Button color={"primary"} onClick={tempBtnAlert}>Favourites</Button>
+                    <Button color={"primary"} onClick={tempBtnAlert}>About</Button>
                 </div>
             </header>
 
-            {/* <LoadingModal isLoading={props.isLoading} changeLoadingStatus={props.changeLoadingStatus}/> */}
 
             <div id="content">
                 <SeasonViewer selectedSeason={props.selectedSeason} seasonData={props.seasonData}
@@ -159,7 +161,7 @@ if (props.selectedRaceId){
 
                 {/* IF A SESAON IS CURRENTLY SELECTED: */}
                 {props.selectedSeason ? 
-                <ResStnView resultsHandler={resultsHandler}
+                <ResStnView selectedSeason={props.selectedSeason} resultsHandler={resultsHandler}
                 selectedRaceId={props.selectedRaceId} setRaceId={props.setRaceId}
                 circuitData={props.circuitData} setCircuitData={props.setCurcuitData}
                 displayResultsAndNotStandings={displayResultsAndNotStandings}

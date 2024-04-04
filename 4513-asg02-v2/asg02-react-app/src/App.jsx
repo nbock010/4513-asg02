@@ -162,7 +162,7 @@ function App() {
 
       setDriverStandingsData(data)
       if (data.length == 0) {
-        console.log("Query appears successful, but may have returned zero results for results")
+        console.log("Query appears successful, but may have returned zero results for driver standings")
         document.querySelector("#no-driverStandings-p").textContent = "No driver standings found for this race. Please select another"
       }
     }
@@ -183,7 +183,7 @@ function App() {
 
       setConstructorStandingsData(data)
       if (data.length == 0) {
-        console.log("Query appears successful, but may have returned zero results for results")
+        console.log("Query appears successful, but may have returned zero results for constructor standings")
         document.querySelector("#no-constructorStandings-p").textContent = "No driver standings found for this race. Please select another"
       }
     }
@@ -208,14 +208,11 @@ function App() {
 
   // DISPLAY LOGIN OR HOMEVIEW
   if (!loggedIn) {
-
     return (
-<NextUIProvider>
-  <Login loginHandler={loginHandler}></Login>
-</NextUIProvider>
-      
+      <NextUIProvider>
+        <Login loginHandler={loginHandler}></Login>
+      </NextUIProvider>
     )
-    
   }
   else {
     return (

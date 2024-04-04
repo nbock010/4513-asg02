@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Button } from '@nextui-org/react'
 
 const SeasonTable = (props) => {
     /*props = props.seasonData, props.fetchQualifyingData(fn, req's raceId),
@@ -22,10 +23,10 @@ const SeasonTable = (props) => {
                         <th>{d.round}</th>
                         <th>{d.name}</th>
                         <th>
-                            <button onClick={props.resultsHandler} value={d.raceId}>Results</button>
+                            <Button color={"primary"} onClick={props.resultsHandler} value={d.raceId}>Results</Button>
                         </th>
                         <th>
-                            <button onClick={props.standingsHandler} value={d.raceId}>Standings</button>
+                            <Button color={"primary"} onClick={props.standingsHandler} value={d.raceId}>Standings</Button>
                         </th>
                     </tr>)}
             </tbody>
