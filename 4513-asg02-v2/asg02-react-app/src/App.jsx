@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import {NextUIProvider} from "@nextui-org/react";
 import './App.css'
 import './Login.jsx'
 import './home-views/HomeView.jsx'
@@ -207,19 +208,30 @@ function App() {
 
   // DISPLAY LOGIN OR HOMEVIEW
   if (!loggedIn) {
-    return <Login loginHandler={loginHandler}></Login>
+
+    return (
+<NextUIProvider>
+  <Login loginHandler={loginHandler}></Login>
+</NextUIProvider>
+      
+    )
+    
   }
   else {
-    return <HomeView seasonData={seasonData} fetchSeasonData={fetchSeasonData}
-      selectedSeason={selectedSeason} setSeason={setSeason}
-      selectedRaceId={selectedRaceId} setRaceId={setRaceId}
-      circuitData={circuitData} fetchCircuitData={fetchCircuitData}
-      qualifyingData={qualifyingData} fetchQualifyingData={fetchQualifyingData}
-      resultsData={resultsData} fetchResultsData={fetchResultsData}
-      driverStandingsData={driverStandingsData} fetchDriverStandingsData={fetchDriverStandingsData}
-      constructorStandingsData={constructorStandingsData} fetchConstructorStandingsData={fetchConstructorStandingsData} 
-      isLoading={isLoading} changeLoadingStatus={changeLoadingStatus}
-      clearResultsData={clearResultsData}/>
+    return (
+      <NextUIProvider>
+        <HomeView seasonData={seasonData} fetchSeasonData={fetchSeasonData}
+          selectedSeason={selectedSeason} setSeason={setSeason}
+          selectedRaceId={selectedRaceId} setRaceId={setRaceId}
+          circuitData={circuitData} fetchCircuitData={fetchCircuitData}
+          qualifyingData={qualifyingData} fetchQualifyingData={fetchQualifyingData}
+          resultsData={resultsData} fetchResultsData={fetchResultsData}
+          driverStandingsData={driverStandingsData} fetchDriverStandingsData={fetchDriverStandingsData}
+          constructorStandingsData={constructorStandingsData} fetchConstructorStandingsData={fetchConstructorStandingsData} 
+          isLoading={isLoading} changeLoadingStatus={changeLoadingStatus}
+          clearResultsData={clearResultsData}/>
+      </NextUIProvider>
+    )
   }
 }
 
