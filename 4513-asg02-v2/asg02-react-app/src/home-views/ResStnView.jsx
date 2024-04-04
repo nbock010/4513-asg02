@@ -7,11 +7,11 @@ import ConstructorModal from '../dialogs/ConstructorModal';
 import CircuitModal from '../dialogs/CircuitModal';
 
 import {Breadcrumbs, BreadcrumbItem} from "@nextui-org/react";
-
+import LoadingModal from '../dialogs/LoadingModal';
 
 //Resutls and Standings view
 const ResStnView = (props) => {
-    /*props = props.selectedRaceId, props.setRaceId, props.selectedSeason
+    /*props = props.seasonData, props.selectedRaceId, props.setRaceId, props.selectedSeason
     props.qualifyingData, props.fetchQualifyingData(fn, req's raceId), 
     props.resultsData, props.fetchResultsData(), resultsHandler(),
     props.circuitData, props.setCircuitData(raceid),
@@ -32,7 +32,6 @@ const ResStnView = (props) => {
 
     //INFO FOR RESULTS HEADER
     let raceName = ""
-    let raceUrl = "#"
     let round = ""
     let date = ""
     let circuitName = "Circuit Name TBD"
@@ -40,7 +39,6 @@ const ResStnView = (props) => {
     //apply values if data is filled (note: currently only applies to results, not standings)
     if (props.resultsData.length > 0) {
         raceName = props.resultsData[0].race.name
-        raceUrl = props.resultsData[0].race.url
         round = props.resultsData[0].race.round
         date = new Date(props.resultsData[0].race.date).toDateString()
     }
@@ -68,85 +66,92 @@ const ResStnView = (props) => {
     }
 
     //SELECTIVE RETURN
+    if (props.displayResultsAndNotStandings){
+        // IF RESULTS WAS CLICKED (and also default)
+        return(
+            <div id="res-stn-container">
+                <Breadcrumbs variant='bordered' color="primary">
+                    <BreadcrumbItem>
+                        {props.selectedSeason}
+                    </BreadcrumbItem>
+                    <BreadcrumbItem>
+                        {raceName}
+                    </BreadcrumbItem>
+                    <BreadcrumbItem>
+                        Results
+                    </BreadcrumbItem>
+                </Breadcrumbs>
 
-    return(
-        <div>
-            <Breadcrumbs>
-                <BreadcrumbItem>{props.selectedSeason}</BreadcrumbItem>
-                <BreadcrumbItem>RACE NAME</BreadcrumbItem>
-                {/* {raceName} works only if results are clicked */}
-                {props.displayResultsAndNotStandings ? 
-                    <BreadcrumbItem>Results</BreadcrumbItem> : <BreadcrumbItem>Standings</BreadcrumbItem>
-                }
-            </Breadcrumbs>
-            
-            {/* CONDITIONAL RETURN HERE */}
-            {props.displayResultsAndNotStandings ? 
-            // IF RESULTS WAS CLICKED (and also default)
-            <div id="results-container">
-                <div>
-                    <h3>Results</h3>
-                    {props.resultsData.length > 0 ? <p>
-                        {raceName} Round {round} <br />{date} at
-                        <a className="clickable" onClick={() => showCircuit(props.selectedRaceId)}> {circuitName}</a>
-                    </p> : <p>[Select a year and a race]</p>}
-                </div>
-                <div id="modals">
-                    <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver}
-                        driverData={props.resultsData.find((d) => d.driver.driverId == idForDriverModal)} />
-                    <ConstructorModal idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}
-                        constructorData={props.resultsData.find((c) => c.constructor.constructorId == idForConstructorModal)}/>
-                    <CircuitModal idForCircuitModal={idForCircuitModal} showCircuit={showCircuit}
-                        circuitData={props.circuitData[0]}/>
-                </div>
-
-                <div id="qualify-results-container">
+                <div id="results-container">
                     <div>
-                        <h4>Qualifying</h4>
-                        {props.qualifyingData.length > 0 ?
-                            <QualifyingViewer qualifyingData={props.qualifyingData}
-                                showDriver={showDriver} showConstructor={showConstructor} idForDriverModal={idForDriverModal} />
-                            : 
-                            <p>No qualifying data found...</p>}
+                        <h3>Results</h3>
+                        {props.resultsData.length > 0 ? <p>
+                            {raceName} Round {round} <br />{date} at
+                            <a className="clickable" onClick={() => showCircuit(props.selectedRaceId)}> {circuitName}</a>
+                        </p> : <p>[Select a year and a race]</p>}
                     </div>
-                    <div>
-                        <h4>Results</h4>
-                        <ResultsViewer resultsData={props.resultsData} 
-                        showDriver={showDriver} idForDriverModal={idForDriverModal} 
-                        idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}/>
+                    <div id="modals">
+                        <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver}
+                            driverData={props.resultsData.find((d) => d.driver.driverId == idForDriverModal)} />
+                        <ConstructorModal idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}
+                            constructorData={props.resultsData.find((c) => c.constructor.constructorId == idForConstructorModal)}/>
+                        <CircuitModal idForCircuitModal={idForCircuitModal} showCircuit={showCircuit}
+                            circuitData={props.circuitData[0]}/>
+                    </div>
+
+                    <div id="qualify-results-container">
+                        <div>
+                            <h4>Qualifying</h4>
+                            {props.qualifyingData.length > 0 ?
+                                <QualifyingViewer qualifyingData={props.qualifyingData}
+                                    showDriver={showDriver} showConstructor={showConstructor} idForDriverModal={idForDriverModal} />
+                                : 
+                                <p>No qualifying data found...</p>}
+                        </div>
+                        <div>
+                            <h4>Results</h4>
+                            <ResultsViewer resultsData={props.resultsData} 
+                            showDriver={showDriver} idForDriverModal={idForDriverModal} 
+                            idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}/>
+                        </div>
                     </div>
                 </div>
-            </div>
-            : 
-            //^^IF STANDINGS WAS CLICKED
-            <div>
-            <StandingsViewer driverStandingsData={props.driverStandingsData}
-                showDriver={showDriver} idForDriverModal={idForDriverModal}
-                constructorStandingsData={props.constructorStandingsData} showConstructor={showConstructor} idForConstructorModal={idForConstructorModal}
-            />
+            </div>             
+        )
+    }
+    else{
+        //STANDINGS WAS CLICKED
+        return(
+            <div id="res-stn-container">
+                <Breadcrumbs variant='bordered' color="primary">
+                    <BreadcrumbItem>
+                        {props.selectedSeason}
+                    </BreadcrumbItem>
+                    {console.log(props.driverStandingsData)}
+                    <BreadcrumbItem>
+                        {props.driverStandingsData.length > 0 ? props.driverStandingsData[0].race.name : "NAME"}
+                    </BreadcrumbItem>
+                    <BreadcrumbItem>
+                        Standings
+                    </BreadcrumbItem>
+                </Breadcrumbs>
 
-            <div id="modals">
-                <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver}
-                    driverData={props.driverStandingsData.find((d) => d.driver.driverId == idForDriverModal)} />
-                <ConstructorModal idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}
-                    constructorData={props.constructorStandingsData.find((c) => c.constructor.constructorId == idForConstructorModal)}></ConstructorModal>
-            </div>
-        </div>}
-        </div>
-        
-                        )
-    // if (props.displayResultsAndNotStandings) { //i.e., if results was clicked, not standings
-    //     // console.log("DISPLAYING RESULTS")
-    //     return (
-            
-    //     )
-    // }
-    // else { //i.e., if standings was clicked, not results
-    //     // console.log("DISPLAYING STANDINGS")
-    //     return (
-            
-    //     )
-    // }
+                <div id="standings-container">
+                    <StandingsViewer driverStandingsData={props.driverStandingsData}
+                        showDriver={showDriver} idForDriverModal={idForDriverModal}
+                        constructorStandingsData={props.constructorStandingsData} showConstructor={showConstructor} idForConstructorModal={idForConstructorModal}
+                    />
+                    <div id="modals">
+                        <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver}
+                            driverData={props.driverStandingsData.find((d) => d.driver.driverId == idForDriverModal)} />
+                        <ConstructorModal idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}
+                            constructorData={props.constructorStandingsData.find((c) => c.constructor.constructorId == idForConstructorModal)}></ConstructorModal>
+                    </div>
+                </div>
+            </div> 
+        )
+    }
+
 }
 
 export default ResStnView

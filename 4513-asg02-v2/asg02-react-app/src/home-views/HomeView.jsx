@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import SeasonViewer from './season-views/SeasonViewer.jsx';
 import ResStnView from './ResStnView.jsx'
-import { Button } from '@nextui-org/react'
-
+import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
+import LoadingModal from '../dialogs/LoadingModal.jsx';
 
 const HomeView = (props) => {
     /*props = props.seasonData, props.fetchSeasonData (function), 
@@ -43,17 +43,18 @@ if (props.selectedRaceId){
 
 
     //HANDLER FOR SEASON DROPDOWN
-    const seasonHeaderHandler = (e) => {
+    //NextUi update: e is no longer the event target, it will be the key (i.e. the year) selected
+    const seasonHeaderHandler = (key) => {
         //props.changeLoadingStatus(true)
-        props.setSeason(e.target.value);
-        props.fetchSeasonData(e.target.value); //using value rather than props.selectedSeason because the delay causes a fetch of the *previously* selected year.
+        props.setSeason(key);
+        props.fetchSeasonData(key); 
         //CHANGE HEADER (if one is loaded yet; this 'if' prevents a null error)
         if (document.querySelector("#seasonH3")){
-            document.querySelector("#seasonH3").textContent = (e.target.value + " Races");
+            document.querySelector("#seasonH3").textContent = (key + " Races");
         }
-        clearSeasonHighlights()
+        clearSeasonHighlights() //this prevents unselected races to still be highlighted
         props.clearResultsData()
-        amDisplayingResults(true)
+        amDisplayingResults(true) //resets the view
         //props.changeLoadingStatus(false)
     }
 
@@ -119,41 +120,49 @@ if (props.selectedRaceId){
             <h1>F1 Data Dashboard</h1>
                 <div className="season-selector">
                     <h3>Season</h3>
-                    <select name="season" onChange={seasonHeaderHandler}>
-                        <option value="">----</option>
-                        <option value="2000">2000</option>
-                        <option value="2001">2001</option>
-                        <option value="2002">2002</option>
-                        <option value="2003">2003</option>
-                        <option value="2004">2004</option>
-                        <option value="2005">2005</option>
-                        <option value="2006">2006</option>
-                        <option value="2007">2007</option>
-                        <option value="2008">2008</option>
-                        <option value="2009">2009</option>
-                        <option value="2010">2010</option>
-                        <option value="2011">2011</option>
-                        <option value="2012">2012</option>
-                        <option value="2013">2013</option>
-                        <option value="2014">2014</option>
-                        <option value="2015">2015</option>
-                        <option value="2016">2016</option>
-                        <option value="2017">2017</option>
-                        <option value="2018">2018</option>
-                        <option value="2019">2019</option>
-                        <option value="2020">2020</option>
-                        <option value="2021">2021</option>
-                        <option value="2022">2022</option>
-                        <option value="2023">2023</option>
-                    </select>
+                    <Dropdown>
+                        <DropdownTrigger>
+                            <Button color='primary' radius="sm">
+                                {props.selectedSeason ? props.selectedSeason : "Year"}
+                            </Button>
+                        </DropdownTrigger>
+                        <DropdownMenu disallowEmptySelection aria-label="Season selector" selectionMode="single" variant='flat'
+                         onAction={(key) => seasonHeaderHandler(key)}>
+                            {/* <DropdownItem value="">----</DropdownItem> */}
+                            <DropdownItem key="2000">2000</DropdownItem>
+                            <DropdownItem key="2001">2001</DropdownItem>
+                            <DropdownItem key="2002">2002</DropdownItem>
+                            <DropdownItem key="2003">2003</DropdownItem>
+                            <DropdownItem key="2004">2004</DropdownItem>
+                            <DropdownItem key="2005">2005</DropdownItem>
+                            <DropdownItem key="2006">2006</DropdownItem>
+                            <DropdownItem key="2007">2007</DropdownItem>
+                            <DropdownItem key="2008">2008</DropdownItem>
+                            <DropdownItem key="2009">2009</DropdownItem>
+                            <DropdownItem key="2010">2010</DropdownItem>
+                            <DropdownItem key="2011">2011</DropdownItem>
+                            <DropdownItem key="2012">2012</DropdownItem>
+                            <DropdownItem key="2013">2013</DropdownItem>
+                            <DropdownItem key="2014">2014</DropdownItem>
+                            <DropdownItem key="2015">2015</DropdownItem>
+                            <DropdownItem key="2016">2016</DropdownItem>
+                            <DropdownItem key="2017">2017</DropdownItem>
+                            <DropdownItem key="2018">2018</DropdownItem>
+                            <DropdownItem key="2019">2019</DropdownItem>
+                            <DropdownItem key="2020">2020</DropdownItem>
+                            <DropdownItem key="2021">2021</DropdownItem>
+                            <DropdownItem key="2022">2022</DropdownItem>
+                            <DropdownItem key="2023">2023</DropdownItem>
+                        </DropdownMenu>
+                    </Dropdown>
                 </div>
                 <div>
-                    <Button color={"primary"} onClick={tempBtnAlert}>Favourites</Button>
-                    <Button color={"primary"} onClick={tempBtnAlert}>About</Button>
+                    <Button radius="sm" color={"primary"} onClick={tempBtnAlert}>Favourites</Button>
+                    <Button radius="sm" color={"primary"} onClick={tempBtnAlert}>About</Button>
                 </div>
             </header>
 
-
+            <LoadingModal isLoading={props.isLoading} changeLoadingStatus={props.changeLoadingStatus}></LoadingModal>
             <div id="content">
                 <SeasonViewer selectedSeason={props.selectedSeason} seasonData={props.seasonData}
                     fetchQualifyingData={props.fetchQualifyingData}
@@ -161,7 +170,7 @@ if (props.selectedRaceId){
 
                 {/* IF A SESAON IS CURRENTLY SELECTED: */}
                 {props.selectedSeason ? 
-                <ResStnView selectedSeason={props.selectedSeason} resultsHandler={resultsHandler}
+                <ResStnView seasonData={props.seasonData} selectedSeason={props.selectedSeason} resultsHandler={resultsHandler}
                 selectedRaceId={props.selectedRaceId} setRaceId={props.setRaceId}
                 circuitData={props.circuitData} setCircuitData={props.setCurcuitData}
                 displayResultsAndNotStandings={displayResultsAndNotStandings}

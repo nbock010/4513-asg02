@@ -6,7 +6,7 @@ import loadingGif from '../assets/wheel.gif'
 const LoadingModal = (props) =>{
     //props (from HomeView): isLoading, changeLoadingStatus(true/false)
     return(
-        <ReactModal className="my-modal" isOpen={false}> 
+        <ReactModal className="my-modal" isOpen={props.isLoading}> 
         {/* USING FALSE AS A TEMP PRECAUTION FOR NOW */}
             <div>
                 <h2>Loading...</h2>

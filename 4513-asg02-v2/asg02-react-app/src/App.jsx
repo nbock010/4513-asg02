@@ -53,6 +53,7 @@ function App() {
   //FETCH SEASON DATA
   async function fetchSeasonData(year) {
     if (year) {
+      changeLoadingStatus(true)
       console.log("getting Season data from supabase ...here to check if I've gone infinite");
 
       const { data, error } = await supabase
@@ -66,14 +67,15 @@ function App() {
         return;
       }
       setSeasonData(data)
+      changeLoadingStatus(false)
     }
 
   }
 
   //FETCH QUALIFYING DATA
   async function fetchQualifyingData(raceId) {
-
     if (raceId) {
+      changeLoadingStatus(true)
       console.log("getting qualifying data from supabase ...here to check if I've gone infinite");
 
       const { data, error } = await supabase
@@ -97,6 +99,7 @@ function App() {
         setQualifyingData("0")
         //document.querySelector("#no-qualifying-p").innerHTML = "No qualifying data found for this race. Please select another
       }
+      changeLoadingStatus(false)
     }
   }
 
@@ -115,14 +118,9 @@ function App() {
 
   //FETCH RESULTS DATA
   async function fetchResultsData(raceId) {
-    // if (!raceId && loggedIn) {
-    //   console.log("possible error: fetchResultsData was called but there's no raceId")
-    // }
-    // //blocks attempt at fetch if there's no raceId yet; no point making a knowingly null request
-    // else
     if (raceId) {
       console.log("getting results data from supabase ...here to check if I've gone infinite: " + raceId);
-
+      changeLoadingStatus(true)
       const { data, error } = await supabase
         .from('result')
         .select(`driver!inner(driverId, forename, surname, dob, nationality, url), 
@@ -141,6 +139,7 @@ function App() {
         console.log("Query appears successful, but may have returned zero results for results")
         document.querySelector("#no-results-p").textContent = "No results data found for this race. Please select another"
       }
+      changeLoadingStatus(false)
     }
     else{
       console.log("we were called, but no raceId...")
@@ -150,6 +149,8 @@ function App() {
   //FETCH DRIVER STANDINGS DATA
   async function fetchDriverStandingsData(raceId) {
     if (raceId) {
+      changeLoadingStatus(true)
+      console.log("LOADING")
       console.log("getting driver standings data from supabase ...here to check if I've gone infinite: " + raceId);
       const { data, error } = await supabase
         .from('driverStanding')
@@ -165,12 +166,15 @@ function App() {
         console.log("Query appears successful, but may have returned zero results for driver standings")
         document.querySelector("#no-driverStandings-p").textContent = "No driver standings found for this race. Please select another"
       }
+      changeLoadingStatus(false)
     }
   }
 
   //FETCH CONSTRUCTOR STANDINGS DATA
   async function fetchConstructorStandingsData(raceId) {
     if (raceId) {
+      changeLoadingStatus(true)
+      
       console.log("getting constructor standings data from supabase ...here to check if I've gone infinite: " + raceId);
       const { data, error } = await supabase
         .from('constructorStanding')
@@ -180,18 +184,20 @@ function App() {
         points, position, wins`)
         .eq('raceId', raceId)
         .order('position', { ascending: true });
-
+        
       setConstructorStandingsData(data)
       if (data.length == 0) {
         console.log("Query appears successful, but may have returned zero results for constructor standings")
         document.querySelector("#no-constructorStandings-p").textContent = "No driver standings found for this race. Please select another"
       }
+      changeLoadingStatus(false)
     }
   }
 
   //FETCH CIRCUIT DATA
   async function fetchCircuitData(raceId){
     if (raceId){
+      changeLoadingStatus(true)
       console.log("getting circuit data from supabase ...here to check if I've gone infinite: " + raceId);
       const {data, error} = await supabase
         .from('race')
@@ -202,6 +208,7 @@ function App() {
         console.log("Query appears successful, but may have returned zero results for results")
         //set somethings text content?
       }
+      changeLoadingStatus(false)
     }
   }
 

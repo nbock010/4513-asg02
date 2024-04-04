@@ -69,7 +69,7 @@ const WikiImage = (props) =>{
     
     
     return (
-        <img src={wikiData ? wikiData : tempImgSrc} width="150px" alt={props.title}></img> 
+        <img src={wikiData ? wikiData : tempImgSrc} width="150px" alt={props.title}/> 
     )
 }
 

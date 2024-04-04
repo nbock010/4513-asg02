@@ -11,7 +11,7 @@ const SeasonViewer = (props) => {
     */
    
 
-    if (props.selectedSeason){
+    if (props.selectedSeason && props.seasonData){
         return (
             < div className="season-viewer" >
                 <div>
@@ -24,11 +24,17 @@ const SeasonViewer = (props) => {
             </div >
         )
     }
-    else{
+    //this might not display
+    else if (props.selectedSeason && !props.seasonData){
         return(
-            <img src={loadingGif} alt="loading.gif" width="200"></img>
+            <img src={loadingGif} alt="loading.gif" width="200"/>
         )
     }
+    // else if (!props.selectedSeason){
+    //     return(
+    //         <img src={loadingGif} alt="loading.gif" width="200"/>
+    //     )
+    // }
 }
 
 export default SeasonViewer
