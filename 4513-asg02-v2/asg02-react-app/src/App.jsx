@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import {NextUIProvider} from "@nextui-org/react";
-import './App.css'
+
 import './Login.jsx'
 import './home-views/HomeView.jsx'
 import { createClient } from '@supabase/supabase-js';

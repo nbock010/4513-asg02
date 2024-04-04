@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Button } from '@nextui-org/react'
 
 const Login = (props) => {
     //props = props.loginHandler()
@@ -20,8 +21,8 @@ const Login = (props) => {
                     <input type="password"></input>
                 </div>
                 <div>
-                    <button onClick={props.loginHandler}>Login</button>
-                    <button onClick={props.loginHandler}>Register</button>
+                    <Button onClick={props.loginHandler}>Login</Button>
+                    <Button onClick={props.loginHandler}>Register</Button>
                 </div>
             </form>
         </div>

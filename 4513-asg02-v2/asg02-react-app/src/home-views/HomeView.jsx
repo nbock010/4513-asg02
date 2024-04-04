@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import SeasonViewer from './season-views/SeasonViewer.jsx';
 import ResStnView from './ResStnView.jsx'
-import LoadingModal from '../dialogs/LoadingModal.jsx';
+//import LoadingModal from '../dialogs/LoadingModal.jsx';
 
 const HomeView = (props) => {
     /*props = props.seasonData, props.fetchSeasonData (function), 
