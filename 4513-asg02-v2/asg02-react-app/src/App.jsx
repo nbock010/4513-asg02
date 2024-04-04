@@ -1,6 +1,3 @@
-//import * as dotenv from 'dotenv';
-// /REACT_APP_SUPA_URL=https://cwpmjmysxkqqhklusqbc.supabase.co
-//REACT_APP_SUPA_ANONKEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN3cG1qbXlzeGtxcWhrbHVzcWJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg3OTkwNDYsImV4cCI6MjAyNDM3NTA0Nn0.yUNE4b3mGoNYpks3924WC5uQclycl-cuLjgm8OprDfg
 import { useState, useEffect } from 'react'
 import './App.css'
 import './Login.jsx'
@@ -42,13 +39,13 @@ function App() {
 
   function clearResultsData(){
     //ONLY TO BE USED ON REFRESH OF A NEW SELECTED SEASON
-    setRaceId()
-    setQualifyingData()
-    setResultsData()
-    setQualifyingData()
-    setDriverStandingsData()
-    setConstructorStandingsData()
-    setCircuitData()
+    setRaceId([])
+    setQualifyingData([])
+    setResultsData([])
+    setQualifyingData([])
+    setDriverStandingsData([])
+    setConstructorStandingsData([])
+    setCircuitData([])
 }
 
 

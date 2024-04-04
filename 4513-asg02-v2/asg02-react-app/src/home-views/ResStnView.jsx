@@ -42,6 +42,7 @@ const ResStnView = (props) => {
         round = props.resultsData[0].race.round
         date = new Date(props.resultsData[0].race.date).toDateString()
     }
+    
     if (props.circuitData.length > 0){
         circuitName = props.circuitData[0].circuits.name;
     }
