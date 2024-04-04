@@ -15,6 +15,10 @@ const supabase = createClient(supaUrl, supaAnonKey);
 
 
 function App() {
+  useEffect(() =>{
+    console.clear() //no need to have it always clogged up when im constantly reloading
+  },[])
+
   //console.clear(); // just to remove previous messages of past renders. no need to clog up the console.
   console.log("---------------------")
 
@@ -155,7 +159,7 @@ function App() {
       const { data, error } = await supabase
         .from('driverStanding')
         .select(`driverStandingsId, 
-              driver!inner(driverId, forename, surname, dob, nationality), 
+              driver!inner(driverId, forename, surname, dob, nationality, url), 
               race!inner(name, round, year, date), 
               points, position, wins`)
         .eq('raceId', raceId)
@@ -184,7 +188,7 @@ function App() {
         points, position, wins`)
         .eq('raceId', raceId)
         .order('position', { ascending: true });
-        
+
       setConstructorStandingsData(data)
       if (data.length == 0) {
         console.log("Query appears successful, but may have returned zero results for constructor standings")

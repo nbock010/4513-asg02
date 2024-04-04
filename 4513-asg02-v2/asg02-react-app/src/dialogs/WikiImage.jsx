@@ -12,7 +12,6 @@ a touch of chatGPT (but no copied code, I promise)*/
 
 const WikiImage = (props) =>{
     //props: props.url (for wiki article search), props.altText (for alt)
-
     const wikiPrefix = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages|pageterms&piprop=thumbnail&pithumbsize=500&titles="
     //^^this is the link prefix for getting the article data (usually including an img url to the articles main image)
     const title = props.url.replace("http://en.wikipedia.org/wiki/", ""); //essentially parses the title
@@ -69,7 +68,7 @@ const WikiImage = (props) =>{
     
     
     return (
-        <img src={wikiData ? wikiData : tempImgSrc} width="150px" alt={props.title}/> 
+        <img src={wikiData ? wikiData : tempImgSrc} width="150px" alt={props.title}></img> 
     )
 }
 

@@ -70,7 +70,7 @@ const ResStnView = (props) => {
         // IF RESULTS WAS CLICKED (and also default)
         return(
             <div id="res-stn-container">
-                <Breadcrumbs variant='bordered' color="primary">
+                <Breadcrumbs isDisabled variant='bordered' color="primary">
                     <BreadcrumbItem>
                         {props.selectedSeason}
                     </BreadcrumbItem>
@@ -123,7 +123,7 @@ const ResStnView = (props) => {
         //STANDINGS WAS CLICKED
         return(
             <div id="res-stn-container">
-                <Breadcrumbs variant='bordered' color="primary">
+                <Breadcrumbs isDisabled variant='bordered' color="primary">
                     <BreadcrumbItem>
                         {props.selectedSeason}
                     </BreadcrumbItem>
@@ -145,7 +145,7 @@ const ResStnView = (props) => {
                         <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver}
                             driverData={props.driverStandingsData.find((d) => d.driver.driverId == idForDriverModal)} />
                         <ConstructorModal idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}
-                            constructorData={props.constructorStandingsData.find((c) => c.constructor.constructorId == idForConstructorModal)}></ConstructorModal>
+                            constructorData={props.constructorStandingsData.find((c) => c.constructor.constructorId == idForConstructorModal)}/>
                     </div>
                 </div>
             </div> 

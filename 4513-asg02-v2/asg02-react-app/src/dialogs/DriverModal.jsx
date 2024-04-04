@@ -25,16 +25,14 @@ const DriverModal = (props) => {
 
         const driver = props.driverData.driver
         let dob = new Date(driver.dob).toDateString() //for easier calculation
-
         const flagUrl = findFlagUrlByNationality(driver.nationality);
-        // console.log(flagUrl)
 
         return (
             //the truthiness of a passed value makes this open
             <ReactModal className="my-modal" isOpen={props.idForDriverModal ? true : false}
                 shouldCloseOnEsc={true}>
                 <div id="driver-dialog-header">
-                    <img src={findFlagUrlByNationality(driver.nationality)} width="60" height="40" alt={driver.nationality + " flag"}></img>
+                    <img src={flagUrl} width="60" height="40" alt={driver.nationality + " flag"}></img>
                     <h3>{driver.forename + " " + driver.surname}</h3>
                 </div>
                 <div>
