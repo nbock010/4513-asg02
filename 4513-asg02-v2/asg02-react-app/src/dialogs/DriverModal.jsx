@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import ReactModal from 'react-modal'
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button} from "@nextui-org/react";
 import { findFlagUrlByNationality } from "country-flags-svg";
 import WikiImage from './WikiImage.jsx'
 //^^Huge find; can import images of country flags as icons using the driver's nationality string
@@ -28,29 +28,52 @@ const DriverModal = (props) => {
         const flagUrl = findFlagUrlByNationality(driver.nationality);
 
         return (
-            //the truthiness of a passed value makes this open
-            <ReactModal className="my-modal" isOpen={props.idForDriverModal ? true : false}
-                shouldCloseOnEsc={true}>
-                <div id="driver-dialog-header">
+            // the truthiness of a passed value makes this open
+            <Modal onClose={()=> props.showDriver(null)}isOpen={props.idForDriverModal ? true : false} className="my-modal" isDismissable={false}>
+                <ModalContent>
+                    <ModalHeader id="driver-dialog-header">
                     <img src={flagUrl} width="60" height="40" alt={driver.nationality + " flag"}></img>
-                    <h3>{driver.forename + " " + driver.surname}</h3>
-                </div>
-                <div>
-                    <figure>
-                        <WikiImage url={driver.url} altText={driver.forename + " " + driver.surname}/>
-                    </figure>
-                    <p>{"Born " + dob + " (" + getAge(dob) + " years old)"} 
-                    <br/>
-                    <a href={driver.url} target="_blank">Wikipedia</a></p>
-                    
-                    
-                </div>
-                <div>
-                    <button onClick={() => props.showDriver(null)}>Close</button>
-                    <button>Favourite</button>
-                </div>
+                     <h3>{driver.forename + " " + driver.surname}</h3>
+                    </ModalHeader>
+                    <ModalBody>
+                        <figure>
+                            <WikiImage url={driver.url} altText={driver.forename + " " + driver.surname}/>
+                        </figure>
+                        <p>{"Born " + dob + " (" + getAge(dob) + " years old)"} 
+                        <br/>
+                        <a href={driver.url} target="_blank">Wikipedia</a></p>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button onClick={() => props.showDriver(null)}>Close</Button>
+                        <Button>Favourite</Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
 
-            </ReactModal>
+
+
+            // <ReactModal className="my-modal" isOpen={props.idForDriverModal ? true : false}
+            //     shouldCloseOnEsc={true}>
+            //     <div id="driver-dialog-header">
+            //         <img src={flagUrl} width="60" height="40" alt={driver.nationality + " flag"}></img>
+            //         <h3>{driver.forename + " " + driver.surname}</h3>
+            //     </div>
+            //     <div>
+            //         <figure>
+            //             <WikiImage url={driver.url} altText={driver.forename + " " + driver.surname}/>
+            //         </figure>
+            //         <p>{"Born " + dob + " (" + getAge(dob) + " years old)"} 
+            //         <br/>
+            //         <a href={driver.url} target="_blank">Wikipedia</a></p>
+                    
+                    
+            //     </div>
+            //     <div>
+            //         <Button onClick={() => props.showDriver(null)}>Close</Button>
+            //         <Button>Favourite</Button>
+            //     </div>
+
+            // </ReactModal>
         )
     }
 }
