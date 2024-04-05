@@ -129,6 +129,8 @@ if (props.selectedRaceId){
 
 
             <div id="content">
+
+                
                 <LoadingModal isLoading={props.isLoading} changeLoadingStatus={props.changeLoadingStatus}/>
                     {/* ^ appears when data loads */}
 

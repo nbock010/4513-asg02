@@ -18,9 +18,13 @@ const ResultsViewer = (props) => {
             )
         }
         else {
+            const topThree = [props.resultsData[0], props.resultsData[1], props.resultsData[2]]
+            const restOfRacers = props.resultsData.slice(3)
+
+
             return (
                 <div id="results-viewer">
-                    <div id="results-top-three">
+                    {/* <div id="results-top-three">
                         <div className="top-three bg-yellow-300">
                             <h4>1st</h4>
                             <a className="clickable bg-stone-100" onClick={
@@ -46,7 +50,7 @@ const ResultsViewer = (props) => {
                                 {props.resultsData[2].driver.forename + " " + props.resultsData[2].driver.surname}
                             </a>
                         </div>
-                    </div>
+                    </div> */}
                     <div id="results-table" className="table-wrapper" >
                         <Table aria-label="results table" isHeaderSticky removeWrapper> 
                             <TableHeader>
@@ -57,7 +61,42 @@ const ResultsViewer = (props) => {
                                 <TableColumn>Points</TableColumn>
                             </TableHeader>
                             <TableBody>
-                                {props.resultsData.map((d, indx) =>
+                                {/* TOP THREE (this is hard-coded to allow the top 3 to match the tablerow background colours)*/}
+                                <TableRow className="bg-yellow-300">
+                                    <TableCell>{topThree[0].position}</TableCell>
+                                    <TableCell><a className="clickable" onClick={
+                                                () => props.showDriver(topThree[0].driver.driverId)
+                                            }>{topThree[0].driver.forename + " " + topThree[0].driver.surname}</a></TableCell>
+                                    <TableCell><a className="clickable" onClick={
+                                                () => props.showConstructor(topThree[0].constructor.constructorId)
+                                            }>{topThree[0].constructor.name}</a></TableCell>
+                                    <TableCell>{topThree[0].laps}</TableCell>
+                                    <TableCell>{topThree[0].points}</TableCell>
+                                </TableRow>
+                                <TableRow className="bg-stone-400">
+                                    <TableCell>{topThree[1].position}</TableCell>
+                                    <TableCell><a className="clickable" onClick={
+                                                () => props.showDriver(topThree[1].driver.driverId)
+                                            }>{topThree[1].driver.forename + " " + topThree[1].driver.surname}</a></TableCell>
+                                    <TableCell><a className="clickable" onClick={
+                                                () => props.showConstructor(topThree[1].constructor.constructorId)
+                                            }>{topThree[1].constructor.name}</a></TableCell>
+                                    <TableCell>{topThree[1].laps}</TableCell>
+                                    <TableCell>{topThree[1].points}</TableCell>
+                                </TableRow>
+                                <TableRow className="bg-yellow-700">
+                                    <TableCell>{topThree[2].position}</TableCell>
+                                    <TableCell><a className="clickable" onClick={
+                                                () => props.showDriver(topThree[2].driver.driverId)
+                                            }>{topThree[2].driver.forename + " " + topThree[2].driver.surname}</a></TableCell>
+                                    <TableCell><a className="clickable" onClick={
+                                                () => props.showConstructor(topThree[2].constructor.constructorId)
+                                            }>{topThree[2].constructor.name}</a></TableCell>
+                                    <TableCell>{topThree[2].laps}</TableCell>
+                                    <TableCell>{topThree[2].points}</TableCell>
+                                </TableRow>
+                                {/* OTHER RACERS */}
+                                {restOfRacers.map((d, indx) =>
                                     <TableRow key={indx}>
                                         <TableCell>{d.position}</TableCell>
                                         <TableCell>
