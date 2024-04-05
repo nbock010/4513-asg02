@@ -28,14 +28,14 @@ const SeasonViewer = (props) => {
                             </SelectItem>)}
                     </Select>
                 </div>
-                
-                <div>
-                    <h3 id="seasonH3"># Races</h3> 
+                <h3 id="seasonH3">Races</h3> 
+                <div className='table-wrapper'>
+                    
                     {/* ^^this value will change in the  fetchSeasonsData function in App.jsx, apparently*/}
-                    <div className="table-wrapper">
+                    {/* <div className="table-wrapper"> */}
                         <SeasonTable seasonData={props.seasonData} fetchQualifyingData={props.fetchQualifyingData}
                             resultsHandler={props.resultsHandler} standingsHandler={props.standingsHandler} />
-                    </div>
+                    {/* </div> */}
                 </div>
                 
                     

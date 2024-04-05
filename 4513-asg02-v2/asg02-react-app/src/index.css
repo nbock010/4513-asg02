@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+/* :root > body > #root > */
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -15,12 +17,47 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-    /* NOTE: this is the id=root, not the document root itself.  */
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  /* DONT ADJUST THESE (especially width; helps prevent side-scrolling */
+  min-width: 99vw; 
+  min-height: 99vh;
+  overflow-y: hidden;
+  /* ^^DONT ADJUST */
+  background-image: url('./assets/car2-bg.jpg');
+  background-size: inherit;
+  background-position-y: center;
+}
+
+    /* NOTE: this is the id=root, not the document root itself. 
+    Parent = body */
 #root{
-  padding: 10px;
+  /* padding: 10px; */
   border-radius: 10px;
-  /* background-color: #151850; */
-  
+}
+
+/* Contains header and main content body  */
+#container{
+  width: 95vw;
+  height: 95vh;
+  padding: 5px;
+
+}
+
+/* main content body (i.e. content BELOW the header) */
+#content {
+  /* height defined in jsx (for now) */
+  display: flex;
+  justify-content: space-evenly;
+  /* border-radius: 20px; */
+  /* border: 2px red solid; */
+}
+
+#res-stn-container{
+  contain: strict;
 }
 
 a {
@@ -33,17 +70,7 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  justify-content: center;
-  min-width: 90vw;
-  min-height: 100vh;
-  background-image: url('./assets/car2-bg.jpg');
-  background-size: inherit;
-  background-position-y: center;
-}
+
 
 h1 {
   font-size: 3.2em;
@@ -65,30 +92,6 @@ h4{
 
 }
 
-/* button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-} */
-
-/* button:hover {
-  border-color: #7b82fd;
-} */
-
-/* button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-} */
-
-
-/* -------------------------ADDED CUSTOM HERE------------------------------- */
-
 #login-warning{
   color: red;
   margin: 4px;
@@ -96,23 +99,20 @@ button:focus-visible {
 
 #res-stn-container{
   border: 2px black solid;
-  padding: 3px;
+  padding: 2px;
   border-radius: 10px;
-  margin: 5px;
+  margin: 3px;
   min-width: 60vw;
 }
 
-/* .season-viewer{
-  border: 1px black solid;
-  padding: 3px;
-} */
-
-#content {
-  display: flex;
-  height: 70vh; 
-  
-  /* ^^ Allows for better overflow in relevant sections? */
+.season-viewer{
+  border: 2px black solid;
+  padding: 2px;
+  border-radius: 10px;
+  margin: 3px;
 }
+
+
 
 /* these appear in modals, anywhere else though? should be fine */
 figure{
@@ -124,22 +124,23 @@ figure{
 } */
 
 
-
 .table-wrapper{
   display: flex;
   flex-direction: row;
-  height: 40vh;
+  overflow-y: scroll;
+  max-height: 65vh;
+  /* contain: inline-size; */
 }
 
-Table{
-  /* overflow-y: scroll; */
-  /* height: 10vh; */
-  display: block;
-}
+
+ Table{
+   display: block; 
+} 
 
 #qualify-results-container{
   display:flex;
   justify-content: space-evenly;
+  
 }
 
 #results-top-three {
@@ -169,6 +170,10 @@ Table{
   background-color:cornflowerblue;
 }
 
+tr:hover{
+  background-color: cornflowerblue;;
+}
+
 #filler{
   background-color: #f4f4f5;
   width: -webkit-fill-available;
@@ -179,14 +184,6 @@ Table{
   margin: 0.5vw;
 }
 
-tr{
-  border: 1px black solid;
-}
-
-tr:hover{
-  background-color:cornflowerblue;
-  color: black;
-}
 
 /* ---------LIGHT MODE COLOURS-------- */
 @media (prefers-color-scheme: light) {

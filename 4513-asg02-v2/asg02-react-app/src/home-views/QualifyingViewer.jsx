@@ -27,7 +27,8 @@ const QualifyingViewer = (props) => {
     }
     else {
         return (
-            <Table aria-label="qualifying table">
+            <div id="qualifying-table" className="table-wrapper" >
+                <Table aria-label="qualifying table" isHeaderSticky removeWrapper>
                 <TableHeader>
                     <TableColumn>Pos.</TableColumn>
                     <TableColumn>Racer</TableColumn>
@@ -57,6 +58,8 @@ const QualifyingViewer = (props) => {
                         </TableRow>)}
                 </TableBody>
             </Table>
+            </div>
+            
         )
     }
 }

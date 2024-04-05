@@ -118,54 +118,45 @@ if (props.selectedRaceId){
     //     2020, 2021, 2022, 2023]
 
     return (
-        <div className="container">
+        <div id="container">
             <header>
-            <h1>F1 Data Dashboard</h1>
-                {/* <div className="season-selector">
-                    <h3>Season</h3>
-                    <Select label="Year"
-                    placeholder={props.selectedSeason ? props.selectedSeason : "Select a year"}
-                    className="max-w-xs" onChange={(e) => seasonHeaderHandler(e.target.value)}>
-                        {years.map((y) =>
-                            <SelectItem key={y} value={y}
-                            textValue={y}>
-                                {y}
-                            </SelectItem>)}
-                    </Select>
-                </div> */}
+                <h1>F1 Data Dashboard</h1>
                 <div>
                     <Button radius="sm" color={"primary"} onClick={tempBtnAlert}>Favourites</Button>
                     <Button radius="sm" color={"primary"} onClick={tempBtnAlert}>About</Button>
                 </div>
             </header>
 
-            <LoadingModal isLoading={props.isLoading} changeLoadingStatus={props.changeLoadingStatus}></LoadingModal>
+
             <div id="content">
-                
+                <LoadingModal isLoading={props.isLoading} changeLoadingStatus={props.changeLoadingStatus}/>
+                    {/* ^ appears when data loads */}
+
                 <SeasonViewer selectedSeason={props.selectedSeason} seasonData={props.seasonData}
                     fetchQualifyingData={props.fetchQualifyingData}
                     resultsHandler={resultsHandler} standingsHandler={standingsHandler} seasonHeaderHandler={seasonHeaderHandler} />
                 
                 {/* IF A SESAON IS CURRENTLY SELECTED: */}
                 {props.selectedSeason ? 
-                <ResStnView seasonData={props.seasonData} selectedSeason={props.selectedSeason} resultsHandler={resultsHandler}
-                selectedRaceId={props.selectedRaceId} setRaceId={props.setRaceId}
-                circuitData={props.circuitData} setCircuitData={props.setCurcuitData}
-                displayResultsAndNotStandings={displayResultsAndNotStandings}
-                // qualifying data
-                qualifyingData={props.qualifyingData} fetchQualifyingData={props.fetchQualifyingData}
-                //results data
-                resultsData={props.resultsData} fetchResultsData={props.fetchResultsData}
-                //standings data
-                driverStandingsData={props.driverStandingsData} fetchDriverStandingsData={props.fetchDriverStandingsData}
-                constructorStandingsData={props.constructorStandingsData} fetchConstructorStandingsData={props.fetchConstructorStandingsData}
-                //circuit data
+                <ResStnView 
+                    seasonData={props.seasonData} selectedSeason={props.selectedSeason} 
+                    selectedRaceId={props.selectedRaceId} setRaceId={props.setRaceId}
+                    circuitData={props.circuitData} setCircuitData={props.setCurcuitData}
+                    displayResultsAndNotStandings={displayResultsAndNotStandings}
+                    // qualifying data
+                    qualifyingData={props.qualifyingData} fetchQualifyingData={props.fetchQualifyingData}
+                    //results data
+                    resultsData={props.resultsData} fetchResultsData={props.fetchResultsData} resultsHandler={resultsHandler}
+                    //standings data
+                    driverStandingsData={props.driverStandingsData} fetchDriverStandingsData={props.fetchDriverStandingsData}
+                    constructorStandingsData={props.constructorStandingsData} fetchConstructorStandingsData={props.fetchConstructorStandingsData}
+                    //circuit data
                  /> 
                 //  ELSE IF SEASON IS NOT SELECTED:
                 :
                 <div id="filler">
                     <h3>Select a year to view race data</h3>
-                    <img src={loadingGif} width="300" alt="wheel.gif"></img>
+                    <img src={loadingGif} width="300px" alt="wheel.gif"></img>
                 </div>
                 }
                 
