@@ -68,6 +68,7 @@ function App() {
       //the select could also just be () but there are a lot of unnecessary null columns
       if (error) {
         console.error('Error fetching seasons:', error);
+        changeLoadingStatus(false)
         return;
       }
       setSeasonData(data)

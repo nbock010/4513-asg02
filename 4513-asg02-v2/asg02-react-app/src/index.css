@@ -17,8 +17,10 @@
 
     /* NOTE: this is the id=root, not the document root itself.  */
 #root{
-  width: 90vw;
-  height: 80vh;
+  width: 95vw;
+  height: 90vh;
+  padding: 10px;
+  border-radius: 10px;
   /* background-color: #151850; */
   
 }
@@ -96,8 +98,8 @@ button:focus-visible {
 
 #content {
   display: flex;
-  max-height: 700px; 
-  /* ^^ Allows for better overflow in relevant sections (see below) */
+  height: 70vh; 
+  /* ^^ Allows for better overflow in relevant sections? */
 }
 
 /* these appear in modals, anywhere else though? should be fine */
@@ -105,13 +107,19 @@ figure{
   display: flex;
 }
 
-/* .season-viewer > table{
-  overflow:scroll;
-} */
+.season-selector{
+  display: flex;
+}
 
-table{
+
+.custom-table-wrapper{
   overflow-y: scroll;
-  height: 50vh;
+  height: 60vh;
+}
+
+Table{
+  /* overflow-y: scroll; */
+  /* height: 10vh; */
   display: block;
 }
 
@@ -175,10 +183,7 @@ tr:hover{
     background-color: #949292;
   }
 
-  .my-modal {
 
-    background-color: rgb(255, 255, 255);
-  }
 
   
 }
@@ -210,10 +215,6 @@ tr:hover{
     background-color: #333333;
   }
 
-  .my-modal {
-    /* color: rgba(255, 255, 255, 0.99); */
-    background-color: #1f1d1d;
 
-  }
 }
 

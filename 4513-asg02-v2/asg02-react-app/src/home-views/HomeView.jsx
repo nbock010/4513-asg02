@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import SeasonViewer from './season-views/SeasonViewer.jsx';
 import ResStnView from './ResStnView.jsx'
-import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
+// import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
+import {Select, SelectItem, Button} from "@nextui-org/react";
 import LoadingModal from '../dialogs/LoadingModal.jsx';
 
 const HomeView = (props) => {
@@ -45,6 +46,7 @@ if (props.selectedRaceId){
     //HANDLER FOR SEASON DROPDOWN
     //NextUi update: e is no longer the event target, it will be the key (i.e. the year) selected
     const seasonHeaderHandler = (key) => {
+        console.log(key)
         //props.changeLoadingStatus(true)
         props.setSeason(key);
         props.fetchSeasonData(key); 
@@ -113,6 +115,9 @@ if (props.selectedRaceId){
         console.log("Button function under construction...")
     }
 
+    const years = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 
+        2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
+        2020, 2021, 2022, 2023]
 
     return (
         <div className="container">
@@ -120,7 +125,17 @@ if (props.selectedRaceId){
             <h1>F1 Data Dashboard</h1>
                 <div className="season-selector">
                     <h3>Season</h3>
-                    <Dropdown>
+                    <Select label="Year"
+                    placeholder={props.selectedSeason ? props.selectedSeason : "Select a year"}
+                    className="max-w-xs" onChange={(e) => seasonHeaderHandler(e.target.value)}>
+                        {years.map((y) =>
+                            <SelectItem key={y} value={y}
+                            textValue={y}>
+                                {y}
+                            </SelectItem>)}
+                    </Select>
+
+                    {/* <Dropdown>
                         <DropdownTrigger>
                             <Button color='primary' radius="sm">
                                 {props.selectedSeason ? props.selectedSeason : "Year"}
@@ -128,7 +143,6 @@ if (props.selectedRaceId){
                         </DropdownTrigger>
                         <DropdownMenu disallowEmptySelection aria-label="Season selector" selectionMode="single" variant='flat'
                          onAction={(key) => seasonHeaderHandler(key)}>
-                            {/* <DropdownItem value="">----</DropdownItem> */}
                             <DropdownItem key="2000">2000</DropdownItem>
                             <DropdownItem key="2001">2001</DropdownItem>
                             <DropdownItem key="2002">2002</DropdownItem>
@@ -154,7 +168,7 @@ if (props.selectedRaceId){
                             <DropdownItem key="2022">2022</DropdownItem>
                             <DropdownItem key="2023">2023</DropdownItem>
                         </DropdownMenu>
-                    </Dropdown>
+                    </Dropdown> */}
                 </div>
                 <div>
                     <Button radius="sm" color={"primary"} onClick={tempBtnAlert}>Favourites</Button>

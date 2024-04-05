@@ -13,14 +13,15 @@ const SeasonTable = (props) => {
     props.resultsHandler(), props.standingsHandler()
     */
     return (
-        <Table>
+        <div class="custom-table-wrapper">
+            <Table isHeaderSticky aria-label="season table">
             <TableHeader>
                 <TableColumn>Rnd.</TableColumn>
                 <TableColumn>Circuit</TableColumn>
                 <TableColumn></TableColumn>
                 <TableColumn></TableColumn>
             </TableHeader>
-            <TableBody id="season-race-Table">
+            <TableBody id="season-race-Table" >
                 {props.seasonData.map((d, indx) =>
                     <TableRow key={indx} value={d.raceId}>
                         <TableCell>{d.round}</TableCell>
@@ -34,6 +35,8 @@ const SeasonTable = (props) => {
                     </TableRow>)}
             </TableBody>
         </Table>
+        </div>
+        
     )
 }
 
