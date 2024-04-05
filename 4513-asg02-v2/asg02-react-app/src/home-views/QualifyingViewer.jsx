@@ -1,5 +1,11 @@
-import { useState, useEffect } from 'react'
-
+import {
+    Table,
+    TableHeader,
+    TableBody,
+    TableColumn,
+    TableRow,
+    TableCell
+  } from "@nextui-org/react";
 const QualifyingViewer = (props) => {
     /*props (from ResStnView): qualifyingData={props.qualifyingData} 
     showDriver={showDriver} idForDriverModal={idForDriverModal}
@@ -21,38 +27,36 @@ const QualifyingViewer = (props) => {
     }
     else {
         return (
-            <table>
-                <thead>
-                    <tr>
-                        <th>Pos.</th>
-                        <th>Racer</th>
-                        <th>Constructor</th>
-                        <th>Q1</th>
-                        <th>Q2</th>
-                        <th>Q3</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <Table aria-label="qualifying table">
+                <TableHeader>
+                    <TableColumn>Pos.</TableColumn>
+                    <TableColumn>Racer</TableColumn>
+                    <TableColumn>Constructor</TableColumn>
+                    <TableColumn>Q1</TableColumn>
+                    <TableColumn>Q2</TableColumn>
+                    <TableColumn>Q3</TableColumn>
+                </TableHeader>
+                <TableBody>
                     {props.qualifyingData.map((d, indx) =>
-                        <tr key={indx}>
-                            <th>{d.position}</th>
+                        <TableRow key={indx}>
+                            <TableCell>{d.position}</TableCell>
                             {/* I'll be honest here, I needed a little reminder with the help of chatGPT to properly pass the driverId... */}
-                            <th>
+                            <TableCell>
                                 <a className="clickable" onClick={() => props.showDriver(d.driver.driverId)} data={d.driver.driverId}>
                                     {d.driver.forename + " " + d.driver.surname}
                                 </a>
-                            </th>
-                            <th>
+                            </TableCell>
+                            <TableCell>
                                 <a className="clickable" onClick={() => props.showConstructor(d.constructor.constructorId)}>
                                     {d.constructor.name}
                                 </a>
-                            </th>
-                            <th>{(d.q1 ? d.q1 : "--")}</th>
-                            <th>{(d.q2 ? d.q2 : "--")}</th>
-                            <th>{(d.q3 ? d.q3 : "--")}</th>
-                        </tr>)}
-                </tbody>
-            </table>
+                            </TableCell>
+                            <TableCell>{(d.q1 ? d.q1 : "--")}</TableCell>
+                            <TableCell>{(d.q2 ? d.q2 : "--")}</TableCell>
+                            <TableCell>{(d.q3 ? d.q3 : "--")}</TableCell>
+                        </TableRow>)}
+                </TableBody>
+            </Table>
         )
     }
 }

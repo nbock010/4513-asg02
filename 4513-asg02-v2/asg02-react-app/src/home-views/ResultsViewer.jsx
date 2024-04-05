@@ -47,8 +47,8 @@ const ResultsViewer = (props) => {
                             </a>
                         </div>
                     </div>
-                    <div id="results-table">
-                        <Table isHeaderSticky aria-label="results table">
+                    <div id="results-table" className="table-wrapper">
+                        <Table aria-label="results table" >
                             <TableHeader>
                                 <TableColumn>Pos.</TableColumn>
                                 <TableColumn>Racer</TableColumn>

@@ -17,8 +17,8 @@
 
     /* NOTE: this is the id=root, not the document root itself.  */
 #root{
-  width: 95vw;
-  height: 90vh;
+  /* width: 95vw; */
+  /* height: 90vh; */
   padding: 10px;
   border-radius: 10px;
   /* background-color: #151850; */
@@ -96,6 +96,16 @@ button:focus-visible {
   margin: 4px;
 }
 
+#res-stn-container{
+  border: 2px black solid;
+  padding: 3px;
+}
+
+.season-viewer{
+  border: 1px black solid;
+  padding: 3px;
+}
+
 #content {
   display: flex;
   height: 70vh; 
@@ -107,14 +117,19 @@ figure{
   display: flex;
 }
 
-.season-selector{
+/* .loginForm{
   display: flex;
+} */
+
+form > div{
+  
 }
 
 
-.custom-table-wrapper{
-  overflow-y: scroll;
-  height: 60vh;
+.table-wrapper{
+  display: flex;
+  flex-direction: row;
+  height: 40vh;
 }
 
 Table{

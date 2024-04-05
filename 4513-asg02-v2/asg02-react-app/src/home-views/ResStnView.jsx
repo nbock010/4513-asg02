@@ -102,17 +102,22 @@ const ResStnView = (props) => {
                     <div id="qualify-results-container">
                         <div>
                             <h4>Qualifying</h4>
-                            {props.qualifyingData.length > 0 ?
-                                <QualifyingViewer qualifyingData={props.qualifyingData}
-                                    showDriver={showDriver} showConstructor={showConstructor} idForDriverModal={idForDriverModal} />
-                                : 
-                                <p>No qualifying data found...</p>}
+                                <div className='table-wrapper'>
+                                    {props.qualifyingData.length > 0 ?
+                                        <QualifyingViewer qualifyingData={props.qualifyingData}
+                                            showDriver={showDriver} showConstructor={showConstructor} idForDriverModal={idForDriverModal} />
+                                        : 
+                                        <p>No qualifying data found...</p>}
+                                </div>
                         </div>
                         <div>
-                            <h4>Results</h4>
-                            <ResultsViewer resultsData={props.resultsData} 
-                            showDriver={showDriver} idForDriverModal={idForDriverModal} 
-                            idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}/>
+                        <h4>Results</h4>
+                            <div className='table-wrapper'>
+                                
+                                <ResultsViewer resultsData={props.resultsData} 
+                                showDriver={showDriver} idForDriverModal={idForDriverModal} 
+                                idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}/>
+                            </div>
                         </div>
                     </div>
                 </div>

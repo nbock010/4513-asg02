@@ -13,8 +13,8 @@ const SeasonTable = (props) => {
     props.resultsHandler(), props.standingsHandler()
     */
     return (
-        <div class="custom-table-wrapper">
-            <Table isHeaderSticky aria-label="season table">
+        // <div class="custom-table-wrapper">
+        <Table aria-label="season table">
             <TableHeader>
                 <TableColumn>Rnd.</TableColumn>
                 <TableColumn>Circuit</TableColumn>
@@ -35,7 +35,6 @@ const SeasonTable = (props) => {
                     </TableRow>)}
             </TableBody>
         </Table>
-        </div>
         
     )
 }

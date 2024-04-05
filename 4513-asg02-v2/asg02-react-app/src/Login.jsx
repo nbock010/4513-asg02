@@ -10,8 +10,7 @@ const Login = (props) => {
             <h1>F1 Data App</h1>
             <form>
                 <h2>Login</h2>
-                <p id="login-warning">Login function still under construction.</p>
-                <p id="login-warning">Please press Login or Register to continue to app</p>
+
                 <div>
                     <label>Username: </label>
                     <input type="text"></input>
@@ -25,6 +24,8 @@ const Login = (props) => {
                     <Button color={"primary"} onClick={props.loginHandler}>Register</Button>
                 </div>
             </form>
+            <p id="login-warning">Login function still under construction.</p>
+            <p id="login-warning">Please press Login or Register to continue to app</p>
         </div>
     )
 }
