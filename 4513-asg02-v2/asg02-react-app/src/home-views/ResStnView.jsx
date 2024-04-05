@@ -74,12 +74,10 @@ const ResStnView = (props) => {
                     <BreadcrumbItem>
                         {props.selectedSeason}
                     </BreadcrumbItem>
-                    <BreadcrumbItem>
-                        {raceName}
-                    </BreadcrumbItem>
-                    <BreadcrumbItem>
-                        Results
-                    </BreadcrumbItem>
+                    {raceName ? <BreadcrumbItem>{raceName}</BreadcrumbItem>:<></>}
+                    {raceName ? <BreadcrumbItem>Results</BreadcrumbItem>:<></>}
+
+
                 </Breadcrumbs>
 
                 <div id="results-container">
@@ -132,13 +130,13 @@ const ResStnView = (props) => {
                     <BreadcrumbItem>
                         {props.selectedSeason}
                     </BreadcrumbItem>
-                    {console.log(props.driverStandingsData)}
-                    <BreadcrumbItem>
-                        {props.driverStandingsData.length > 0 ? props.driverStandingsData[0].race.name : "NAME"}
-                    </BreadcrumbItem>
-                    <BreadcrumbItem>
-                        Standings
-                    </BreadcrumbItem>
+                    {props.driverStandingsData.length > 0 ? 
+                        <BreadcrumbItem>{props.driverStandingsData[0].race.name}</BreadcrumbItem>:<></>}
+                    {raceName ? <BreadcrumbItem>Results</BreadcrumbItem>:<></>}
+                    {props.driverStandingsData.length > 0 ? 
+                        <BreadcrumbItem>Standings</BreadcrumbItem>:<></>}
+                    {raceName ? <BreadcrumbItem>Results</BreadcrumbItem>:<></>}
+                    
                 </Breadcrumbs>
 
                 <div id="standings-container">
