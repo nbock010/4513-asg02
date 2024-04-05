@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import SeasonViewer from './season-views/SeasonViewer.jsx';
 import ResStnView from './ResStnView.jsx'
-// import {Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button} from "@nextui-org/react";
+import loadingGif from '../assets/wheel.gif'
+//^^ from https://giphy.com/stickers/SKODAPL-tire-skoda-tyre-VbiSHWCqHmNVhipjkh
 import {Button} from "@nextui-org/react";
 import LoadingModal from '../dialogs/LoadingModal.jsx';
 
@@ -162,9 +163,9 @@ if (props.selectedRaceId){
                  /> 
                 //  ELSE IF SEASON IS NOT SELECTED:
                 :
-                <div>
-                    {/* <h3>Select a year to view race data</h3> */}
-                    
+                <div id="filler">
+                    <h3>Select a year to view race data</h3>
+                    <img src={loadingGif} width="300" alt="wheel.gif"></img>
                 </div>
                 }
                 
