@@ -110,6 +110,7 @@ h4{
   padding: 2px;
   border-radius: 10px;
   margin: 3px;
+  max-width: 30vw;
 }
 
 
@@ -148,6 +149,15 @@ figure{
   justify-content: space-evenly;
   /* allows for horizontal top 3 */
 }
+
+.top-three{
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* .top-three > a {
+  background-color: black;
+} */
 
 #standings-tables {
   display: flex;

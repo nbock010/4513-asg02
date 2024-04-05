@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import loadingGif from '../assets/wheel.gif'
+import noImg from '../assets/no-img.png'
 //^^ from https://giphy.com/stickers/SKODAPL-tire-skoda-tyre-VbiSHWCqHmNVhipjkh
 
 
@@ -21,7 +22,7 @@ const WikiImage = (props) =>{
 
     //assuming there IS an image url, this function returns that (otherwise returns null)
     function extractImgUrl(data){
-        console.log("EXTRACTING FROM " + data)
+        // console.log("EXTRACTING FROM " + data)
         let dataStr = JSON.stringify(data)
         let start = dataStr.indexOf("http") //start of img url
         if (start != -1) {
@@ -31,20 +32,19 @@ const WikiImage = (props) =>{
             return dataStr.substring(start, end)
         }
         else{
-            tempImgSrc = "https://placehold.co/150x100"
+            tempImgSrc = noImg
             return null
         }
     }
 
     const [wikiData, setWikiData] = useState(); 
-    let loading = ("") //empty for now
 
     async function fetchImgFromWiki(){
         //eventually, display some loading gif here (if needed)?
         console.log("getting wikipedia data ...here to check if I've gone infinite: ");
-        console.log("retrieving from " + wikiUrl)
+        // console.log("retrieving from " + wikiUrl)
         try{
-            loading = (<p>LOADING...</p>)
+
             const response = await fetch(wikiUrl)
             const data = await response.json()
             let imgUrl = extractImgUrl(data)
@@ -52,9 +52,10 @@ const WikiImage = (props) =>{
                 setWikiData(imgUrl);
             }
             else{
-                setWikiData(tempImgSrc)
-                console.log("no image found")
+                setWikiData(tempImgSrc) //changes loading wheel to placeholder image, if theres no wiki image src
+                // console.log("no image found")
             }
+            
         }
         catch(error){
             console.log("error fetching wiki data: " + error)
@@ -65,10 +66,8 @@ const WikiImage = (props) =>{
         fetchImgFromWiki()
     }, [])
     
-
     return (
-        <img src={wikiData ? wikiData : tempImgSrc} width="250px" alt={props.title}></img> 
-        // title="Not all images from Wikimedia's API will return (especially the constructors for some reason)"
+        <img src={wikiData ? wikiData : tempImgSrc} alt={props.title}/> 
     )
 }
 

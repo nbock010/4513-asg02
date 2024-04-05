@@ -17,7 +17,7 @@ const ConstructorModal = (props) =>{
                 
                 <ModalContent>
                     <ModalHeader id="constructor-dialog-header">
-                        <img src={findFlagUrlByNationality(constructor.nationality)} width="60" height="40" alt={constructor.nationality + " flag"}/>
+                        <img src={flagUrl} width="60" height="40" alt={constructor.nationality + " flag"}/>
                         <h3>{constructor.name}</h3>
                     </ModalHeader>
                     <ModalBody>
@@ -27,8 +27,8 @@ const ConstructorModal = (props) =>{
                         <a href={constructor.url} target="_blank">Wikipedia</a>
                     </ModalBody>
                     <ModalFooter>
-                        <button onClick={() => props.showConstructor(null)}>Close</button>
-                        <button>Favourite</button>
+                        <Button onClick={() => props.showConstructor(null)}>Close</Button>
+                        <Button>Favourite</Button>
                     </ModalFooter>
                 </ModalContent>
                 

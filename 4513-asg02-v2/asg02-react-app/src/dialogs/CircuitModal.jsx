@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react'
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button} from "@nextui-org/react";
 import { findFlagUrlByCountryName } from "country-flags-svg";
-import WikiImage from './WikiImage';
 //^^Huge find; can import images of country flags as icons using the driver's nationality string
+import WikiImage from './WikiImage';
+
 
 
 
@@ -58,8 +58,8 @@ const CircuitModal = (props) =>{
                         <a href={circuitData.url} target="_blank">Wikipedia</a>
                     </ModalBody>
                     <ModalFooter>
-                        <button onClick={() => props.showCircuit(null)}>Close</button>
-                        <button>Favourite</button>
+                        <Button onClick={() => props.showCircuit(null)}>Close</Button>
+                        <Button>Favourite</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

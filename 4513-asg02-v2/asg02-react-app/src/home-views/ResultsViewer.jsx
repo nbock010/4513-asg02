@@ -21,26 +21,26 @@ const ResultsViewer = (props) => {
             return (
                 <div id="results-viewer">
                     <div id="results-top-three">
-                        <div className="top-three">
+                        <div className="top-three bg-yellow-300">
                             <h4>1st</h4>
-                            <a className="clickable" onClick={
+                            <a className="clickable bg-stone-100" onClick={
                                 () => props.showDriver(props.resultsData[0].driver.driverId)
                             } data={props.resultsData[0].driver.driverId}>
                                 {props.resultsData[0].driver.forename + " " + props.resultsData[0].driver.surname}
 
                             </a>
                         </div>
-                        <div className="top-three">
+                        <div className="top-three bg-stone-400">
                             <h4>2nd</h4>
-                            <a className="clickable" onClick={
+                            <a className="clickable bg-stone-100" onClick={
                                 () => props.showDriver(props.resultsData[1].driver.driverId)
                             } data={props.resultsData[1].driver.driverId}>
-                                {props.resultsData[1].driver.forename + " " + props.resultsData[0].driver.surname}
+                                {props.resultsData[1].driver.forename + " " + props.resultsData[1].driver.surname}
                             </a>
                         </div>
-                        <div className="top-three">
+                        <div className="top-three bg-yellow-700">
                             <h4>3rd</h4>
-                            <a className="clickable" onClick={
+                            <a className="clickable bg-stone-100" onClick={
                                 () => props.showDriver(props.resultsData[2].driver.driverId)
                             } data={props.resultsData[2].driver.driverId}>
                                 {props.resultsData[2].driver.forename + " " + props.resultsData[2].driver.surname}
