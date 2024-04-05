@@ -1,5 +1,11 @@
-import { useState, useEffect } from 'react'
-
+import {
+    Table,
+    TableHeader,
+    TableBody,
+    TableColumn,
+    TableRow,
+    TableCell
+  } from "@nextui-org/react";
 const ResultsViewer = (props) => {
     //props: resultsData={props.resultsData} showDriver={showDriver} idForDriverModal={idForDriverModal}, 
     //.. idForConstructorModal, showConstructor()
@@ -42,37 +48,35 @@ const ResultsViewer = (props) => {
                         </div>
                     </div>
                     <div id="results-table">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Pos.</th>
-                                    <th>Racer</th>
-                                    <th>Constructor</th>
-                                    <th>Laps</th>
-                                    <th>Points</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        <Table>
+                            <TableHeader>
+                                <TableColumn>Pos.</TableColumn>
+                                <TableColumn>Racer</TableColumn>
+                                <TableColumn>Constructor</TableColumn>
+                                <TableColumn>Laps</TableColumn>
+                                <TableColumn>Points</TableColumn>
+                            </TableHeader>
+                            <TableBody>
                                 {props.resultsData.map((d, indx) =>
-                                    <tr key={indx}>
-                                        <th>{d.position}</th>
-                                        <th>
+                                    <TableRow key={indx}>
+                                        <TableCell>{d.position}</TableCell>
+                                        <TableCell>
                                             <a className="clickable" onClick={
                                                 () => props.showDriver(d.driver.driverId)
                                             }>{d.driver.forename + " " + d.driver.surname}</a>
-                                        </th>
-                                        <th>
+                                        </TableCell>
+                                        <TableCell>
                                             <a className="clickable" onClick={
                                                 () => props.showConstructor(d.constructor.constructorId)
                                             }>{d.constructor.name}</a>
-                                        </th>
-                                        <th>{d.laps}</th>
-                                        <th>{d.points}</th>
+                                        </TableCell>
+                                        <TableCell>{d.laps}</TableCell>
+                                        <TableCell>{d.points}</TableCell>
                                         {/* (d.q1 ? d.q1 : "N/A") */}
 
-                                    </tr>)}
-                            </tbody>
-                        </table>
+                                    </TableRow>)}
+                            </TableBody>
+                        </Table>
                     </div>
                 </div>
             )

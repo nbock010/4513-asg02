@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { Button } from '@nextui-org/react'
 import {
     Table,
@@ -13,8 +12,6 @@ const SeasonTable = (props) => {
     /*props = props.seasonData, props.fetchQualifyingData(fn, req's raceId),
     props.resultsHandler(), props.standingsHandler()
     */
-
-
     return (
         <Table>
             <TableHeader>
