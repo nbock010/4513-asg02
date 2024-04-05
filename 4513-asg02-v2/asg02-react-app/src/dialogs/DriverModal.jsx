@@ -28,7 +28,7 @@ const DriverModal = (props) => {
 
         return (
             // the truthiness of a passed value makes this open
-            <Modal onClose={()=> props.showDriver(null)}isOpen={props.idForDriverModal ? true : false} className="my-modal" isDismissable={false}>
+            <Modal onClose={()=> props.showDriver(null)}isOpen={props.idForDriverModal ? true : false} isDismissable={false}>
                 <ModalContent>
                     <ModalHeader id="driver-dialog-header">
                     <img src={flagUrl} width="60" height="40" alt={driver.nationality + " flag"}></img>

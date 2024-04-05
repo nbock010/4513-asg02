@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button} from "@nextui-org/react";
 import WikiImage from './WikiImage';
 import { findFlagUrlByNationality } from "country-flags-svg";
@@ -14,7 +13,7 @@ const ConstructorModal = (props) =>{
 
         return(
             <Modal onClose={()=> props.showConstructor(null)}isOpen={props.idForConstructorModal ? true : false} 
-                className="my-modal" isDismissable={false}>
+                isDismissable={false}>
                 
                 <ModalContent>
                     <ModalHeader id="constructor-dialog-header">
@@ -34,24 +33,6 @@ const ConstructorModal = (props) =>{
                 </ModalContent>
                 
             </Modal>
-
-            // <ReactModal className="my-modal" isOpen={props.idForConstructorModal ? true : false}
-            //     shouldCloseOnEsc={true}>
-            //     <div id="constructor-dialog-header">
-            //         <img src={findFlagUrlByNationality(constructor.nationality)} width="60" height="40" alt={constructor.nationality + " flag"}/>
-            //         <h3>{constructor.name}</h3>
-            //     </div>
-            //     <div>
-            //         <figure>
-            //             <WikiImage url={constructor.url} altText={constructor.name + " logo PLACEHOLDER"}/>
-            //         </figure>
-            //         <a href={constructor.url} target="_blank">Wikipedia</a>
-            //     </div>
-            //     <div>
-
-            //     </div>
-
-            // </ReactModal>
             )
     }
     

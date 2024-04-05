@@ -37,6 +37,7 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
   background-image: url('./assets/car2-bg.jpg');
@@ -110,7 +111,7 @@ figure{
 
 table{
   overflow-y: scroll;
-  height: 300px;
+  height: 50vh;
   display: block;
 }
 
@@ -134,15 +135,6 @@ table{
   cursor: pointer;
 }
 
-.my-modal{
-  width: 30%;
-  border-radius: 20px;
-  position: absolute;
-  left: 35%;
-  top: 35%;
-  /* ^^ these two put the modal center; 50% across+down, minus half of the 30% width = 35% */
-}
-
 #driver-dialog-header, #constructor-dialog-header, #circuit-dialog-header {
   display: flex;
   align-items: center;
@@ -159,6 +151,11 @@ tr{
   border: 1px black solid;
 }
 
+tr:hover{
+  background-color:cornflowerblue;
+  color: black;
+}
+
 /* ---------LIGHT MODE COLOURS-------- */
 @media (prefers-color-scheme: light) {
   #root {
@@ -166,12 +163,12 @@ tr{
     background-color: #aad8f7;
   }
 
-    div {
+    /* div {
     border: 1px black solid;
-  }
+  } */
 
   a:hover {
-    color: #747bff;
+    color:#151850;
   }
 
   button {

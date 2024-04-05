@@ -67,7 +67,7 @@ const WikiImage = (props) =>{
     
 
     return (
-        <img src={wikiData ? wikiData : tempImgSrc} width="150px" alt={props.title}></img> 
+        <img src={wikiData ? wikiData : tempImgSrc} width="250px" alt={props.title}></img> 
         // title="Not all images from Wikimedia's API will return (especially the constructors for some reason)"
     )
 }
