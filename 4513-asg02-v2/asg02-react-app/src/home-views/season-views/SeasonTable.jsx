@@ -13,8 +13,8 @@ const SeasonTable = (props) => {
     props.resultsHandler(), props.standingsHandler()
     */
     return (
-        // <div class="custom-table-wrapper">
-        <Table aria-label="season table" removeWrapper isHeaderSticky isCompact>
+        // <div class="table-wrapper">
+        <Table aria-label="season table" className='overflow-y-scroll' isHeaderSticky removeWrapper isCompact>
             <TableHeader>
                 <TableColumn>Rnd.</TableColumn>
                 <TableColumn>Circuit</TableColumn>

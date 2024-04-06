@@ -20,12 +20,10 @@ const ResultsViewer = (props) => {
         else {
             const topThree = [props.resultsData[0], props.resultsData[1], props.resultsData[2]]
             const restOfRacers = props.resultsData.slice(3)
-
-
             return (
                 <div id="results-viewer">    
                     <div id="results-table" className="table-wrapper" >
-                        <Table aria-label="results table" isHeaderSticky removeWrapper> 
+                        <Table aria-label="results table" isHeaderSticky removeWrapper className="overflow-y-scroll"> 
                             <TableHeader>
                                 <TableColumn>Pos.</TableColumn>
                                 <TableColumn>Racer</TableColumn>

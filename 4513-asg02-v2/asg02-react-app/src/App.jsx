@@ -169,14 +169,14 @@ function App() {
         console.log("Query appears successful, but may have returned zero results for driver standings")
         document.querySelector("#no-driverStandings-p").textContent = "No driver standings found for this race. Please select another"
       }
-      changeLoadingStatus(false)
+      // changeLoadingStatus(false) //this will be called once constructor standings data returns (since it's being called AFTER this)
     }
   }
 
   //FETCH CONSTRUCTOR STANDINGS DATA
   async function fetchConstructorStandingsData(raceId) {
     if (raceId) {
-      changeLoadingStatus(true)
+      // changeLoadingStatus(true) //no need to call here; driver standings is called first 
       
       console.log("getting constructor standings data from supabase ...here to check if I've gone infinite: " + raceId);
       const { data, error } = await supabase

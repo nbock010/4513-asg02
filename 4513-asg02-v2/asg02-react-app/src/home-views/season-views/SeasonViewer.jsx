@@ -15,12 +15,12 @@ const SeasonViewer = (props) => {
         2009,2008,2007,2006,2005,2004,2003,2002,2001,2000]
     // if (props.selectedSeason && props.seasonData){
         return (
-            <div className="season-viewer" >
+            <div className="season-viewer bg-blue-400" >
                 <div className="season-selector">
                     <h3>Season</h3>
-                    <Select label="Year"
+                    <Select label="Year" 
                         placeholder={props.selectedSeason ? props.selectedSeason : "Select a year"}
-                        className="max-w-md" onChange={(e) => props.seasonHeaderHandler(e.target.value)}>
+                         onChange={(e) => props.seasonHeaderHandler(e.target.value)}>
                         {years.map((y) =>
                             <SelectItem key={y} value={y}
                             textValue={y}>
@@ -28,14 +28,11 @@ const SeasonViewer = (props) => {
                             </SelectItem>)}
                     </Select>
                 </div>
+                
                 <h3 id="seasonH3">Races</h3> 
                 <div className='table-wrapper'>
-                    
-                    {/* ^^this value will change in the  fetchSeasonsData function in App.jsx, apparently*/}
-                    {/* <div className="table-wrapper"> */}
                         <SeasonTable seasonData={props.seasonData} fetchQualifyingData={props.fetchQualifyingData}
                             resultsHandler={props.resultsHandler} standingsHandler={props.standingsHandler} />
-                    {/* </div> */}
                 </div> 
             </div>
         )

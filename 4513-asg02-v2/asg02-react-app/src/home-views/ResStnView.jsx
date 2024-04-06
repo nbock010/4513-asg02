@@ -61,25 +61,24 @@ const ResStnView = (props) => {
     if (props.displayResultsAndNotStandings){
         // IF RESULTS WAS CLICKED (and also default)
         return(
-            <div id="res-stn-container">
+            <div id="res-stn-container" className='bg-blue-400'>
                 <Breadcrumbs isDisabled variant='solid' color="primary">
                     <BreadcrumbItem>
                         {props.selectedSeason}
                     </BreadcrumbItem>
                     {raceName ? <BreadcrumbItem>{raceName}</BreadcrumbItem>:<></>}
                     {raceName ? <BreadcrumbItem>Results</BreadcrumbItem>:<></>}
-
-
                 </Breadcrumbs>
+                <div>
+                    <h3>Results</h3>
+                    {props.resultsData.length > 0 ? <p>
+                        {raceName} Round {round} <br />{date} at
+                        <a className="clickable" onClick={() => showCircuit(props.selectedRaceId)}> {circuitName}</a>
+                    </p> : <p>[Select a year and a race]</p>}
+                </div>
 
                 <div id="results-container">
-                    <div>
-                        <h3>Results</h3>
-                        {props.resultsData.length > 0 ? <p>
-                            {raceName} Round {round} <br />{date} at
-                            <a className="clickable" onClick={() => showCircuit(props.selectedRaceId)}> {circuitName}</a>
-                        </p> : <p>[Select a year and a race]</p>}
-                    </div>
+                    
                     <div id="modals">
                         <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver}
                             driverData={props.resultsData.find((d) => d.driver.driverId == idForDriverModal)}
@@ -118,7 +117,7 @@ const ResStnView = (props) => {
     else{
         //STANDINGS WAS CLICKED
         return(
-            <div id="res-stn-container">
+            <div id="res-stn-container" className='bg-blue-400'>
                 <Breadcrumbs isDisabled variant='solid' color="primary">
                     <BreadcrumbItem>{props.selectedSeason}</BreadcrumbItem>
                     {props.driverStandingsData.length > 0 ? 
