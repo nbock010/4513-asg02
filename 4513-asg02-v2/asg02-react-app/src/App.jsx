@@ -6,9 +6,9 @@ import './home-views/HomeView.jsx'
 import { createClient } from '@supabase/supabase-js';
 import Login from './Login.jsx'
 import HomeView from './home-views/HomeView.jsx';
-
 const supaUrl = 'https://cwpmjmysxkqqhklusqbc.supabase.co';
 const supaAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImN3cG1qbXlzeGtxcWhrbHVzcWJjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDg3OTkwNDYsImV4cCI6MjAyNDM3NTA0Nn0.yUNE4b3mGoNYpks3924WC5uQclycl-cuLjgm8OprDfg';
+
 const supabase = createClient(supaUrl, supaAnonKey);
 
 

@@ -28,7 +28,7 @@ const AboutModal = (props) => {
                         Node, React, Tailwindcss, and NextUI
                         <br/>
                         <br/>
-                        {'>'}<a href="#" target="_blank"></a>Project GitHub repo
+                        {'>'}<a href="https://github.com/nbock010/4513-asg02" target="_blank">Project GitHub repo</a>
 
                     </section>
                     <p><b>Special thanks</b></p>
