@@ -23,7 +23,7 @@ const SeasonTable = (props) => {
             </TableHeader>
             <TableBody id="season-race-Table" >
                 {props.seasonData.map((d, indx) =>
-                    <TableRow key={indx} value={d.raceId} className='bg-default' >
+                    <TableRow key={indx} value={d.raceId}>
                         <TableCell >{d.round}</TableCell>
                         <TableCell>{d.name}</TableCell>
                         <TableCell>

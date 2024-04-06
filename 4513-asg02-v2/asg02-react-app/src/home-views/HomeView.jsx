@@ -158,7 +158,7 @@ const HomeView = (props) => {
     // RETURN
     return (
         <div id="container">
-            <header>
+            <header className='bg-blue-400'>
                 <h1>F1 Data Dashboard</h1>
                 <div>
                     <Button radius="sm" color={"primary"} isDisabled={faves.isEmpty} onClick={()=> showFaves(true)}>Favourites</Button>
