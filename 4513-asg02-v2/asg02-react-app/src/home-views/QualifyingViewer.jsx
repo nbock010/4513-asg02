@@ -28,7 +28,7 @@ const QualifyingViewer = (props) => {
     else {
         return (
             <div id="qualifying-table" className="table-wrapper" >
-                <Table aria-label="qualifying table" isHeaderSticky removeWrapper>
+                <Table aria-label="qualifying table" removeWrapper isHeaderSticky >
                 <TableHeader>
                     <TableColumn>Pos.</TableColumn>
                     <TableColumn>Racer</TableColumn>
@@ -37,9 +37,9 @@ const QualifyingViewer = (props) => {
                     <TableColumn>Q2</TableColumn>
                     <TableColumn>Q3</TableColumn>
                 </TableHeader>
-                <TableBody>
+                <TableBody >
                     {props.qualifyingData.map((d, indx) =>
-                        <TableRow key={indx}>
+                        <TableRow key={indx}  className='bg-default'>
                             <TableCell>{d.position}</TableCell>
                             {/* I'll be honest here, I needed a little reminder with the help of chatGPT to properly pass the driverId... */}
                             <TableCell>

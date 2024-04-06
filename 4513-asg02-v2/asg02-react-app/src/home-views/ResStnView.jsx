@@ -120,16 +120,10 @@ const ResStnView = (props) => {
         return(
             <div id="res-stn-container">
                 <Breadcrumbs isDisabled variant='solid' color="primary">
-                    <BreadcrumbItem>
-                        {props.selectedSeason}
-                    </BreadcrumbItem>
+                    <BreadcrumbItem>{props.selectedSeason}</BreadcrumbItem>
                     {props.driverStandingsData.length > 0 ? 
                         <BreadcrumbItem>{props.driverStandingsData[0].race.name}</BreadcrumbItem>:<></>}
-                    {raceName ? <BreadcrumbItem>Results</BreadcrumbItem>:<></>}
-                    {props.driverStandingsData.length > 0 ? 
-                        <BreadcrumbItem>Standings</BreadcrumbItem>:<></>}
-                    {raceName ? <BreadcrumbItem>Results</BreadcrumbItem>:<></>}
-                    
+                    {props.driverStandingsData.length > 0 ? <BreadcrumbItem>Standings</BreadcrumbItem>:<></>}
                 </Breadcrumbs>
 
                 <div id="standings-container">

@@ -14,7 +14,7 @@ const SeasonTable = (props) => {
     */
     return (
         // <div class="custom-table-wrapper">
-        <Table >
+        <Table aria-label="season table" removeWrapper isHeaderSticky isCompact>
             <TableHeader>
                 <TableColumn>Rnd.</TableColumn>
                 <TableColumn>Circuit</TableColumn>
@@ -23,7 +23,7 @@ const SeasonTable = (props) => {
             </TableHeader>
             <TableBody id="season-race-Table" >
                 {props.seasonData.map((d, indx) =>
-                    <TableRow key={indx} value={d.raceId} className='bg-default'>
+                    <TableRow key={indx} value={d.raceId} className='bg-default' >
                         <TableCell >{d.round}</TableCell>
                         <TableCell>{d.name}</TableCell>
                         <TableCell>

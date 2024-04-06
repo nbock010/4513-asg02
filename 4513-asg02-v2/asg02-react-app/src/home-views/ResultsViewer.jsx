@@ -70,7 +70,7 @@ const ResultsViewer = (props) => {
                                 </TableRow>
                                 {/* OTHER RACERS */}
                                 {restOfRacers.map((d, indx) =>
-                                    <TableRow key={indx}>
+                                    <TableRow key={indx} className='bg-default'>
                                         <TableCell>{d.position}</TableCell>
                                         <TableCell>
                                             <a className="clickable" onClick={

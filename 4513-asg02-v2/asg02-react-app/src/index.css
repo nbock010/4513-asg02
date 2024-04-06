@@ -57,7 +57,7 @@ body {
 }
 
 #res-stn-container{
-  contain: strict;
+  /* contain: strict; */
 }
 
 a {
@@ -130,7 +130,6 @@ figure{
   flex-direction: row;
   overflow-y: scroll;
   max-height: 65vh;
-  /* contain: inline-size; */
 }
 
 
