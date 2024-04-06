@@ -1,34 +1,33 @@
+import {Table, TableHeader, TableBody, TableColumn, TableRow, TableCell  } from "@nextui-org/react";
 const DriverStandings = (props) => {
     //props = props.driverStandingsData, props.showDriver(id), props.idForDriverModal
     console.log("driver standings:")
     console.log(props.driverStandingsData)
     return (
-        <div>
+        <div className="table-wrapper">
             <h4>Drivers</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Pos.</th>
-                        <th>Name</th>
-                        <th>Pts.</th>
-                        <th>Wins</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <Table aria-label="driver standings table" removeWrapper isHeaderSticky>
+                <TableHeader>
+                        <TableColumn>Pos.</TableColumn>
+                        <TableColumn>Name</TableColumn>
+                        <TableColumn>Pts.</TableColumn>
+                        <TableColumn>Wins</TableColumn>
+                </TableHeader>
+                <TableBody>
                     {props.driverStandingsData.map((d, indx) =>
-                        <tr key={indx}>
-                            <th>{d.position}</th>
-                            <th>
+                        <TableRow key={indx} className='bg-default'>
+                            <TableCell>{d.position}</TableCell>
+                            <TableCell>
                                 <a className="clickable" onClick={() => props.showDriver(d.driver.driverId)}>
                                     {d.driver.forename + " " + d.driver.surname}
                                 </a>
-                            </th>
-                            <th>{d.points}</th>
-                            <th>{d.wins}</th>
-                        </tr>
+                            </TableCell>
+                            <TableCell>{d.points}</TableCell>
+                            <TableCell>{d.wins}</TableCell>
+                        </TableRow>
                     )}
-                </tbody>
-            </table>
+                </TableBody>
+            </Table>
         </div>
     )
 }

@@ -18,7 +18,7 @@ const AboutModal = (props) => {
                 <p><b>About the project</b></p>
                     <section className="bg-slate-200">
                         This project accesses a database hosted by Supabase with information about F1 race results, drivers, constructors (i.e. brands), 
-                        circuits, etc. It was created for the COMP-4513 (Web III: Advanced Web Development) course at Mount Royal University 
+                        circuits, etc. from 2000-2023. It was created for the COMP-4513 (Web III: Advanced Web Development) course at Mount Royal University 
                         (instructed under Randy Connolly).
                         <br/>
                         <br/>

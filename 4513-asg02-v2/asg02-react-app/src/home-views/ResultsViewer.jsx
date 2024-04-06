@@ -35,7 +35,7 @@ const ResultsViewer = (props) => {
                             </TableHeader>
                             <TableBody>
                                 {/* TOP THREE (this is hard-coded to allow the top 3 to match the tablerow background colours)*/}
-                                <TableRow className="bg-yellow-300">
+                                <TableRow className="pos-first">
                                     <TableCell>{topThree[0].position}</TableCell>
                                     <TableCell><a className="clickable" onClick={
                                                 () => props.showDriver(topThree[0].driver.driverId)
@@ -46,7 +46,7 @@ const ResultsViewer = (props) => {
                                     <TableCell>{topThree[0].laps}</TableCell>
                                     <TableCell>{topThree[0].points}</TableCell>
                                 </TableRow>
-                                <TableRow className="bg-stone-400">
+                                <TableRow className="pos-second">
                                     <TableCell>{topThree[1].position}</TableCell>
                                     <TableCell><a className="clickable" onClick={
                                                 () => props.showDriver(topThree[1].driver.driverId)
@@ -57,7 +57,7 @@ const ResultsViewer = (props) => {
                                     <TableCell>{topThree[1].laps}</TableCell>
                                     <TableCell>{topThree[1].points}</TableCell>
                                 </TableRow>
-                                <TableRow className="bg-yellow-700">
+                                <TableRow className="pos-third">
                                     <TableCell>{topThree[2].position}</TableCell>
                                     <TableCell><a className="clickable" onClick={
                                                 () => props.showDriver(topThree[2].driver.driverId)

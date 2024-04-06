@@ -1,31 +1,30 @@
+import {Table, TableHeader, TableBody, TableColumn, TableRow, TableCell  } from "@nextui-org/react";
 const ConstructorStandings = (props) => {
     //props = constructorStandingsData, showConstructor(id)
     console.log(props.constructorStandingsData)
     return (
-        <div>
+        <div className="table-wrapper">
             <h4>Constructors</h4>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Pos.</th>
-                        <th>Name</th>
-                        <th>Pts.</th>
-                        <th>Wins</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <Table aria-label="constructor standings table" removeWrapper isHeaderSticky>
+                <TableHeader>
+                        <TableColumn>Pos.</TableColumn>
+                        <TableColumn>Name</TableColumn>
+                        <TableColumn>Pts.</TableColumn>
+                        <TableColumn>Wins</TableColumn>
+                </TableHeader>
+                <TableBody>
                     {props.constructorStandingsData.map((d, indx) =>
-                        <tr key={indx}>
-                            <th>{d.position}</th>
-                            <th>
+                        <TableRow key={indx} className='bg-default'>
+                            <TableCell>{d.position}</TableCell>
+                            <TableCell>
                                 <a className="clickable" onClick={() => props.showConstructor(d.constructor.constructorId)}>{d.constructor.name}</a>
-                            </th>
-                            <th>{d.points}</th>
-                            <th>{d.wins}</th>
-                        </tr>
+                            </TableCell>
+                            <TableCell>{d.points}</TableCell>
+                            <TableCell>{d.wins}</TableCell>
+                        </TableRow>
                     )}
-                </tbody>
-            </table>
+                </TableBody>
+            </Table>
         </div>
     )
 }
