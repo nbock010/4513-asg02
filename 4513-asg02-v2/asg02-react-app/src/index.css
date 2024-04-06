@@ -222,39 +222,3 @@ tr:hover {
 }
 
 
-/* ---------LIGHT MODE COLOURS-------- */
-@media (prefers-color-scheme: light) {
-  #root {
-    color: #213547;
-    background-color: #aad8f7;
-  }
-
-
-  a:hover {
-    color: #151850;
-  }
-
-}
-
-/* ---------DARK MODE COLOURS-------- */
-@media (prefers-color-scheme: dark) {
-
-  /* NOTE: this is the id=root, not the document root itself.  */
-  #root {
-    background-color: #1a1a1a;
-    /* color: #213547; */
-    /* background-color: #ee0000; */
-    /* background-color: #1a1a1a; */
-
-  }
-
-  th {
-    border: 1px white dotted;
-  }
-
-  a:hover {
-    color: #151850;
-  }
-
-
-}
