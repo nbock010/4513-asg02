@@ -22,7 +22,7 @@ const ResultsViewer = (props) => {
             const restOfRacers = props.resultsData.slice(3)
             return (
                 <div id="results-viewer">    
-                    <div id="results-table" className="table-wrapper" >
+                    <div id="results-table" className="table-wrapper bg-default" >
                         <Table aria-label="results table" isHeaderSticky removeWrapper className="overflow-y-scroll"> 
                             <TableHeader>
                                 <TableColumn>Pos.</TableColumn>

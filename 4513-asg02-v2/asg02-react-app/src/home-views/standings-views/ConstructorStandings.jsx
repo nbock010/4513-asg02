@@ -5,7 +5,7 @@ const ConstructorStandings = (props) => {
     return (
         <div >
             <h4>Constructors</h4>
-            <div className="table-wrapper">
+            <div className="table-wrapper bg-default">
                 <Table aria-label="constructor standings table" removeWrapper isHeaderSticky>
                     <TableHeader>
                             <TableColumn>Pos.</TableColumn>

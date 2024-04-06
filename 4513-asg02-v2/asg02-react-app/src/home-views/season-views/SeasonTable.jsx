@@ -13,7 +13,7 @@ const SeasonTable = (props) => {
     props.resultsHandler(), props.standingsHandler()
     */
     return (
-        // <div class="table-wrapper">
+        // <div class="table-wrapper"> <IN SEASON VIEWER
         <Table aria-label="season table" className='overflow-y-scroll' isHeaderSticky removeWrapper isCompact>
             <TableHeader>
                 <TableColumn>Rnd.</TableColumn>

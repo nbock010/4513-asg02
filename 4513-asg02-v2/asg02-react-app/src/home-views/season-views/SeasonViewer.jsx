@@ -30,7 +30,7 @@ const SeasonViewer = (props) => {
                 </div>
                 
                 <h3 id="seasonH3">Races</h3> 
-                <div className='table-wrapper'>
+                <div className='table-wrapper bg-default'>
                         <SeasonTable seasonData={props.seasonData} fetchQualifyingData={props.fetchQualifyingData}
                             resultsHandler={props.resultsHandler} standingsHandler={props.standingsHandler} />
                 </div> 

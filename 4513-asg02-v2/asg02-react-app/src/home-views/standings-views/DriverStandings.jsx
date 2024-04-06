@@ -6,7 +6,7 @@ const DriverStandings = (props) => {
     return (
         <div>
             <h4>Drivers</h4>
-            <div className="table-wrapper">
+            <div className="table-wrapper bg-default">
                 <Table aria-label="driver standings table" removeWrapper isHeaderSticky className="overflow-y-scroll">
                     <TableHeader>
                             <TableColumn>Pos.</TableColumn>

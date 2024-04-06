@@ -27,7 +27,7 @@ const QualifyingViewer = (props) => {
     }
     else {
         return (
-            <div id="qualifying-table" className="table-wrapper" >
+            <div id="qualifying-table" className="table-wrapper bg-default" >
                 <Table aria-label="qualifying table" className="overflow-y-scroll" removeWrapper isHeaderSticky >
                 <TableHeader>
                     <TableColumn>Pos.</TableColumn>
