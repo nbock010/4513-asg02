@@ -22,10 +22,7 @@ const AboutModal = (props) => {
                         (instructed under Randy Connolly).
                         <br/>
                         <br/>
-                        
-                        lorem ipsum blah blah blah 
-                        asdopasdkpa osdk pasodk apsodk apsodk pfgoijp0oiegh0pihjc poij
-                        Node, React, Tailwindcss, and NextUI
+                        This app is built using Node, React, Tailwind, and NextUI.
                         <br/>
                         <br/>
                         {'>'}<a href="https://github.com/nbock010/4513-asg02" target="_blank">Project GitHub repo</a>
@@ -34,10 +31,10 @@ const AboutModal = (props) => {
                     <p><b>Special thanks</b></p>
                     <section className="bg-slate-200">
                         <ul>
-                            <li>{'>'} Latitude/longitude function from user mbkovskyy at<a href="https://gist.github.com/mbykovskyy/1c67b0b4ba8da9972488"
+                            <li>{'>'} Latitude/longitude function from mbkovskyy at<a href="https://gist.github.com/mbykovskyy/1c67b0b4ba8da9972488"
                             target="_blank"> GitHub</a></li>
-                            <li>{'>'} Loading wheel gif from<a href="https://giphy.com/stickers/SKODAPL-tire-skoda-tyre-VbiSHWCqHmNVhipjkh" target="_blank"> Giphy</a></li>
-                            <li>{'>'}Country flag SVG package from<a href="https://www.npmjs.com/package/react-country-flag" target="_blank"> npmjs.com</a></li>
+                            <li>{'>'} Loading wheel gif from SKODA at <a href="https://giphy.com/stickers/SKODAPL-tire-skoda-tyre-VbiSHWCqHmNVhipjkh" target="_blank"> Giphy</a></li>
+                            <li>{'>'}Country flag SVG package from danalloway at <a href="https://www.npmjs.com/package/react-country-flag" target="_blank"> npmjs.com</a></li>
                             <li>{'>'}Driver, Circuit, and constructor images from the <a href="https://api.wikimedia.org/wiki/Main_Page" target="_blank">Wikimedia API</a></li>
                             <li>{'>'}Background image: toine G at 
                                 <a href="https://unsplash.com/photos/time-lapse-photography-of-car-on-road-XP-J5O6A4Ko" target="_blank"> unsplash.com</a></li>

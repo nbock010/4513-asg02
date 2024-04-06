@@ -96,12 +96,10 @@ const ResStnView = (props) => {
                     <div id="qualify-results-container">
                         <div>
                             <h4>Qualifying</h4>
-                                
-                                    {props.qualifyingData.length > 0 ?
-                                        <QualifyingViewer qualifyingData={props.qualifyingData}
-                                            showDriver={showDriver} showConstructor={showConstructor} idForDriverModal={idForDriverModal} />
-                                        : <p>No qualifying data found...</p>}
-                                
+                            {props.qualifyingData.length > 0 ?
+                                <QualifyingViewer qualifyingData={props.qualifyingData}
+                                    showDriver={showDriver} showConstructor={showConstructor} idForDriverModal={idForDriverModal} />
+                                : <p>No qualifying data found...</p>}
                         </div>
                         <div>
                             <h4>Results</h4>

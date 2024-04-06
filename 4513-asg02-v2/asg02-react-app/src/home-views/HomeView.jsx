@@ -118,33 +118,34 @@ const HomeView = (props) => {
     })
     
     function addFaveDriver(driverName){
-        let copy = faves;
-        if (!copy.drivers.includes(driverName)){
-            copy.drivers.push(driverName)
-        }
-        copy.isEmpty = false
-        console.log(copy)
-        changeFaves(copy)
+        let copy = faves.drivers;
+        if (!copy.includes(driverName)){
+            copy.push(driverName)
+            changeFaves({
+                drivers: copy, constructors:faves.constructors, circuits:faves.circuits, isEmpty:false
+            })
+        } 
     }
     
     function addFaveConstructor(constructorName){
-        let copy = faves;
-        if (!copy.constructors.includes(constructorName)){
-            copy.constructors.push(constructorName)
+        let copy = faves.constructors;
+        if (!copy.includes(constructorName)){
+            copy.push(constructorName)
+            changeFaves({
+                drivers: faves.drivers, constructors:copy, circuits:faves.circuits, isEmpty:false
+            })
         }
-        copy.isEmpty = false
-        console.log(copy)
-        changeFaves(copy)
+        
     }
     
     function addFaveCircuit(circuitName){
-        let copy = faves;
-        if (!copy.circuits.includes(circuitName)){
-            copy.circuits.push(circuitName)
+        let copy = faves.circuits;
+        if (!copy.includes(circuitName)){
+            copy.push(circuitName)
+            changeFaves({
+                drivers: faves.drivers, constructors:faves.constructors, circuits:copy, isEmpty:false
+            })
         }
-        copy.isEmpty = false
-        console.log(copy)
-        changeFaves(copy)
     }
 
     function emptyFaves(){

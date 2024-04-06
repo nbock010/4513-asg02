@@ -39,8 +39,7 @@ const CircuitModal = (props) =>{
 
     if (props.idForCircuitModal){
         const circuitData = props.circuitData.circuits; //just the one circuit in the object
-        console.log(props.circuitData.circuits)
-    //console.log(props.idForCircuitModal)
+
         return(
             <Modal onClose={()=> props.showCircuit(null)}isOpen={props.idForCircuitModal ? true : false}>
                 <ModalContent>
