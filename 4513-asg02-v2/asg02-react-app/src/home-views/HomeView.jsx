@@ -5,6 +5,7 @@ import loadingGif from '../assets/wheel.gif'
 //^^ from https://giphy.com/stickers/SKODAPL-tire-skoda-tyre-VbiSHWCqHmNVhipjkh
 import {Button} from "@nextui-org/react";
 import LoadingModal from '../dialogs/LoadingModal.jsx';
+import AboutModal from '../dialogs/AboutModal.jsx';
 
 const HomeView = (props) => {
     /*props = props.seasonData, props.fetchSeasonData (function), 
@@ -21,28 +22,26 @@ const HomeView = (props) => {
     isLoading={isLoading} changeLoadingStatus={changeLoadingStatus}
     props.clearResultsData()
 */
-    //console.log("homeview loaded")
     useEffect(() => {
         console.log("homeview -> useEffect, selectedSeason: " + props.selectedSeason)
         props.fetchSeasonData(props.selectedSeason)
     }, []);
 
-if (props.selectedRaceId){
-    console.log("qualifying data for " + props.selectedRaceId)
-    console.log(props.qualifyingData)
-    console.log("results data for " + props.selectedRaceId)
-    console.log(props.resultsData)
-    console.log('driver standings data for ' + props.selectedRaceId)
-    console.log(props.driverStandingsData)
-    console.log('constructor standings data for : ' + props.selectedRaceId)
-    console.log(props.constructorStandingsData)
-}
+    
 
-// const [isLoading, changeLoadingStatus] = useState(false); //true or false to determine whether to display loading modal
-
+    if (props.selectedRaceId){
+        console.log("qualifying data for " + props.selectedRaceId)
+        console.log(props.qualifyingData)
+        console.log("results data for " + props.selectedRaceId)
+        console.log(props.resultsData)
+        console.log('driver standings data for ' + props.selectedRaceId)
+        console.log(props.driverStandingsData)
+        console.log('constructor standings data for : ' + props.selectedRaceId)
+        console.log(props.constructorStandingsData)
+    }
 
     //HANDLER FOR SEASON DROPDOWN
-    //NextUi update: e is no longer the event target, it will be the key (i.e. the year) selected
+    //NextUi update: key= the year selected
     const seasonHeaderHandler = (key) => {
         console.log(key)
         //props.changeLoadingStatus(true)
@@ -113,26 +112,26 @@ if (props.selectedRaceId){
         console.log("Button function under construction...")
     }
 
-    // const years = [2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 
-    //     2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019,
-    //     2020, 2021, 2022, 2023]
+    const [isShowingAbout, showAbout] = useState(false); //boolean for opening/closing about modal
+
 
     return (
         <div id="container">
             <header>
                 <h1>F1 Data Dashboard</h1>
                 <div>
-                    <Button radius="sm" color={"primary"} onClick={tempBtnAlert}>Favourites</Button>
-                    <Button radius="sm" color={"primary"} onClick={tempBtnAlert}>About</Button>
+                    <Button radius="sm" color={"primary"} onClick={()=> tempBtnAlert}>Favourites</Button>
+                    <Button radius="sm" color={"primary"} onClick={()=> showAbout(true)}>About</Button>
                 </div>
             </header>
 
 
             <div id="content">
 
-                
                 <LoadingModal isLoading={props.isLoading} changeLoadingStatus={props.changeLoadingStatus}/>
                     {/* ^ appears when data loads */}
+
+                <AboutModal isShowingAbout={isShowingAbout} showAbout={showAbout}></AboutModal>
 
                 <SeasonViewer selectedSeason={props.selectedSeason} seasonData={props.seasonData}
                     fetchQualifyingData={props.fetchQualifyingData}
