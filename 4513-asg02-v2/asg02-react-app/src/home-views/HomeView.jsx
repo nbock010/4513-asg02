@@ -6,6 +6,7 @@ import loadingGif from '../assets/wheel.gif'
 import {Button} from "@nextui-org/react";
 import LoadingModal from '../dialogs/LoadingModal.jsx';
 import AboutModal from '../dialogs/AboutModal.jsx';
+import FavesModal from '../dialogs/FavesModal.jsx';
 
 const HomeView = (props) => {
     /*props = props.seasonData, props.fetchSeasonData (function), 
@@ -13,12 +14,12 @@ const HomeView = (props) => {
     props.selectedRaceId, props.setRaceId,
 
     props.circuitData, props.fetchCircuitData(raceId),
-
     props.qualifyingData, props.fetchQualifying(),
     props.resultsData, props.fetchResultsData(raceId),
 
     driverStandingsData = =props.driverStandingsData, fetchDriverStandingsData= props.fetchDriverStandingsData(raceId)
     constructorStandingsData = props.constructorStandingsData fetchConstructorStandingsData = props.fetchConstructorStandingsData(raceId)
+    
     isLoading={isLoading} changeLoadingStatus={changeLoadingStatus}
     props.clearResultsData()
 */
@@ -108,11 +109,29 @@ const HomeView = (props) => {
         amDisplayingResults(false);
     }
 
-    const tempBtnAlert = () => {
-        console.log("Button function under construction...")
+    const [isShowingAbout, showAbout] = useState(false); //boolean for opening/closing about modal
+    const [isShowingFaves, showFaves] = useState(false); //^^ for faves modal
+    const [faves, changeFaves] = useState({
+        drivers:[], constructors:[], circuits:[]
+    })
+    
+    function addFaveDriver(driverName){
+        changeFaves(faves.drivers.push(driverName))
+    }
+    
+    function addFaveConstructor(constructorName){
+        changeFaves(faves.constructors.push(constructorName))
+    }
+    
+    function addFaveCircuit(circuitName){
+        changeFaves(faves.circuits.push(circuitName))
     }
 
-    const [isShowingAbout, showAbout] = useState(false); //boolean for opening/closing about modal
+    function emptyFaves(){
+        changeFaves({
+            drivers:[], constructors:[], circuits:[]
+        })
+    }
 
 
     return (
@@ -120,18 +139,21 @@ const HomeView = (props) => {
             <header>
                 <h1>F1 Data Dashboard</h1>
                 <div>
-                    <Button radius="sm" color={"primary"} onClick={()=> tempBtnAlert}>Favourites</Button>
+                    <Button radius="sm" color={"primary"} isDisabled={faves.length == 0 ? true : false} onClick={()=> showFaves(true)}>Favourites</Button>
                     <Button radius="sm" color={"primary"} onClick={()=> showAbout(true)}>About</Button>
                 </div>
             </header>
 
 
             <div id="content">
-
+                {/* MODALS */}
                 <LoadingModal isLoading={props.isLoading} changeLoadingStatus={props.changeLoadingStatus}/>
                     {/* ^ appears when data loads */}
+                <AboutModal isShowingAbout={isShowingAbout} showAbout={showAbout}/>
+                <FavesModal isShowingFaves={isShowingFaves} showFaves={showFaves}
+                    faves={faves} addFaveDriver={addFaveDriver} addFaveConstructor={addFaveConstructor}
+                    addFaveCircuit={addFaveCircuit} emptyFaves={emptyFaves}/>
 
-                <AboutModal isShowingAbout={isShowingAbout} showAbout={showAbout}></AboutModal>
 
                 <SeasonViewer selectedSeason={props.selectedSeason} seasonData={props.seasonData}
                     fetchQualifyingData={props.fetchQualifyingData}
