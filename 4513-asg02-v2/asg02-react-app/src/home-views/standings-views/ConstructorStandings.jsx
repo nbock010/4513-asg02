@@ -1,4 +1,4 @@
-import {Table, TableHeader, TableBody, TableColumn, TableRow, TableCell  } from "@nextui-org/react";
+import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell } from "@nextui-org/react";
 const ConstructorStandings = (props) => {
     //props = constructorStandingsData, showConstructor(id)
     console.log(props.constructorStandingsData)
@@ -8,10 +8,10 @@ const ConstructorStandings = (props) => {
             <div className="table-wrapper bg-default">
                 <Table aria-label="constructor standings table" removeWrapper isHeaderSticky>
                     <TableHeader>
-                            <TableColumn>Pos.</TableColumn>
-                            <TableColumn>Name</TableColumn>
-                            <TableColumn>Pts.</TableColumn>
-                            <TableColumn>Wins</TableColumn>
+                        <TableColumn>Pos.</TableColumn>
+                        <TableColumn>Name</TableColumn>
+                        <TableColumn>Pts.</TableColumn>
+                        <TableColumn>Wins</TableColumn>
                     </TableHeader>
                     <TableBody>
                         {props.constructorStandingsData.map((d, indx) =>
@@ -27,7 +27,7 @@ const ConstructorStandings = (props) => {
                     </TableBody>
                 </Table>
             </div>
-            
+
         </div>
     )
 }

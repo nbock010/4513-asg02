@@ -10,8 +10,8 @@ const StandingsViewer = (props) => {
     showConstructor={showConstructor} idForConstructorModal={idForConstructorModal}
     */
     console.log(props.driverStandingsData)
-    if (props.driverStandingsData.length == 0){
-        return(<p>Loading...</p>)
+    if (props.driverStandingsData.length == 0) {
+        return (<p>Loading...</p>)
     }
     return (
         <div id="standings-viewer">
@@ -32,7 +32,7 @@ const StandingsViewer = (props) => {
                 {props.constructorStandingsData.length > 0 ?
                     //IF DATA EXISTS, RETURN:
                     <div>
-                        <ConstructorStandings constructorStandingsData={props.constructorStandingsData} showConstructor = {props.showConstructor}/>
+                        <ConstructorStandings constructorStandingsData={props.constructorStandingsData} showConstructor={props.showConstructor} />
                     </div>
                     : //IF NO DATA, RETURN:
                     <div>

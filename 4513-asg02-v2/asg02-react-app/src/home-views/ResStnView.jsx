@@ -5,7 +5,7 @@ import StandingsViewer from './standings-views/StandingsViewer';
 import DriverModal from '../dialogs/DriverModal';
 import ConstructorModal from '../dialogs/ConstructorModal';
 import CircuitModal from '../dialogs/CircuitModal';
-import {Breadcrumbs, BreadcrumbItem} from "@nextui-org/react";
+import { Breadcrumbs, BreadcrumbItem } from "@nextui-org/react";
 
 //Resutls and Standings view
 const ResStnView = (props) => {
@@ -34,8 +34,8 @@ const ResStnView = (props) => {
         round = props.resultsData[0].race.round
         date = new Date(props.resultsData[0].race.date).toDateString()
     }
-    
-    if (props.circuitData.length > 0){
+
+    if (props.circuitData.length > 0) {
         circuitName = props.circuitData[0].circuits.name;
     }
 
@@ -49,25 +49,25 @@ const ResStnView = (props) => {
         // console.log("attempting to show driver for " + idForDriverModal)
     }
 
-    function showConstructor(constructorId){
+    function showConstructor(constructorId) {
         openConstructorModal(constructorId)
     }
 
-    function showCircuit(raceId){
+    function showCircuit(raceId) {
         openCircuitModal(raceId)
     }
 
     //SELECTIVE RETURN
-    if (props.displayResultsAndNotStandings){
+    if (props.displayResultsAndNotStandings) {
         // IF RESULTS WAS CLICKED (and also default)
-        return(
+        return (
             <div id="res-stn-container" className='bg-blue-400'>
                 <Breadcrumbs isDisabled variant='solid' color="primary">
                     <BreadcrumbItem>
                         {props.selectedSeason}
                     </BreadcrumbItem>
-                    {raceName ? <BreadcrumbItem>{raceName}</BreadcrumbItem>:<></>}
-                    {raceName ? <BreadcrumbItem>Results</BreadcrumbItem>:<></>}
+                    {raceName ? <BreadcrumbItem>{raceName}</BreadcrumbItem> : <></>}
+                    {raceName ? <BreadcrumbItem>Results</BreadcrumbItem> : <></>}
                 </Breadcrumbs>
                 <div>
                     <h3>Results</h3>
@@ -78,19 +78,19 @@ const ResStnView = (props) => {
                 </div>
 
                 <div id="results-container">
-                    
+
                     <div id="modals">
                         <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver}
                             driverData={props.resultsData.find((d) => d.driver.driverId == idForDriverModal)}
-                            faveDrivers={props.faves.drivers} addFaveDriver={props.addFaveDriver}/>
+                            faveDrivers={props.faves.drivers} addFaveDriver={props.addFaveDriver} />
 
                         <ConstructorModal idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}
                             constructorData={props.resultsData.find((c) => c.constructor.constructorId == idForConstructorModal)}
-                            faveConstructors={props.faves.constructors} addFaveConstructor={props.addFaveConstructor}/>
-                            
+                            faveConstructors={props.faves.constructors} addFaveConstructor={props.addFaveConstructor} />
+
                         <CircuitModal idForCircuitModal={idForCircuitModal} showCircuit={showCircuit}
                             circuitData={props.circuitData[0]} faveCircuits={props.faves.circuits}
-                            addFaveCircuit={props.addFaveCircuit}/>
+                            addFaveCircuit={props.addFaveCircuit} />
                     </div>
 
                     <div id="qualify-results-container">
@@ -103,24 +103,24 @@ const ResStnView = (props) => {
                         </div>
                         <div>
                             <h4>Results</h4>
-                            <ResultsViewer resultsData={props.resultsData} 
-                            showDriver={showDriver} idForDriverModal={idForDriverModal} 
-                            idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}/>
+                            <ResultsViewer resultsData={props.resultsData}
+                                showDriver={showDriver} idForDriverModal={idForDriverModal}
+                                idForConstructorModal={idForConstructorModal} showConstructor={showConstructor} />
                         </div>
                     </div>
                 </div>
-            </div>             
+            </div>
         )
     }
-    else{
+    else {
         //STANDINGS WAS CLICKED
-        return(
+        return (
             <div id="res-stn-container" className='bg-blue-400'>
                 <Breadcrumbs isDisabled variant='solid' color="primary">
                     <BreadcrumbItem>{props.selectedSeason}</BreadcrumbItem>
-                    {props.driverStandingsData.length > 0 ? 
-                        <BreadcrumbItem>{props.driverStandingsData[0].race.name}</BreadcrumbItem>:<></>}
-                    {props.driverStandingsData.length > 0 ? <BreadcrumbItem>Standings</BreadcrumbItem>:<></>}
+                    {props.driverStandingsData.length > 0 ?
+                        <BreadcrumbItem>{props.driverStandingsData[0].race.name}</BreadcrumbItem> : <></>}
+                    {props.driverStandingsData.length > 0 ? <BreadcrumbItem>Standings</BreadcrumbItem> : <></>}
                 </Breadcrumbs>
 
                 <div id="standings-container">
@@ -130,15 +130,15 @@ const ResStnView = (props) => {
                     />
                     <div id="modals">
                         <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver}
-                            driverData={props.driverStandingsData.find((d) => d.driver.driverId == idForDriverModal)} 
+                            driverData={props.driverStandingsData.find((d) => d.driver.driverId == idForDriverModal)}
                             faveDrivers={props.faves.drivers} addFaveDriver={props.addFaveDriver} />
-                        
+
                         <ConstructorModal idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}
                             constructorData={props.constructorStandingsData.find((c) => c.constructor.constructorId == idForConstructorModal)}
-                            faveConstructors={props.faves.constructors} addFaveConstructor={props.addFaveConstructor}/>
+                            faveConstructors={props.faves.constructors} addFaveConstructor={props.addFaveConstructor} />
                     </div>
                 </div>
-            </div> 
+            </div>
         )
     }
 

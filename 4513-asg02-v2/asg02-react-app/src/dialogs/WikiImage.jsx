@@ -9,7 +9,7 @@ Not all articles will return an image (for some reason). This came from multiple
 scouring Js documentation sites, MediaWiki documentation, StackOverflow, and admittedly
 a touch of chatGPT (but no copied code, I promise)*/
 
-const WikiImage = (props) =>{
+const WikiImage = (props) => {
     //props: props.url (for wiki article search), props.altText (for alt)
     const wikiPrefix = "https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&prop=pageimages|pageterms&piprop=thumbnail&pithumbsize=500&titles="
     //^^this is the link prefix for getting the article data (usually including an img url to the articles main image)
@@ -19,7 +19,7 @@ const WikiImage = (props) =>{
 
 
     //assuming there IS an image url, this function returns that (otherwise returns null)
-    function extractImgUrl(data){
+    function extractImgUrl(data) {
         // console.log("EXTRACTING FROM " + data)
         let dataStr = JSON.stringify(data)
         let start = dataStr.indexOf("http") //start of img url
@@ -29,43 +29,43 @@ const WikiImage = (props) =>{
             //console.log("URL: " + dataStr.substring(start, end))
             return dataStr.substring(start, end)
         }
-        else{
+        else {
             tempImgSrc = noImg
             return null
         }
     }
 
-    const [wikiData, setWikiData] = useState(); 
+    const [wikiData, setWikiData] = useState();
 
-    async function fetchImgFromWiki(){
+    async function fetchImgFromWiki() {
         //eventually, display some loading gif here (if needed)?
         console.log("getting wikipedia data ...here to check if I've gone infinite: ");
         // console.log("retrieving from " + wikiUrl)
-        try{
+        try {
 
             const response = await fetch(wikiUrl)
             const data = await response.json()
             let imgUrl = extractImgUrl(data)
-            if (imgUrl){
+            if (imgUrl) {
                 setWikiData(imgUrl);
             }
-            else{
+            else {
                 setWikiData(tempImgSrc) //changes loading wheel to placeholder image, if theres no wiki image src
                 // console.log("no image found")
             }
-            
+
         }
-        catch(error){
+        catch (error) {
             console.log("error fetching wiki data: " + error)
         }
     }
 
-    useEffect(() =>{
+    useEffect(() => {
         fetchImgFromWiki()
     }, [])
-    
+
     return (
-        <img src={wikiData ? wikiData : tempImgSrc} alt={props.title}/> 
+        <img src={wikiData ? wikiData : tempImgSrc} alt={props.title} />
     )
 }
 

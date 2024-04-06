@@ -1,4 +1,4 @@
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button} from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from "@nextui-org/react";
 import { findFlagUrlByCountryName } from "country-flags-svg";
 //^^Huge find; can import images of country flags as icons using the driver's nationality string
 import WikiImage from './WikiImage';
@@ -6,13 +6,13 @@ import WikiImage from './WikiImage';
 
 
 
-const CircuitModal = (props) =>{
+const CircuitModal = (props) => {
     /*props:
     props.idForCircuitModal= props.idForCircuitModal,
     showCircuit=props.showCircuit(raceId),
     props.circuitData={props.circuitData[0] (just use props.circuitData.country/.name/etc)
     props.faveCircuits, props.addFaveCircuit */
-    let position = [100,100]
+    let position = [100, 100]
 
     //BIG THANKS TO mbykovskyy at https://gist.github.com/mbykovskyy/1c67b0b4ba8da9972488
     /**
@@ -24,9 +24,9 @@ const CircuitModal = (props) =>{
     */
     function convertToDms(dd, isLng) {
         var dir = dd < 0
-        ? isLng ? 'W' : 'S'
-        : isLng ? 'E' : 'N';
-    
+            ? isLng ? 'W' : 'S'
+            : isLng ? 'E' : 'N';
+
         var absDd = Math.abs(dd);
         var deg = absDd | 0;
         var frac = absDd - deg;
@@ -37,35 +37,35 @@ const CircuitModal = (props) =>{
         return deg + "°" + min + "'" + sec + '"' + dir;
     }
 
-    if (props.idForCircuitModal){
+    if (props.idForCircuitModal) {
         const circuitData = props.circuitData.circuits; //just the one circuit in the object
 
-        return(
-            <Modal onClose={()=> props.showCircuit(null)}isOpen={props.idForCircuitModal ? true : false}>
+        return (
+            <Modal onClose={() => props.showCircuit(null)} isOpen={props.idForCircuitModal ? true : false}>
                 <ModalContent>
                     <ModalHeader id="circuit-dialog-header">
-                        <img src={findFlagUrlByCountryName(circuitData.country)} width="60" height="40" alt={circuitData.country + " flag"}/>
+                        <img src={findFlagUrlByCountryName(circuitData.country)} width="60" height="40" alt={circuitData.country + " flag"} />
                         <h3>{circuitData.name}</h3>
                     </ModalHeader>
                     <ModalBody>
                         <p>{circuitData.location}, {circuitData.country}</p>
                         <p>({convertToDms(circuitData.lat, false)}, {convertToDms(circuitData.lng, true)})</p>
                         <figure>
-                            <WikiImage url={circuitData.url} altText={circuitData.name + " image PLACEHOLDER"}/>
+                            <WikiImage url={circuitData.url} altText={circuitData.name + " image PLACEHOLDER"} />
                             {/* <img src="https://placehold.co/150x100" alt={circuitData.name + " map PLACEHOLDER"} title="leaflet component TBD"/> */}
                         </figure>
-                        
+
                         <a href={circuitData.url} target="_blank">Wikipedia</a>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={()=>props.addFaveCircuit(circuitData.name)}>Favourite</Button>
+                        <Button onClick={() => props.addFaveCircuit(circuitData.name)}>Favourite</Button>
                         <Button onClick={() => props.showCircuit(null)}>Close</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>
         )
     }
-    
+
 }
 
 export default CircuitModal

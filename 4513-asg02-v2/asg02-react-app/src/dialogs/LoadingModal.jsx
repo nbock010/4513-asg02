@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button} from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from "@nextui-org/react";
 import loadingGif from '../assets/wheel.gif'
 //^^ from https://giphy.com/stickers/SKODAPL-tire-skoda-tyre-VbiSHWCqHmNVhipjkh
 
-const LoadingModal = (props) =>{
+const LoadingModal = (props) => {
     //props (from HomeView): isLoading, changeLoadingStatus(true/false)
-    return(
+    return (
         <Modal isOpen={props.isLoading}>
             <ModalContent >
                 <ModalHeader>

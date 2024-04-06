@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import {NextUIProvider} from "@nextui-org/react";
+import { NextUIProvider } from "@nextui-org/react";
 
 import './Login.jsx'
 import './home-views/HomeView.jsx'
@@ -13,9 +13,9 @@ const supabase = createClient(supaUrl, supaAnonKey);
 
 
 function App() {
-  useEffect(() =>{
+  useEffect(() => {
     console.clear() //no need to have it always clogged up when im constantly reloading
-  },[])
+  }, [])
 
   //console.clear(); // just to remove previous messages of past renders. no need to clog up the console.
   console.log("---------------------")
@@ -40,7 +40,7 @@ function App() {
 
   const [isLoading, changeLoadingStatus] = useState(false); //true or false to determine whether to display loading modal
 
-  function clearResultsData(){
+  function clearResultsData() {
     //ONLY TO BE USED ON REFRESH OF A NEW SELECTED SEASON
     setRaceId([])
     setQualifyingData([])
@@ -49,7 +49,7 @@ function App() {
     setDriverStandingsData([])
     setConstructorStandingsData([])
     setCircuitData([])
-}
+  }
 
 
   //FETCH SEASON DATA
@@ -93,11 +93,11 @@ function App() {
         console.error('Error fetching qualifying:', error);
         return;
       }
-      
+
       if (data.length > 0) {
         setQualifyingData(data);
       }
-      else{
+      else {
         console.log("Query appears successful, but may have returned zero results for qualifying")
         setQualifyingData("0")
         //document.querySelector("#no-qualifying-p").innerHTML = "No qualifying data found for this race. Please select another
@@ -144,7 +144,7 @@ function App() {
       }
       changeLoadingStatus(false)
     }
-    else{
+    else {
       console.log("we were called, but no raceId...")
     }
   }
@@ -177,7 +177,7 @@ function App() {
   async function fetchConstructorStandingsData(raceId) {
     if (raceId) {
       // changeLoadingStatus(true) //no need to call here; driver standings is called first 
-      
+
       console.log("getting constructor standings data from supabase ...here to check if I've gone infinite: " + raceId);
       const { data, error } = await supabase
         .from('constructorStanding')
@@ -198,11 +198,11 @@ function App() {
   }
 
   //FETCH CIRCUIT DATA
-  async function fetchCircuitData(raceId){
-    if (raceId){
+  async function fetchCircuitData(raceId) {
+    if (raceId) {
       changeLoadingStatus(true)
       console.log("getting circuit data from supabase ...here to check if I've gone infinite: " + raceId);
-      const {data, error} = await supabase
+      const { data, error } = await supabase
         .from('race')
         .select(`circuits!inner(name, location, country, lat, lng, url)`)
         .eq('raceId', raceId);
@@ -234,9 +234,9 @@ function App() {
           qualifyingData={qualifyingData} fetchQualifyingData={fetchQualifyingData}
           resultsData={resultsData} fetchResultsData={fetchResultsData}
           driverStandingsData={driverStandingsData} fetchDriverStandingsData={fetchDriverStandingsData}
-          constructorStandingsData={constructorStandingsData} fetchConstructorStandingsData={fetchConstructorStandingsData} 
+          constructorStandingsData={constructorStandingsData} fetchConstructorStandingsData={fetchConstructorStandingsData}
           isLoading={isLoading} changeLoadingStatus={changeLoadingStatus}
-          clearResultsData={clearResultsData}/>
+          clearResultsData={clearResultsData} />
       </NextUIProvider>
     )
   }

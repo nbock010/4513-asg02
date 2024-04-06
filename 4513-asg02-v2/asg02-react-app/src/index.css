@@ -23,7 +23,7 @@ body {
   place-items: center;
   justify-content: center;
   /* DONT ADJUST THESE (especially width; helps prevent side-scrolling */
-  min-width: 99vw; 
+  min-width: 99vw;
   min-height: 99vh;
   overflow-y: hidden;
   /* ^^DONT ADJUST */
@@ -32,15 +32,15 @@ body {
   background-position-y: center;
 }
 
-    /* NOTE: this is the id=root, not the document root itself. 
+/* NOTE: this is the id=root, not the document root itself. 
     Parent = body */
-#root{
+#root {
   /* padding: 10px; */
   border-radius: 10px;
 }
 
 /* Contains header and main content body  */
-#container{
+#container {
   width: 95vw;
   height: 95vh;
   padding: 5px;
@@ -56,7 +56,7 @@ body {
   /* border: 2px red solid; */
 }
 
-header{
+header {
   border-radius: 10px;
   padding: 10px;
 }
@@ -65,7 +65,7 @@ header{
 a {
   font-weight: 500;
   color: #202aee;
-  
+
   text-decoration: inherit;
 }
 
@@ -75,35 +75,35 @@ h1 {
   line-height: 1.1;
 }
 
-h2{
+h2 {
   font-size: 2.8em;
   line-height: 1.1;
 }
 
-h3{
+h3 {
   font-size: 2.5em;
   line-height: 1.1;
 }
 
-h4{
+h4 {
   font-size: 2.3em;
 
 }
 
-#login-warning{
+#login-warning {
   color: red;
   margin: 4px;
 }
 
 /* includes results+qualifying view, standing view, and the according headers  */
-#res-stn-container{
+#res-stn-container {
   padding: 8px;
   border-radius: 10px;
   margin: 3px;
   min-width: 60vw;
 }
 
-.season-viewer{
+.season-viewer {
   padding: 2px;
   border-radius: 10px;
   margin: 3px;
@@ -112,11 +112,11 @@ h4{
 
 
 /* these appear in modals, anywhere else though? should be fine */
-figure{
+figure {
   display: flex;
 }
 
-.table-wrapper{
+.table-wrapper {
   display: flex;
   flex-direction: column;
   /* overflow-y: scroll; */
@@ -124,8 +124,8 @@ figure{
 }
 
 
-#qualify-results-container{
-  display:flex;
+#qualify-results-container {
+  display: flex;
   justify-content: space-evenly;
 }
 
@@ -135,7 +135,7 @@ figure{
   /* allows for horizontal top 3 */
 }
 
-.top-three{
+.top-three {
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -150,7 +150,9 @@ figure{
   cursor: pointer;
 }
 
-#driver-dialog-header, #constructor-dialog-header, #circuit-dialog-header {
+#driver-dialog-header,
+#constructor-dialog-header,
+#circuit-dialog-header {
   display: flex;
   align-items: center;
   padding: 5px;
@@ -158,16 +160,16 @@ figure{
 
 /* -------------------------COLOURS------------------------------- */
 
-.selected-race{
-  background-color:cornflowerblue;
+.selected-race {
+  background-color: cornflowerblue;
 }
 
-tr:hover{
+tr:hover {
   background-color: cornflowerblue;
 }
 
 /* on first load and no race is selected */
-#filler{
+#filler {
   background-color: #f4f4f5;
   width: -webkit-fill-available;
   display: flex;
@@ -177,46 +179,46 @@ tr:hover{
   margin: 0.5vw;
 }
 
-.pos-first{
-  background-image: linear-gradient(10deg, 
-  rgb(255, 228, 73) 33%, 
-  rgb(255, 245, 194) 50%, 
-  rgb(255, 228, 73) 75%);
+.pos-first {
+  background-image: linear-gradient(10deg,
+      rgb(255, 228, 73) 33%,
+      rgb(255, 245, 194) 50%,
+      rgb(255, 228, 73) 75%);
 }
 
-.pos-first:hover{
-  background-image: linear-gradient(10deg, 
-  rgb(255, 245, 194), 
-  rgb(255, 245, 194), 
-  rgb(255, 228, 73));
+.pos-first:hover {
+  background-image: linear-gradient(10deg,
+      rgb(255, 245, 194),
+      rgb(255, 245, 194),
+      rgb(255, 228, 73));
 }
 
-.pos-second{
-  background-image: linear-gradient(10deg, 
-  silver 33%, 
-  white 50%, 
-  silver 75%);
+.pos-second {
+  background-image: linear-gradient(10deg,
+      silver 33%,
+      white 50%,
+      silver 75%);
 }
 
-.pos-second:hover{
-  background-image: linear-gradient(10deg, 
-  silver, 
-  white, 
-  silver);
+.pos-second:hover {
+  background-image: linear-gradient(10deg,
+      silver,
+      white,
+      silver);
 }
 
-.pos-third{
-  background-image: linear-gradient(10deg, 
-  rgb(172, 143, 105) 33%,
-  rgb(250, 214, 166) 50%,
-  rgb(172, 143, 105) 75%);
+.pos-third {
+  background-image: linear-gradient(10deg,
+      rgb(172, 143, 105) 33%,
+      rgb(250, 214, 166) 50%,
+      rgb(172, 143, 105) 75%);
 }
 
-.pos-third:hover{
-  background-image: linear-gradient(10deg, 
-  rgb(172, 143, 105),
-  rgb(250, 214, 166),
-  rgb(172, 143, 105));
+.pos-third:hover {
+  background-image: linear-gradient(10deg,
+      rgb(172, 143, 105),
+      rgb(250, 214, 166),
+      rgb(172, 143, 105));
 }
 
 
@@ -229,13 +231,14 @@ tr:hover{
 
 
   a:hover {
-    color:#151850;
+    color: #151850;
   }
 
 }
 
 /* ---------DARK MODE COLOURS-------- */
 @media (prefers-color-scheme: dark) {
+
   /* NOTE: this is the id=root, not the document root itself.  */
   #root {
     background-color: #1a1a1a;
@@ -255,4 +258,3 @@ tr:hover{
 
 
 }
-

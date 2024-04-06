@@ -1,7 +1,9 @@
 /**Until there is something in the favorites collection (see below), the Favorites button should be disabled.
 If there are favorites, then display the Favorites modal/dialog (see below).*/
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button,
-    Table, TableHeader, TableBody, TableColumn, TableRow, TableCell} from "@nextui-org/react";
+import {
+    Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button,
+    Table, TableHeader, TableBody, TableColumn, TableRow, TableCell
+} from "@nextui-org/react";
 
 const FavesModal = (props) => {
     /*props: props.isShowingFaves, props.showFaves(bool),
@@ -11,9 +13,9 @@ const FavesModal = (props) => {
      Faves: {
         drivers:[drivers' FULL names as strings], constructors:[constructors' names as strings], circuits:[circuits' names as strings]
     }*/
-    return(
-        <Modal isOpen={props.isShowingFaves} onClose={()=> props.showFaves(false)}
-        isDismissable={false}>
+    return (
+        <Modal isOpen={props.isShowingFaves} onClose={() => props.showFaves(false)}
+            isDismissable={false}>
             <ModalContent>
                 <ModalHeader>
                     <h3>Favourites</h3>
@@ -29,7 +31,7 @@ const FavesModal = (props) => {
 
                             {props.faves.drivers.map((d, indx) =>
                                 <TableRow key={indx}>
-                                    <TableCell>{d}</TableCell> 
+                                    <TableCell>{d}</TableCell>
                                 </TableRow>
                             )}
                         </TableBody>
@@ -43,7 +45,7 @@ const FavesModal = (props) => {
                         <TableBody>
                             {props.faves.constructors.map((c, indx) =>
                                 <TableRow key={indx}>
-                                    <TableCell>{c}</TableCell> 
+                                    <TableCell>{c}</TableCell>
                                 </TableRow>
                             )}
                         </TableBody>
@@ -57,20 +59,20 @@ const FavesModal = (props) => {
                         <TableBody>
                             {props.faves.circuits.map((c, indx) =>
                                 <TableRow key={indx}>
-                                    <TableCell>{c}</TableCell> 
+                                    <TableCell>{c}</TableCell>
                                 </TableRow>
                             )}
                         </TableBody>
                     </Table>
                 </ModalBody>
                 <ModalFooter>
-                    <Button onClick={()=> 
+                    <Button onClick={() =>
                         confirm("Are you sure you want to clear your favourites?") ? props.emptyFaves() : {}}>Clear Favourites</Button>
                     <Button onClick={() => props.showFaves(false)}>Close</Button>
                 </ModalFooter>
             </ModalContent>
-            
-            
+
+
         </Modal>
     )
 }

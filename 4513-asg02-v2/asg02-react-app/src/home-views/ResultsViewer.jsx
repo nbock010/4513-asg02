@@ -5,7 +5,7 @@ import {
     TableColumn,
     TableRow,
     TableCell
-  } from "@nextui-org/react";
+} from "@nextui-org/react";
 const ResultsViewer = (props) => {
     //props: resultsData={props.resultsData} showDriver={showDriver} idForDriverModal={idForDriverModal}, 
     //.. idForConstructorModal, showConstructor()
@@ -21,9 +21,9 @@ const ResultsViewer = (props) => {
             const topThree = [props.resultsData[0], props.resultsData[1], props.resultsData[2]]
             const restOfRacers = props.resultsData.slice(3)
             return (
-                <div id="results-viewer">    
+                <div id="results-viewer">
                     <div id="results-table" className="table-wrapper bg-default" >
-                        <Table aria-label="results table" isHeaderSticky removeWrapper className="overflow-y-scroll"> 
+                        <Table aria-label="results table" isHeaderSticky removeWrapper className="overflow-y-scroll">
                             <TableHeader>
                                 <TableColumn>Pos.</TableColumn>
                                 <TableColumn>Racer</TableColumn>
@@ -36,33 +36,33 @@ const ResultsViewer = (props) => {
                                 <TableRow className="pos-first">
                                     <TableCell>{topThree[0].position}</TableCell>
                                     <TableCell><a className="clickable" onClick={
-                                                () => props.showDriver(topThree[0].driver.driverId)
-                                            }>{topThree[0].driver.forename + " " + topThree[0].driver.surname}</a></TableCell>
+                                        () => props.showDriver(topThree[0].driver.driverId)
+                                    }>{topThree[0].driver.forename + " " + topThree[0].driver.surname}</a></TableCell>
                                     <TableCell><a className="clickable" onClick={
-                                                () => props.showConstructor(topThree[0].constructor.constructorId)
-                                            }>{topThree[0].constructor.name}</a></TableCell>
+                                        () => props.showConstructor(topThree[0].constructor.constructorId)
+                                    }>{topThree[0].constructor.name}</a></TableCell>
                                     <TableCell>{topThree[0].laps}</TableCell>
                                     <TableCell>{topThree[0].points}</TableCell>
                                 </TableRow>
                                 <TableRow className="pos-second">
                                     <TableCell>{topThree[1].position}</TableCell>
                                     <TableCell><a className="clickable" onClick={
-                                                () => props.showDriver(topThree[1].driver.driverId)
-                                            }>{topThree[1].driver.forename + " " + topThree[1].driver.surname}</a></TableCell>
+                                        () => props.showDriver(topThree[1].driver.driverId)
+                                    }>{topThree[1].driver.forename + " " + topThree[1].driver.surname}</a></TableCell>
                                     <TableCell><a className="clickable" onClick={
-                                                () => props.showConstructor(topThree[1].constructor.constructorId)
-                                            }>{topThree[1].constructor.name}</a></TableCell>
+                                        () => props.showConstructor(topThree[1].constructor.constructorId)
+                                    }>{topThree[1].constructor.name}</a></TableCell>
                                     <TableCell>{topThree[1].laps}</TableCell>
                                     <TableCell>{topThree[1].points}</TableCell>
                                 </TableRow>
                                 <TableRow className="pos-third">
                                     <TableCell>{topThree[2].position}</TableCell>
                                     <TableCell><a className="clickable" onClick={
-                                                () => props.showDriver(topThree[2].driver.driverId)
-                                            }>{topThree[2].driver.forename + " " + topThree[2].driver.surname}</a></TableCell>
+                                        () => props.showDriver(topThree[2].driver.driverId)
+                                    }>{topThree[2].driver.forename + " " + topThree[2].driver.surname}</a></TableCell>
                                     <TableCell><a className="clickable" onClick={
-                                                () => props.showConstructor(topThree[2].constructor.constructorId)
-                                            }>{topThree[2].constructor.name}</a></TableCell>
+                                        () => props.showConstructor(topThree[2].constructor.constructorId)
+                                    }>{topThree[2].constructor.name}</a></TableCell>
                                     <TableCell>{topThree[2].laps}</TableCell>
                                     <TableCell>{topThree[2].points}</TableCell>
                                 </TableRow>

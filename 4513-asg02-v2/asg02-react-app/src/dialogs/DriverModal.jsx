@@ -1,5 +1,5 @@
 // import { useState, useEffect } from 'react'
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button} from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from "@nextui-org/react";
 import { findFlagUrlByNationality } from "country-flags-svg";
 import WikiImage from './WikiImage.jsx'
 //^^Huge find; can import images of country flags as icons using the driver's nationality string
@@ -29,22 +29,22 @@ const DriverModal = (props) => {
 
         return (
             // the truthiness of a passed value makes this open
-            <Modal onClose={()=> props.showDriver(null)}isOpen={props.idForDriverModal ? true : false} isDismissable={false}>
+            <Modal onClose={() => props.showDriver(null)} isOpen={props.idForDriverModal ? true : false} isDismissable={false}>
                 <ModalContent>
                     <ModalHeader id="driver-dialog-header">
-                    <img src={flagUrl} width="60" height="40" alt={driver.nationality + " flag"}></img>
-                     <h3>{driver.forename + " " + driver.surname}</h3>
+                        <img src={flagUrl} width="60" height="40" alt={driver.nationality + " flag"}></img>
+                        <h3>{driver.forename + " " + driver.surname}</h3>
                     </ModalHeader>
                     <ModalBody>
                         <figure>
-                            <WikiImage url={driver.url} altText={driver.forename + " " + driver.surname}/>
+                            <WikiImage url={driver.url} altText={driver.forename + " " + driver.surname} />
                         </figure>
-                        <p>{"Born " + dob + " (" + getAge(dob) + " years old)"} 
-                        <br/>
-                        <a href={driver.url} target="_blank">Wikipedia</a></p>
+                        <p>{"Born " + dob + " (" + getAge(dob) + " years old)"}
+                            <br />
+                            <a href={driver.url} target="_blank">Wikipedia</a></p>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={()=>props.addFaveDriver(driver.forename + " " + driver.surname)}>Favourite</Button>
+                        <Button onClick={() => props.addFaveDriver(driver.forename + " " + driver.surname)}>Favourite</Button>
                         <Button onClick={() => props.showDriver(null)}>Close</Button>
                     </ModalFooter>
                 </ModalContent>

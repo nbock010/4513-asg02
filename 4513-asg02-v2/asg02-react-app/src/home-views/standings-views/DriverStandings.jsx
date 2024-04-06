@@ -1,4 +1,4 @@
-import {Table, TableHeader, TableBody, TableColumn, TableRow, TableCell  } from "@nextui-org/react";
+import { Table, TableHeader, TableBody, TableColumn, TableRow, TableCell } from "@nextui-org/react";
 const DriverStandings = (props) => {
     //props = props.driverStandingsData, props.showDriver(id), props.idForDriverModal
     console.log("driver standings:")
@@ -9,10 +9,10 @@ const DriverStandings = (props) => {
             <div className="table-wrapper bg-default">
                 <Table aria-label="driver standings table" removeWrapper isHeaderSticky className="overflow-y-scroll">
                     <TableHeader>
-                            <TableColumn>Pos.</TableColumn>
-                            <TableColumn>Name</TableColumn>
-                            <TableColumn>Pts.</TableColumn>
-                            <TableColumn>Wins</TableColumn>
+                        <TableColumn>Pos.</TableColumn>
+                        <TableColumn>Name</TableColumn>
+                        <TableColumn>Pts.</TableColumn>
+                        <TableColumn>Wins</TableColumn>
                     </TableHeader>
                     <TableBody>
                         {props.driverStandingsData.map((d, indx) =>
@@ -30,7 +30,7 @@ const DriverStandings = (props) => {
                     </TableBody>
                 </Table>
             </div>
-            
+
         </div>
     )
 }

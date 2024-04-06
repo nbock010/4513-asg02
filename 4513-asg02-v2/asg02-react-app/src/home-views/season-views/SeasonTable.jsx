@@ -6,7 +6,7 @@ import {
     TableColumn,
     TableRow,
     TableCell
-  } from "@nextui-org/react";
+} from "@nextui-org/react";
 
 const SeasonTable = (props) => {
     /*props = props.seasonData, props.fetchQualifyingData(fn, req's raceId),
@@ -35,7 +35,7 @@ const SeasonTable = (props) => {
                     </TableRow>)}
             </TableBody>
         </Table>
-        
+
     )
 }
 
