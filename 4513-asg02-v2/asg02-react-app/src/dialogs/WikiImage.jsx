@@ -3,8 +3,6 @@ import loadingGif from '../assets/wheel.gif'
 import noImg from '../assets/no-img.png'
 //^^ from https://giphy.com/stickers/SKODAPL-tire-skoda-tyre-VbiSHWCqHmNVhipjkh
 
-
-
 /*This file is my attempt to get driver, circuit, and constructor images from wikipedia. 
 It will require a fetch using MediaWiki's API to get the main image from the article. 
 Not all articles will return an image (for some reason). This came from multiple hours 

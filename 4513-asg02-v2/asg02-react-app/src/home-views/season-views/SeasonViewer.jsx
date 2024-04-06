@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import SeasonTable from './SeasonTable'
 
-import {Select, SelectItem, Button} from "@nextui-org/react";
+import {Select, SelectItem} from "@nextui-org/react";
 //^^ from https://giphy.com/stickers/SKODAPL-tire-skoda-tyre-VbiSHWCqHmNVhipjkh
 
 
@@ -36,9 +36,7 @@ const SeasonViewer = (props) => {
                         <SeasonTable seasonData={props.seasonData} fetchQualifyingData={props.fetchQualifyingData}
                             resultsHandler={props.resultsHandler} standingsHandler={props.standingsHandler} />
                     {/* </div> */}
-                </div>
-                
-                    
+                </div> 
             </div>
         )
 }

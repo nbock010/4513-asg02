@@ -5,9 +5,7 @@ import StandingsViewer from './standings-views/StandingsViewer';
 import DriverModal from '../dialogs/DriverModal';
 import ConstructorModal from '../dialogs/ConstructorModal';
 import CircuitModal from '../dialogs/CircuitModal';
-
 import {Breadcrumbs, BreadcrumbItem} from "@nextui-org/react";
-import LoadingModal from '../dialogs/LoadingModal';
 
 //Resutls and Standings view
 const ResStnView = (props) => {
