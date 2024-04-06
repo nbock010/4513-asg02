@@ -5,7 +5,8 @@ import WikiImage from './WikiImage.jsx'
 //^^Huge find; can import images of country flags as icons using the driver's nationality string
 
 const DriverModal = (props) => {
-    //props: idForDriverModal=props.idForDriverModal, props.showDriver(id), props.driverData
+    //props: idForDriverModal=props.idForDriverModal, props.showDriver(id), props.driverData, 
+    //props.faveDrivers, props.addFaveDriver
     //NOTE: driver data returns the object that CONTAINS the driver, not just the driver itself
 
     /*thank you user codeandcloud at 
@@ -43,8 +44,8 @@ const DriverModal = (props) => {
                         <a href={driver.url} target="_blank">Wikipedia</a></p>
                     </ModalBody>
                     <ModalFooter>
+                        <Button onClick={()=>props.addFaveDriver(driver.forename + " " + driver.surname)}>Favourite</Button>
                         <Button onClick={() => props.showDriver(null)}>Close</Button>
-                        <Button>Favourite</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

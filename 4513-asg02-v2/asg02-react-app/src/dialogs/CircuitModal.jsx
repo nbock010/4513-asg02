@@ -10,7 +10,8 @@ const CircuitModal = (props) =>{
     /*props:
     props.idForCircuitModal= props.idForCircuitModal,
     showCircuit=props.showCircuit(raceId),
-    props.circuitData={props.circuitData[0] (just use props.circuitData.country/.name/etc) */
+    props.circuitData={props.circuitData[0] (just use props.circuitData.country/.name/etc)
+    props.faveCircuits, props.addFaveCircuit */
     let position = [100,100]
 
     //BIG THANKS TO mbykovskyy at https://gist.github.com/mbykovskyy/1c67b0b4ba8da9972488
@@ -58,8 +59,8 @@ const CircuitModal = (props) =>{
                         <a href={circuitData.url} target="_blank">Wikipedia</a>
                     </ModalBody>
                     <ModalFooter>
+                        <Button onClick={()=>props.addFaveCircuit(circuitData.name)}>Favourite</Button>
                         <Button onClick={() => props.showCircuit(null)}>Close</Button>
-                        <Button>Favourite</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

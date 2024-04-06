@@ -6,6 +6,7 @@ import { findFlagUrlByNationality } from "country-flags-svg";
 const ConstructorModal = (props) =>{
 //idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}
 //constructorData={props.constructorStandingssData.find((c) => c.constructor.constructorId == idForConstructorModal)}
+//faveConstructors={props.faves.constructors} addFaveConstructor={props.addFaveConstructor}
     if (props.idForConstructorModal){
         console.log(props.constructorData)
         const constructor = props.constructorData.constructor
@@ -27,8 +28,8 @@ const ConstructorModal = (props) =>{
                         <a href={constructor.url} target="_blank">Wikipedia</a>
                     </ModalBody>
                     <ModalFooter>
+                        <Button onClick={()=>props.addFaveConstructor(constructor.name)}>Favourite</Button>
                         <Button onClick={() => props.showConstructor(null)}>Close</Button>
-                        <Button>Favourite</Button>
                     </ModalFooter>
                 </ModalContent>
                 

@@ -37,7 +37,7 @@ const HomeView = (props) => {
         console.log(props.resultsData)
         console.log('driver standings data for ' + props.selectedRaceId)
         console.log(props.driverStandingsData)
-        console.log('constructor standings data for : ' + props.selectedRaceId)
+        console.log('constructor standings data for ' + props.selectedRaceId)
         console.log(props.constructorStandingsData)
     }
 
@@ -109,37 +109,58 @@ const HomeView = (props) => {
         amDisplayingResults(false);
     }
 
+    // FAVOURITES STUFF
     const [isShowingAbout, showAbout] = useState(false); //boolean for opening/closing about modal
     const [isShowingFaves, showFaves] = useState(false); //^^ for faves modal
     const [faves, changeFaves] = useState({
-        drivers:[], constructors:[], circuits:[]
+        drivers:[], constructors:[], circuits:[], isEmpty:true
+        // This last boolean helps toggle the Favourites button's usability
     })
     
     function addFaveDriver(driverName){
-        changeFaves(faves.drivers.push(driverName))
+        let copy = faves;
+        if (!copy.drivers.includes(driverName)){
+            copy.drivers.push(driverName)
+        }
+        copy.isEmpty = false
+        console.log(copy)
+        changeFaves(copy)
     }
     
     function addFaveConstructor(constructorName){
-        changeFaves(faves.constructors.push(constructorName))
+        let copy = faves;
+        if (!copy.constructors.includes(constructorName)){
+            copy.constructors.push(constructorName)
+        }
+        copy.isEmpty = false
+        console.log(copy)
+        changeFaves(copy)
     }
     
     function addFaveCircuit(circuitName){
-        changeFaves(faves.circuits.push(circuitName))
+        let copy = faves;
+        if (!copy.circuits.includes(circuitName)){
+            copy.circuits.push(circuitName)
+        }
+        copy.isEmpty = false
+        console.log(copy)
+        changeFaves(copy)
     }
 
     function emptyFaves(){
         changeFaves({
-            drivers:[], constructors:[], circuits:[]
+            drivers:[], constructors:[], circuits:[], isEmpty:true
         })
     }
 
 
+    // RETURN
     return (
         <div id="container">
             <header>
                 <h1>F1 Data Dashboard</h1>
                 <div>
-                    <Button radius="sm" color={"primary"} isDisabled={faves.length == 0 ? true : false} onClick={()=> showFaves(true)}>Favourites</Button>
+                    <Button radius="sm" color={"primary"} isDisabled={faves.isEmpty} onClick={()=> showFaves(true)}>Favourites</Button>
                     <Button radius="sm" color={"primary"} onClick={()=> showAbout(true)}>About</Button>
                 </div>
             </header>
@@ -164,7 +185,6 @@ const HomeView = (props) => {
                 <ResStnView 
                     seasonData={props.seasonData} selectedSeason={props.selectedSeason} 
                     selectedRaceId={props.selectedRaceId} setRaceId={props.setRaceId}
-                    circuitData={props.circuitData} setCircuitData={props.setCurcuitData}
                     displayResultsAndNotStandings={displayResultsAndNotStandings}
                     // qualifying data
                     qualifyingData={props.qualifyingData} fetchQualifyingData={props.fetchQualifyingData}
@@ -174,6 +194,10 @@ const HomeView = (props) => {
                     driverStandingsData={props.driverStandingsData} fetchDriverStandingsData={props.fetchDriverStandingsData}
                     constructorStandingsData={props.constructorStandingsData} fetchConstructorStandingsData={props.fetchConstructorStandingsData}
                     //circuit data
+                    circuitData={props.circuitData} setCircuitData={props.setCurcuitData}
+                    //faves data+fn's
+                    faves={faves} addFaveDriver={addFaveDriver} addFaveCircuit={addFaveCircuit} 
+                    addFaveConstructor={addFaveConstructor}
                  /> 
                 //  ELSE IF SEASON IS NOT SELECTED:
                 :

@@ -15,17 +15,11 @@ const ResStnView = (props) => {
     props.circuitData, props.setCircuitData(raceid),
     displayResultsAndNotStandings=props.displayResultsAndNotStandings,
     driverStandingsData = props.driverStandingsData fetchDriverStandingsData= props.fetchDriverStandingsData(raceId)
-    constructorStandingsData= props.constructorStandingsData, fetchConstructorStandingsData = props.fetchConstructorStandingsData(raceId)  */
+    constructorStandingsData= props.constructorStandingsData, fetchConstructorStandingsData = props.fetchConstructorStandingsData(raceId)
+    
+    props.faves, props.addFaveDriver, props.addFaveConstructor, props.addFaveCircuit, props.emptyFaves*/
 
-    useEffect(() => {
-        console.log("are we fetching something?")
-        //THESE WERE BEING CALLED AT THE VERY START (though the if(raceId) condition still stopped the query. Is this still necessary here?)
-        // props.fetchQualifyingData(props.selectedRaceId)
-        // props.fetchResultsData(props.selectedRaceId)
-        // props.fetchDriverStandingsData(props.selectedRaceId)
-        // props.fetchConstructorStandingsData(props.selectedRaceId)
-        //props.
-    }, []);
+
 
 
     //INFO FOR RESULTS HEADER
@@ -88,11 +82,16 @@ const ResStnView = (props) => {
                     </div>
                     <div id="modals">
                         <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver}
-                            driverData={props.resultsData.find((d) => d.driver.driverId == idForDriverModal)} />
+                            driverData={props.resultsData.find((d) => d.driver.driverId == idForDriverModal)}
+                            faveDrivers={props.faves.drivers} addFaveDriver={props.addFaveDriver}/>
+
                         <ConstructorModal idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}
-                            constructorData={props.resultsData.find((c) => c.constructor.constructorId == idForConstructorModal)}/>
+                            constructorData={props.resultsData.find((c) => c.constructor.constructorId == idForConstructorModal)}
+                            faveConstructors={props.faves.constructors} addFaveConstructor={props.addFaveConstructor}/>
+                            
                         <CircuitModal idForCircuitModal={idForCircuitModal} showCircuit={showCircuit}
-                            circuitData={props.circuitData[0]}/>
+                            circuitData={props.circuitData[0]} faveCircuits={props.faves.circuits}
+                            addFaveCircuit={props.addFaveCircuit}/>
                     </div>
 
                     <div id="qualify-results-container">
@@ -102,8 +101,7 @@ const ResStnView = (props) => {
                                     {props.qualifyingData.length > 0 ?
                                         <QualifyingViewer qualifyingData={props.qualifyingData}
                                             showDriver={showDriver} showConstructor={showConstructor} idForDriverModal={idForDriverModal} />
-                                        : 
-                                        <p>No qualifying data found...</p>}
+                                        : <p>No qualifying data found...</p>}
                                 
                         </div>
                         <div>
@@ -141,9 +139,12 @@ const ResStnView = (props) => {
                     />
                     <div id="modals">
                         <DriverModal idForDriverModal={idForDriverModal} showDriver={showDriver}
-                            driverData={props.driverStandingsData.find((d) => d.driver.driverId == idForDriverModal)} />
+                            driverData={props.driverStandingsData.find((d) => d.driver.driverId == idForDriverModal)} 
+                            faveDrivers={props.faves.drivers} addFaveDriver={props.addFaveDriver} />
+                        
                         <ConstructorModal idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}
-                            constructorData={props.constructorStandingsData.find((c) => c.constructor.constructorId == idForConstructorModal)}/>
+                            constructorData={props.constructorStandingsData.find((c) => c.constructor.constructorId == idForConstructorModal)}
+                            faveConstructors={props.faves.constructors} addFaveConstructor={props.addFaveConstructor}/>
                     </div>
                 </div>
             </div> 

@@ -14,7 +14,7 @@ const SeasonTable = (props) => {
     */
     return (
         // <div class="custom-table-wrapper">
-        <Table aria-label="season table" removeWrapper isHeaderSticky>
+        <Table >
             <TableHeader>
                 <TableColumn>Rnd.</TableColumn>
                 <TableColumn>Circuit</TableColumn>
@@ -27,10 +27,10 @@ const SeasonTable = (props) => {
                         <TableCell >{d.round}</TableCell>
                         <TableCell>{d.name}</TableCell>
                         <TableCell>
-                            <Button color={"primary"} onClick={()=>props.resultsHandler} value={d.raceId}>Results</Button>
+                            <Button color={"primary"} onClick={props.resultsHandler} value={d.raceId}>Results</Button>
                         </TableCell>
                         <TableCell>
-                            <Button color={"primary"} onClick={()=>props.standingsHandler} value={d.raceId}>Standings</Button>
+                            <Button color={"primary"} onClick={props.standingsHandler} value={d.raceId}>Standings</Button>
                         </TableCell>
                     </TableRow>)}
             </TableBody>
