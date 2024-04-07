@@ -7,7 +7,7 @@ import { Button } from "@nextui-org/react";
 import LoadingModal from '../dialogs/LoadingModal.jsx';
 import AboutModal from '../dialogs/AboutModal.jsx';
 import FavesModal from '../dialogs/FavesModal.jsx';
-import { BsFillInfoCircleFill } from "react-icons/bs";
+import { BsFillInfoCircleFill, BsFillHeartFill } from "react-icons/bs";
 
 const HomeView = (props) => {
     /*props = props.seasonData, props.fetchSeasonData (function), 
@@ -163,7 +163,7 @@ const HomeView = (props) => {
             <header className='bg-blue-400 flex-col'>
                 <h1 className='text-center'>F1 Data Dashboard</h1>
                 <div className='flex justify-center'>
-                    <Button radius="sm" color={"primary"} isDisabled={faves.isEmpty} onClick={() => showFaves(true)}>Favourites</Button>
+                    <Button radius="sm" color={"primary"} isDisabled={faves.isEmpty} onClick={() => showFaves(true)}><BsFillHeartFill />Favourites</Button>
                     <Button radius="sm" color={"primary"} onClick={() => showAbout(true)}><BsFillInfoCircleFill />About</Button>
                 </div>
             </header>

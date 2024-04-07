@@ -1,5 +1,3 @@
-import { useState, useEffect } from 'react'
-
 import DriverStandings from './DriverStandings'
 import ConstructorStandings from './ConstructorStandings'
 
@@ -15,8 +13,6 @@ const StandingsViewer = (props) => {
     }
     return (
         <div id="standings-viewer">
-            <h3>{props.driverStandingsData[0].race.name} Standings</h3>
-            <p>After round {props.driverStandingsData.length > 0 ? props.driverStandingsData[0].race.round : "#"}</p>
             <div id="standings-tables">
                 {props.driverStandingsData.length > 0 ?
                     //IF DATA EXISTS, RETURN:

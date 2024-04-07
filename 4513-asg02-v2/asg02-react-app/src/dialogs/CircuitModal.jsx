@@ -2,7 +2,7 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from
 import { findFlagUrlByCountryName } from "country-flags-svg";
 //^^Huge find; can import images of country flags as icons using the driver's nationality string
 import WikiImage from './WikiImage';
-
+import {BsFillHeartFill} from 'react-icons/bs'
 
 
 
@@ -58,7 +58,7 @@ const CircuitModal = (props) => {
                         <a href={circuitData.url} target="_blank">Wikipedia</a>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={() => props.addFaveCircuit(circuitData.name)}>Favourite</Button>
+                        <Button onClick={() => props.addFaveCircuit(circuitData.name)}> <BsFillHeartFill />Favourite</Button>
                         <Button onClick={() => props.showCircuit(null)}>Close</Button>
                     </ModalFooter>
                 </ModalContent>

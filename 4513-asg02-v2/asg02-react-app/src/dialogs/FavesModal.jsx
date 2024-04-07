@@ -4,6 +4,7 @@ import {
     Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button,
     Table, TableHeader, TableBody, TableColumn, TableRow, TableCell
 } from "@nextui-org/react";
+import { BsFillHeartbreakFill } from "react-icons/bs";
 
 const FavesModal = (props) => {
     /*props: props.isShowingFaves, props.showFaves(bool),
@@ -67,7 +68,7 @@ const FavesModal = (props) => {
                 </ModalBody>
                 <ModalFooter>
                     <Button onClick={() =>
-                        confirm("Are you sure you want to clear your favourites?") ? props.emptyFaves() : {}}>Clear Favourites</Button>
+                        confirm("Are you sure you want to clear your favourites?") ? props.emptyFaves() : {}}><BsFillHeartbreakFill />Clear Favourites</Button>
                     <Button onClick={() => props.showFaves(false)}>Close</Button>
                 </ModalFooter>
             </ModalContent>

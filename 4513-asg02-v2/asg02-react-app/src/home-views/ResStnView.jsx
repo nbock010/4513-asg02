@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState} from 'react'
 import QualifyingViewer from './QualifyingViewer';
 import ResultsViewer from './ResultsViewer';
 import StandingsViewer from './standings-views/StandingsViewer';
@@ -18,8 +18,6 @@ const ResStnView = (props) => {
     constructorStandingsData= props.constructorStandingsData, fetchConstructorStandingsData = props.fetchConstructorStandingsData(raceId)
     
     props.faves, props.addFaveDriver, props.addFaveConstructor, props.addFaveCircuit, props.emptyFaves*/
-
-
 
 
     //INFO FOR RESULTS HEADER
@@ -69,7 +67,7 @@ const ResStnView = (props) => {
                     {raceName ? <BreadcrumbItem>{raceName}</BreadcrumbItem> : <></>}
                     {raceName ? <BreadcrumbItem>Results</BreadcrumbItem> : <></>}
                 </Breadcrumbs>
-                <div>
+                <div className='bg-default rounded-lg pl-1 text-center'>
                     <h3>Results</h3>
                     {props.resultsData.length > 0 ? <p>
                         {raceName} Round {round} <br />{date} at
@@ -123,7 +121,12 @@ const ResStnView = (props) => {
                     {props.driverStandingsData.length > 0 ? <BreadcrumbItem>Standings</BreadcrumbItem> : <></>}
                 </Breadcrumbs>
 
-                <div id="standings-container">
+                <div className='bg-default rounded-lg pl-1 text-center'>
+                    <h3>{props.driverStandingsData[0].race.name} Standings</h3>
+                    <p>After round {props.driverStandingsData.length > 0 ? props.driverStandingsData[0].race.round : "#"}</p>
+                </div>
+
+                <div id="standings-container" >
                     <StandingsViewer driverStandingsData={props.driverStandingsData}
                         showDriver={showDriver} idForDriverModal={idForDriverModal}
                         constructorStandingsData={props.constructorStandingsData} showConstructor={showConstructor} idForConstructorModal={idForConstructorModal}

@@ -1,7 +1,5 @@
-import { useState, useEffect } from 'react'
 import { Button } from '@nextui-org/react'
 import { Input } from "@nextui-org/react";
-
 
 const Login = (props) => {
     //props = props.loginHandler()

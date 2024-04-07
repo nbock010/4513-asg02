@@ -3,6 +3,7 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from
 import { findFlagUrlByNationality } from "country-flags-svg";
 import WikiImage from './WikiImage.jsx'
 //^^Huge find; can import images of country flags as icons using the driver's nationality string
+import {BsFillHeartFill} from 'react-icons/bs'
 
 const DriverModal = (props) => {
     //props: idForDriverModal=props.idForDriverModal, props.showDriver(id), props.driverData, 
@@ -44,7 +45,7 @@ const DriverModal = (props) => {
                             <a href={driver.url} target="_blank">Wikipedia</a></p>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={() => props.addFaveDriver(driver.forename + " " + driver.surname)}>Favourite</Button>
+                        <Button onClick={() => props.addFaveDriver(driver.forename + " " + driver.surname)}><BsFillHeartFill/>Favourite</Button>
                         <Button onClick={() => props.showDriver(null)}>Close</Button>
                     </ModalFooter>
                 </ModalContent>

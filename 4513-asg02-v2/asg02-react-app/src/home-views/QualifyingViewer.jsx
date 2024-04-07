@@ -13,10 +13,6 @@ const QualifyingViewer = (props) => {
     
     */
 
-    // function passDriverId(data) {
-    //     props.showDriver(data)
-    // }
-
     if (props.qualifyingData.length <= 1) {
         //in app, an empty query will instead return the data to just be a string, "0" which has a length of 1
         return (

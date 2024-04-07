@@ -38,6 +38,7 @@ const AboutModal = (props) => {
                             <li>{'>'} Driver, Circuit, and constructor images from the <a href="https://api.wikimedia.org/wiki/Main_Page" target="_blank">Wikimedia API</a></li>
                             <li>{'>'} Background image: toine G at
                                 <a href="https://unsplash.com/photos/time-lapse-photography-of-car-on-road-XP-J5O6A4Ko" target="_blank"> unsplash.com</a></li>
+                            <li>{'>'} Icons from <a href="https://react-icons.github.io/react-icons" target="_blank">React Icons on GitHub</a></li>
                         </ul>
                     </section>
 

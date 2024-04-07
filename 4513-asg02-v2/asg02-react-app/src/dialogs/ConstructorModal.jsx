@@ -2,6 +2,7 @@ import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from
 import WikiImage from './WikiImage';
 import { findFlagUrlByNationality } from "country-flags-svg";
 //^^Huge find; can import images of country flags as icons using the driver's nationality string
+import {BsFillHeartFill} from 'react-icons/bs'
 
 const ConstructorModal = (props) => {
     //idForConstructorModal={idForConstructorModal} showConstructor={showConstructor}
@@ -28,7 +29,7 @@ const ConstructorModal = (props) => {
                         <a href={constructor.url} target="_blank">Wikipedia</a>
                     </ModalBody>
                     <ModalFooter>
-                        <Button onClick={() => props.addFaveConstructor(constructor.name)}>Favourite</Button>
+                        <Button onClick={() => props.addFaveConstructor(constructor.name)}><BsFillHeartFill/> Favourite</Button>
                         <Button onClick={() => props.showConstructor(null)}>Close</Button>
                     </ModalFooter>
                 </ModalContent>

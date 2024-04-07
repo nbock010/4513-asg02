@@ -35,13 +35,12 @@ body {
 /* NOTE: this is the id=root, not the document root itself. 
     Parent = body */
 #root {
-  /* padding: 10px; */
-  border-radius: 10px;
+
 }
 
 /* Contains header and main content body  */
 #container {
-  width: 95vw;
+  /* width: 95vw; */
   height: 95vh;
   padding: 5px;
 
@@ -104,7 +103,7 @@ h4 {
 }
 
 .season-viewer {
-  padding: 2px;
+  padding: 5px;
   border-radius: 10px;
   margin: 3px;
   max-width: 30vw;
