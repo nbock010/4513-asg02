@@ -7,6 +7,7 @@ import { Button } from "@nextui-org/react";
 import LoadingModal from '../dialogs/LoadingModal.jsx';
 import AboutModal from '../dialogs/AboutModal.jsx';
 import FavesModal from '../dialogs/FavesModal.jsx';
+import { BsFillInfoCircleFill } from "react-icons/bs";
 
 const HomeView = (props) => {
     /*props = props.seasonData, props.fetchSeasonData (function), 
@@ -95,7 +96,8 @@ const HomeView = (props) => {
     //handles query for standings button
     const standingsHandler = (e) => {
         console.log("E: " + e.target.value + "; Rid: " + props.selectedRaceId)
-        if (e.target.value != props.selectedRaceId) {
+        if (e.target.value != props.selectedRaceId ||
+        (e.target.value == props.selectedRaceId && displayResultsAndNotStandings == true)) {
             //this helps prevent an unnecessary fetch if the results of the race id are already displayed
             props.fetchDriverStandingsData(e.target.value)
             props.fetchConstructorStandingsData(e.target.value)
@@ -158,11 +160,11 @@ const HomeView = (props) => {
     // RETURN
     return (
         <div id="container">
-            <header className='bg-blue-400'>
-                <h1>F1 Data Dashboard</h1>
-                <div>
+            <header className='bg-blue-400 flex-col'>
+                <h1 className='text-center'>F1 Data Dashboard</h1>
+                <div className='flex justify-center'>
                     <Button radius="sm" color={"primary"} isDisabled={faves.isEmpty} onClick={() => showFaves(true)}>Favourites</Button>
-                    <Button radius="sm" color={"primary"} onClick={() => showAbout(true)}>About</Button>
+                    <Button radius="sm" color={"primary"} onClick={() => showAbout(true)}><BsFillInfoCircleFill />About</Button>
                 </div>
             </header>
 
@@ -202,7 +204,7 @@ const HomeView = (props) => {
                     />
                     //  ELSE IF SEASON IS NOT SELECTED:
                     :
-                    <div id="filler">
+                    <div id="filler" className='bg-default'>
                         <h3>Select a year to view race data</h3>
                         <img src={loadingGif} width="300px" alt="wheel.gif"></img>
                     </div>

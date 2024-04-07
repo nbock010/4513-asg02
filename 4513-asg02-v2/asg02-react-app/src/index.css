@@ -170,7 +170,6 @@ tr:hover {
 
 /* on first load and no race is selected */
 #filler {
-  background-color: #f4f4f5;
   width: -webkit-fill-available;
   display: flex;
   align-items: center;

@@ -59,10 +59,10 @@ const ResStnView = (props) => {
 
     //SELECTIVE RETURN
     if (props.displayResultsAndNotStandings) {
-        // IF RESULTS WAS CLICKED (and also default)
+        // IF RESULTS WAS CLICKED (and also default view)
         return (
             <div id="res-stn-container" className='bg-blue-400'>
-                <Breadcrumbs isDisabled variant='solid' color="primary">
+                <Breadcrumbs isDisabled variant='solid' color="primary" className='flex-row'>
                     <BreadcrumbItem>
                         {props.selectedSeason}
                     </BreadcrumbItem>
@@ -99,7 +99,7 @@ const ResStnView = (props) => {
                             {props.qualifyingData.length > 0 ?
                                 <QualifyingViewer qualifyingData={props.qualifyingData}
                                     showDriver={showDriver} showConstructor={showConstructor} idForDriverModal={idForDriverModal} />
-                                : <p>No qualifying data found...</p>}
+                                : <></>}
                         </div>
                         <div>
                             <h4>Results</h4>

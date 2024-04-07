@@ -27,6 +27,7 @@ const StandingsViewer = (props) => {
                     : //IF NO DATA, RETURN:
                     <div>
                         <p id="no-driverStandings-p">No driver standings data found for this race.</p>
+                        <p>(This may be due to gaps in the database)</p>
                     </div>
                 }
                 {props.constructorStandingsData.length > 0 ?
@@ -37,6 +38,7 @@ const StandingsViewer = (props) => {
                     : //IF NO DATA, RETURN:
                     <div>
                         <p id="no-constructorStandings-p">No constructor standings data found for this race.</p>
+                        <p>(This may be due to gaps in the database)</p>
                     </div>
                 }
             </div>

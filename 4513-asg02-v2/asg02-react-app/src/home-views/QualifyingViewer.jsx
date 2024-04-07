@@ -22,6 +22,7 @@ const QualifyingViewer = (props) => {
         return (
             <div>
                 <p id="no-qualifying-p">No qualifying data found for this race.</p>
+                <p>(This may be due to gaps in the database)</p>
             </div>
         )
     }
