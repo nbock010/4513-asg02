@@ -24,7 +24,7 @@ body {
   justify-content: center;
   /* DONT ADJUST THESE (especially width; helps prevent side-scrolling */
   min-width: 99vw;
-  min-height: 99vh;
+  min-height: 100vh;
   overflow-y: hidden;
   /* ^^DONT ADJUST */
   background-image: url('./assets/car2-bg.jpg');
