@@ -122,7 +122,7 @@ const ResStnView = (props) => {
                 </Breadcrumbs>
 
                 <div className='bg-default rounded-lg pl-1 text-center'>
-                    <h3>{props.driverStandingsData[0].race.name} Standings</h3>
+                    <h3>{props.driverStandingsData.length > 0? props.driverStandingsData[0].race.name : "LOADING"}  Standings</h3>
                     <p>After round {props.driverStandingsData.length > 0 ? props.driverStandingsData[0].race.round : "#"}</p>
                 </div>
 
